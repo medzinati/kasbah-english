@@ -24,7 +24,7 @@ export function CommentForm({ postId }: { postId: string }) {
       const json = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Could not add comment.");
+        setMessage(json.error || "ما قدرناش نضيف الرد.");
         return;
       }
       form.reset();
@@ -32,18 +32,18 @@ export function CommentForm({ postId }: { postId: string }) {
       router.refresh();
     } catch {
       setStatus("error");
-      setMessage("Network error.");
+      setMessage("مشكلة في الشبكة.");
     }
   }
 
   return (
     <form className="site-form community-form" onSubmit={onSubmit}>
       <label>
-        Add a reply
-        <textarea name="body" required rows={3} placeholder="Write your reply…" />
+        أضف ردًا
+        <textarea name="body" required rows={3} placeholder="اكتب ردك…" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Sending…" : "Reply"}
+        {status === "loading" ? "كيتحضّر…" : "رد"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

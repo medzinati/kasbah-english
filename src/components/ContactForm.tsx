@@ -24,16 +24,16 @@ export function ContactForm() {
 
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Something went wrong. Please try again.");
+        setMessage(json.error || "وقع خطأ. حاول مرة أخرى.");
         return;
       }
 
       setStatus("success");
-      setMessage("Message sent. We’ll get back to you soon.");
+      setMessage("تم إرسال الرسالة. غادي نرجعو ليك قريب إن شاء الله.");
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Check your connection and try again.");
+      setMessage("مشكلة في الاتصال. تحقق من الإنترنت وحاول مرة أخرى.");
     }
   }
 
@@ -41,24 +41,24 @@ export function ContactForm() {
     <form className="site-form" onSubmit={onSubmit} noValidate>
       <div className="form-grid">
         <label>
-          Name
-          <input name="name" type="text" required autoComplete="name" placeholder="Your name" />
+          الاسم
+          <input name="name" type="text" required autoComplete="name" placeholder="اسمك" />
         </label>
         <label>
-          Email
-          <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" />
+          البريد الإلكتروني
+          <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
         </label>
       </div>
       <label>
-        Subject
-        <input name="subject" type="text" required placeholder="How can we help?" />
+        الموضوع
+        <input name="subject" type="text" required placeholder="كيف نقدر نساعدوك؟" />
       </label>
       <label>
-        Message
-        <textarea name="message" required rows={6} placeholder="Write your message…" />
+        الرسالة
+        <textarea name="message" required rows={6} placeholder="اكتب رسالتك…" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Sending…" : "Send message"}
+        {status === "loading" ? "كيتصيفط…" : "إرسال الرسالة"}
       </button>
       {message ? (
         <p className={`form-status ${status === "success" ? "is-success" : "is-error"}`} role="status">

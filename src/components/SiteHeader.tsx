@@ -8,11 +8,11 @@ type SiteHeaderProps = {
 };
 
 const links = [
-  { href: "/news", label: "News" },
-  { href: "/courses", label: "Free courses" },
-  { href: "/apply", label: "Apply" },
-  { href: "/contact", label: "Contact" },
-  { href: "/members/login", label: "Members" },
+  { href: "/news", label: "الأخبار" },
+  { href: "/courses", label: "دروس مجانية" },
+  { href: "/apply", label: "التسجيل" },
+  { href: "/contact", label: "تواصل معنا" },
+  { href: "/members/login", label: "الأعضاء" },
 ];
 
 export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
@@ -26,10 +26,10 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
     <header className={`nav ${variant === "solid" ? "nav-solid" : ""} ${open ? "is-open" : ""}`}>
       <div className="wrap nav-inner">
         <Link className="logo" href="/" onClick={close}>
-          Kasbah <span>English</span>
+          كاسباه <span>إنجليش</span>
         </Link>
 
-        <nav className="nav-links" aria-label="Main">
+        <nav className="nav-links" aria-label="القائمة الرئيسية">
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.label}
@@ -39,14 +39,14 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
 
         <div className="nav-actions">
           <Link className="nav-cta" href="/apply" onClick={close}>
-            Apply now
+            سجّل الآن
           </Link>
           <button
             type="button"
             className="nav-toggle"
             aria-expanded={open}
             aria-controls="mobile-nav"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
             onClick={() => setOpen((value) => !value)}
           >
             <span />
@@ -64,7 +64,7 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
             </Link>
           ))}
           <Link className="btn btn-primary mobile-nav-cta" href="/apply" onClick={close}>
-            Apply to join
+            انضم إلينا
           </Link>
         </div>
       </div>

@@ -7,7 +7,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
-  title: "Members login",
+  title: "دخول الأعضاء",
 };
 
 export default async function MembersLoginPage() {
@@ -22,20 +22,20 @@ export default async function MembersLoginPage() {
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">Members</p>
-            <h1>Welcome back</h1>
-            <p>Sign in to your Kasbah English community — discussions, groups, and live meetings await.</p>
+            <p className="eyebrow">الأعضاء</p>
+            <h1>مرحبًا بعودتك</h1>
+            <p>ادخل لمجتمع كاسباه إنجليش — نقاشات، مجموعات، ولقاءات مباشرة كتسناك.</p>
           </div>
         </section>
         <section className="section">
           <div className="wrap form-layout">
             <div className="form-aside">
-              <h2>Not a member yet?</h2>
+              <h2>ما زلت مش عضو؟</h2>
               <p className="form-note">
-                That’s okay — start with a free course, then apply. After we accept you, you’ll receive login details.
+                ماشي مشكل — ابدأ بدرس مجاني، ومن بعد سجّل. بعد القبول غادي توصلك بيانات الدخول.
               </p>
               <Link className="text-link" href="/apply">
-                Go to apply →
+                اذهب للتسجيل ←
               </Link>
             </div>
             <LoginForm />

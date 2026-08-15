@@ -26,7 +26,7 @@ export function LoginForm() {
 
     if (result?.error) {
       setStatus("error");
-      setMessage("Invalid email or password. Access is only for accepted members.");
+      setMessage("الإيميل أو كلمة المرور غير صحيحة. الدخول خاص بالأعضاء المقبولين فقط.");
       return;
     }
 
@@ -37,15 +37,15 @@ export function LoginForm() {
   return (
     <form className="site-form" onSubmit={onSubmit}>
       <label>
-        Email
-        <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" />
+        البريد الإلكتروني
+        <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
       </label>
       <label>
-        Password
-        <input name="password" type="password" required autoComplete="current-password" placeholder="••••••••" />
+        كلمة المرور
+        <input name="password" type="password" required autoComplete="current-password" placeholder="••••••••" dir="ltr" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Signing in…" : "Sign in"}
+        {status === "loading" ? "كيتحل الدخول…" : "دخول"}
       </button>
       {message ? (
         <p className="form-status is-error" role="status">

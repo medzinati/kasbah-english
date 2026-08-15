@@ -11,7 +11,7 @@ type Props = { params: Promise<{ slug: string; postId: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { postId } = await params;
   const post = await prisma.discussionPost.findUnique({ where: { id: postId } });
-  return { title: post?.title || "Discussion" };
+  return { title: post?.title || "نقاش" };
 }
 
 export const dynamic = "force-dynamic";
@@ -49,21 +49,21 @@ export default async function PostDetailPage({ params }: Props) {
         <h1>{post.title}</h1>
         <p className="feed-meta">
           {post.author.name} ·{" "}
-          {new Intl.DateTimeFormat("en", { dateStyle: "medium", timeStyle: "short" }).format(post.createdAt)}
+          {new Intl.DateTimeFormat("ar", { dateStyle: "medium", timeStyle: "short" }).format(post.createdAt)}
         </p>
         <p className="post-body">{post.body}</p>
 
         <section className="members-section">
-          <h2>Replies ({post.comments.length})</h2>
+          <h2>الردود ({post.comments.length})</h2>
           <div className="feed-list">
             {post.comments.length === 0 ? (
-              <p className="members-empty">No replies yet.</p>
+              <p className="members-empty">ما كاين حتى رد دابا.</p>
             ) : (
               post.comments.map((comment) => (
                 <article key={comment.id} className="feed-item">
                   <p className="feed-meta">
                     {comment.author.name} ·{" "}
-                    {new Intl.DateTimeFormat("en", {
+                    {new Intl.DateTimeFormat("ar", {
                       dateStyle: "medium",
                       timeStyle: "short",
                     }).format(comment.createdAt)}

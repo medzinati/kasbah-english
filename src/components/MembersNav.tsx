@@ -9,22 +9,24 @@ type MembersNavProps = {
   title?: string;
 };
 
-export function MembersNav({ name, role, title = "Kasbah English" }: MembersNavProps) {
+export function MembersNav({ name, role, title = "كاسباه إنجليش" }: MembersNavProps) {
   const links = [
-    { href: "/members", label: "Home" },
-    { href: "/members/community", label: "Community" },
-    { href: "/members/groups", label: "Groups" },
-    { href: "/members/meetings", label: "Meetings" },
-    ...(role === "ADMIN" ? [{ href: "/admin", label: "Admin" }] : []),
+    { href: "/members", label: "الرئيسية" },
+    { href: "/members/community", label: "المجتمع" },
+    { href: "/members/groups", label: "المجموعات" },
+    { href: "/members/meetings", label: "اللقاءات" },
+    ...(role === "ADMIN" ? [{ href: "/admin", label: "الإدارة" }] : []),
   ];
+
+  const parts = title.split(" ");
 
   return (
     <header className="members-top">
       <div className="wrap members-top-inner">
         <Link className="logo ink" href="/members">
-          {title.includes(" ") ? (
+          {parts.length > 1 ? (
             <>
-              {title.split(" ")[0]} <span>{title.split(" ").slice(1).join(" ")}</span>
+              {parts[0]} <span>{parts.slice(1).join(" ")}</span>
             </>
           ) : (
             title
@@ -35,7 +37,7 @@ export function MembersNav({ name, role, title = "Kasbah English" }: MembersNavP
           <SignOutButton />
         </div>
       </div>
-      <nav className="members-nav-links wrap" aria-label="Members">
+      <nav className="members-nav-links wrap" aria-label="قائمة الأعضاء">
         {links.map((link) => (
           <Link key={link.href} href={link.href}>
             {link.label}

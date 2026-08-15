@@ -24,7 +24,7 @@ export function NewPostForm({ groupSlug }: { groupSlug: string }) {
       const json = (await res.json()) as { ok?: boolean; error?: string; postId?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Could not create post.");
+        setMessage(json.error || "ما قدرناش ننشر الموضوع.");
         return;
       }
       form.reset();
@@ -35,23 +35,23 @@ export function NewPostForm({ groupSlug }: { groupSlug: string }) {
       }
     } catch {
       setStatus("error");
-      setMessage("Network error.");
+      setMessage("مشكلة في الشبكة.");
     }
   }
 
   return (
     <form className="site-form community-form" onSubmit={onSubmit}>
-      <h2>Start a discussion</h2>
+      <h2>ابدأ نقاشًا</h2>
       <label>
-        Title
-        <input name="title" required maxLength={120} placeholder="Question or topic…" />
+        العنوان
+        <input name="title" required maxLength={120} placeholder="سؤال أو موضوع…" />
       </label>
       <label>
-        Message
-        <textarea name="body" required rows={5} placeholder="Share your thoughts or question…" />
+        الرسالة
+        <textarea name="body" required rows={5} placeholder="شارك فكرتك أو سؤالك…" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Posting…" : "Post to group"}
+        {status === "loading" ? "كينتشر…" : "نشر في المجموعة"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

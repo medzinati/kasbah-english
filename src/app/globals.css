@@ -24,14 +24,14 @@ html {
 }
 
 body {
-  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-family: var(--font-body), "Segoe UI", Tahoma, sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(ellipse 90% 50% at 100% -10%, rgba(11, 107, 115, 0.07), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 0% 100%, rgba(196, 163, 90, 0.06), transparent 45%),
+    radial-gradient(ellipse 90% 50% at 0% -10%, rgba(11, 107, 115, 0.07), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(196, 163, 90, 0.06), transparent 45%),
     var(--paper);
-  line-height: 1.65;
-  letter-spacing: -0.011em;
+  line-height: 1.75;
+  letter-spacing: 0;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -72,15 +72,15 @@ img {
 }
 
 .logo {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-weight: 600;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-weight: 700;
   font-size: 1.12rem;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   color: var(--white);
 }
 
 .logo span {
-  font-style: italic;
+  font-style: normal;
   font-weight: 500;
   opacity: 0.9;
 }
@@ -305,30 +305,30 @@ img {
 }
 
 .brand {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-size: clamp(2.6rem, 11vw, 5.8rem);
-  font-weight: 600;
-  line-height: 0.94;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: clamp(2.4rem, 10vw, 4.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
   margin-bottom: 1rem;
   opacity: 0;
   animation: rise 1s var(--ease) 0.15s forwards;
 }
 
 .brand em {
-  font-style: italic;
-  font-weight: 500;
+  font-style: normal;
+  font-weight: 600;
   color: var(--gold);
 }
 
 .headline {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-size: clamp(1.25rem, 4.2vw, 1.95rem);
-  font-weight: 500;
-  font-style: italic;
-  line-height: 1.3;
-  letter-spacing: -0.025em;
-  max-width: 20ch;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: clamp(1.2rem, 4vw, 1.75rem);
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.45;
+  letter-spacing: 0;
+  max-width: 22ch;
   margin-bottom: 0.85rem;
   opacity: 0;
   animation: rise 1s var(--ease) 0.35s forwards;
@@ -419,21 +419,21 @@ img {
 }
 
 .eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-transform: none;
   color: var(--teal);
   margin-bottom: 0.85rem;
 }
 
 .section-head h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-size: clamp(2rem, 4.2vw, 2.9rem);
-  line-height: 1.08;
-  letter-spacing: -0.035em;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: clamp(1.75rem, 4.2vw, 2.6rem);
+  line-height: 1.25;
+  letter-spacing: 0;
   margin-bottom: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .section-head p {
@@ -468,14 +468,14 @@ img {
 }
 
 .program-num {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.1rem;
   color: var(--teal);
   padding-top: 0.2rem;
 }
 
 .program h3 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -526,7 +526,7 @@ img {
 }
 
 .method-points article h3 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.25rem;
   margin-bottom: 0.4rem;
   letter-spacing: -0.02em;
@@ -563,7 +563,7 @@ img {
 }
 
 .audience-split h3 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.5rem;
   margin-bottom: 0.55rem;
   letter-spacing: -0.02em;
@@ -581,7 +581,7 @@ img {
 }
 
 .final-cta h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: clamp(2rem, 5vw, 3rem);
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -627,12 +627,12 @@ img {
 }
 
 .page-hero h1 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-size: clamp(2.05rem, 7vw, 3.6rem);
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-size: clamp(1.9rem, 6.5vw, 3.2rem);
+  line-height: 1.25;
+  letter-spacing: 0;
   margin-bottom: 0.9rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .page-hero-inner > p:last-child {
@@ -665,7 +665,7 @@ img {
 }
 
 .news-item h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: clamp(1.45rem, 3vw, 1.9rem);
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -712,7 +712,7 @@ img {
 }
 
 .course-item h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   letter-spacing: -0.02em;
   margin-bottom: 0.55rem;
@@ -761,7 +761,7 @@ img {
 }
 
 .form-aside h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -904,7 +904,7 @@ img {
 
 .footer strong {
   color: var(--white);
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-weight: 600;
 }
 
@@ -1010,7 +1010,7 @@ img {
 
 .members-section > h2,
 .members-section-head h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -1040,7 +1040,7 @@ img {
 }
 
 .feed-item h3 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -1094,7 +1094,7 @@ img {
 }
 
 .group-item h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -1123,7 +1123,7 @@ img {
 }
 
 .community-form h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.25rem;
   margin-bottom: 0.35rem;
 }
@@ -1172,7 +1172,7 @@ img {
 }
 
 .meeting-when time {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -1184,7 +1184,7 @@ img {
 }
 
 .meeting-body h3 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.4rem;
@@ -1208,7 +1208,7 @@ img {
 }
 
 .members-main h1 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: clamp(1.85rem, 6vw, 2.8rem);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -1238,7 +1238,7 @@ img {
 }
 
 .members-grid h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.35rem;
   margin-bottom: 0.45rem;
   letter-spacing: -0.02em;
@@ -1280,7 +1280,7 @@ img {
 }
 
 .admin-item h2 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-family: var(--font-display), "Noto Naskh Arabic", serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }

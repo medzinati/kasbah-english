@@ -6,23 +6,23 @@ const prisma = new PrismaClient();
 const defaultGroups = [
   {
     slug: "conversation",
-    title: "Conversation Lab",
-    description: "Friendly speaking practice for everyday life — fluency, clarity, and real situations.",
+    title: "مختبر المحادثة",
+    description: "تمرين كلام ودّي للحياة اليومية — الطلاقة، الوضوح، والمواقف الحقيقية.",
   },
   {
     slug: "exam-track",
-    title: "Exam Track",
-    description: "IELTS and academic English support: strategies, questions, and steady progress.",
+    title: "مسار الامتحانات",
+    description: "دعم IELTS والإنجليزية الأكاديمية: استراتيجيات، أسئلة، وتقدّم ثابت.",
   },
   {
     slug: "career-english",
-    title: "Career English",
-    description: "Emails, meetings, interviews, and workplace English that sounds natural and professional.",
+    title: "إنجليزية العمل",
+    description: "إيميلات، اجتماعات، مقابلات، وإنجليزية مهنية طبيعية ومحترفة.",
   },
   {
     slug: "general",
-    title: "General Community",
-    description: "Introductions, wins, questions, and warm conversation with fellow Kasbah learners.",
+    title: "المجتمع العام",
+    description: "تعارف، إنجازات، أسئلة، ومحادثة دافئة مع متعلمي كاسباه.",
   },
 ];
 
@@ -62,13 +62,17 @@ async function main() {
     });
   }
 
-  const welcomeTitle = "Welcome to Kasbah English";
+  const welcomeTitle = "مرحبًا بك في كاسباه إنجليش";
   const welcomeBody =
-    "You’re inside. Read announcements, join a discussion group, introduce yourself, and come to live Zoom meetings ready to speak. We’re glad you’re here — progress loves consistency and kindness.";
+    "نتا دابا داخل. اقرأ الإعلانات، انضم لمجموعة نقاش، قدّم راسك، وجي للقاءات زوم مستعد تتكلّم. فرحانين بيك — التقدّم كيبغي الانتظام واللطف.";
 
   const existingWelcome = await prisma.announcement.findFirst({
     where: {
-      OR: [{ title: welcomeTitle }, { title: "Welcome to the Kasbah English community" }],
+      OR: [
+        { title: welcomeTitle },
+        { title: "Welcome to Kasbah English" },
+        { title: "Welcome to the Kasbah English community" },
+      ],
     },
   });
 

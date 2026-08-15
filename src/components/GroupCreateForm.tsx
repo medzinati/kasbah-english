@@ -24,7 +24,7 @@ export function GroupCreateForm() {
       const json = (await res.json()) as { ok?: boolean; error?: string; slug?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Could not create group.");
+        setMessage(json.error || "ما قدرناش نخلق المجموعة.");
         return;
       }
       form.reset();
@@ -35,23 +35,23 @@ export function GroupCreateForm() {
       }
     } catch {
       setStatus("error");
-      setMessage("Network error.");
+      setMessage("مشكلة في الشبكة.");
     }
   }
 
   return (
     <form className="site-form community-form" onSubmit={onSubmit}>
-      <h2>Create discussion group</h2>
+      <h2>إنشاء مجموعة نقاش</h2>
       <label>
-        Title
-        <input name="title" required maxLength={80} placeholder="Pronunciation practice" />
+        العنوان
+        <input name="title" required maxLength={80} placeholder="تمرين النطق" />
       </label>
       <label>
-        Description
-        <textarea name="description" required rows={3} placeholder="What is this group for?" />
+        الوصف
+        <textarea name="description" required rows={3} placeholder="علاش هاد المجموعة؟" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Creating…" : "Create group"}
+        {status === "loading" ? "كيتحضّر…" : "إنشاء المجموعة"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

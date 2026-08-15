@@ -36,7 +36,7 @@ export function MeetingForm() {
       const json = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Could not create meeting.");
+        setMessage(json.error || "ما قدرناش نجدول اللقاء.");
         return;
       }
       form.reset();
@@ -48,37 +48,37 @@ export function MeetingForm() {
       router.refresh();
     } catch {
       setStatus("error");
-      setMessage("Network error.");
+      setMessage("مشكلة في الشبكة.");
     }
   }
 
   return (
     <form className="site-form community-form" onSubmit={onSubmit}>
-      <h2>Schedule a meeting</h2>
+      <h2>جدولة لقاء</h2>
       <label>
-        Title
-        <input name="title" required maxLength={120} placeholder="Conversation Lab — live session" />
+        العنوان
+        <input name="title" required maxLength={120} placeholder="مختبر المحادثة — حصة مباشرة" />
       </label>
       <label>
-        Description
-        <textarea name="description" required rows={3} placeholder="What will members practice?" />
+        الوصف
+        <textarea name="description" required rows={3} placeholder="شنو غادي يتمرّنو الأعضاء؟" />
       </label>
       <div className="form-grid">
         <label>
-          Starts at
-          <input name="startsAt" type="datetime-local" required defaultValue={defaultLocalDateTime()} />
+          يبدأ في
+          <input name="startsAt" type="datetime-local" required defaultValue={defaultLocalDateTime()} dir="ltr" />
         </label>
         <label>
-          Duration (minutes)
-          <input name="durationMinutes" type="number" min={15} max={240} step={15} defaultValue={60} required />
+          المدة (بالدقائق)
+          <input name="durationMinutes" type="number" min={15} max={240} step={15} defaultValue={60} required dir="ltr" />
         </label>
       </div>
       <label>
-        Zoom / Meet link
-        <input name="zoomUrl" type="url" required placeholder="https://zoom.us/j/…" />
+        رابط زوم / Meet
+        <input name="zoomUrl" type="url" required placeholder="https://zoom.us/j/…" dir="ltr" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Saving…" : "Add meeting"}
+        {status === "loading" ? "كيتحفظ…" : "إضافة اللقاء"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

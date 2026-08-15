@@ -7,7 +7,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
-  title: "Discussion groups",
+  title: "مجموعات النقاش",
 };
 
 export const dynamic = "force-dynamic";
@@ -27,9 +27,9 @@ export default async function GroupsPage() {
     <div className="members-shell">
       <MembersNav name={session.user.name} role={session.user.role} />
       <main className="wrap members-main">
-        <p className="eyebrow">Discussions</p>
-        <h1>Groups</h1>
-        <p className="members-lede">Pick a group, start a thread, and practice with the community.</p>
+        <p className="eyebrow">النقاشات</p>
+        <h1>المجموعات</h1>
+        <p className="members-lede">اختار مجموعة، ابدأ موضوع، وتدرّب مع المجتمع.</p>
 
         {session.user.role === "ADMIN" ? <GroupCreateForm /> : null}
 
@@ -43,7 +43,7 @@ export default async function GroupsPage() {
                 <p>{group.description}</p>
               </div>
               <p className="group-count">
-                {group._count.posts} {group._count.posts === 1 ? "post" : "posts"}
+                {group._count.posts} {group._count.posts === 1 ? "منشور" : "منشورات"}
               </p>
             </article>
           ))}

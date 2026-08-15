@@ -24,7 +24,7 @@ export function AnnouncementForm() {
       const json = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Could not post announcement.");
+        setMessage(json.error || "ما قدرناش ننشر الإعلان.");
         return;
       }
       form.reset();
@@ -32,23 +32,23 @@ export function AnnouncementForm() {
       router.refresh();
     } catch {
       setStatus("error");
-      setMessage("Network error.");
+      setMessage("مشكلة في الشبكة.");
     }
   }
 
   return (
     <form className="site-form community-form" onSubmit={onSubmit}>
-      <h2>New announcement</h2>
+      <h2>إعلان جديد</h2>
       <label>
-        Title
-        <input name="title" required maxLength={120} placeholder="Weekly update…" />
+        العنوان
+        <input name="title" required maxLength={120} placeholder="تحديث الأسبوع…" />
       </label>
       <label>
-        Message
-        <textarea name="body" required rows={4} placeholder="What should members know?" />
+        الرسالة
+        <textarea name="body" required rows={4} placeholder="شنو خاص الأعضاء يعرفو؟" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Posting…" : "Post announcement"}
+        {status === "loading" ? "كينتشر…" : "نشر الإعلان"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

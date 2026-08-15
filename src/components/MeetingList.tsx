@@ -11,7 +11,7 @@ export type MeetingCardData = {
 };
 
 function formatWhen(iso: string) {
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat("ar", {
     weekday: "short",
     year: "numeric",
     month: "short",
@@ -24,7 +24,7 @@ function formatWhen(iso: string) {
 export function MeetingList({
   meetings,
   isAdmin = false,
-  emptyText = "No meetings scheduled yet.",
+  emptyText = "ما كاين حتى لقاء مجدول دابا.",
 }: {
   meetings: MeetingCardData[];
   isAdmin?: boolean;
@@ -48,19 +48,19 @@ export function MeetingList({
           <article key={meeting.id} className={`meeting-item ${isPast ? "is-past" : ""}`}>
             <div className="meeting-when">
               <span className={`status-pill ${isLive ? "status-accepted" : isPast ? "status-rejected" : "status-pending"}`}>
-                {isLive ? "Live now" : isPast ? "Past" : "Upcoming"}
+                {isLive ? "الآن مباشر" : isPast ? "منتهي" : "قادم"}
               </span>
               <time dateTime={meeting.startsAt}>{formatWhen(meeting.startsAt)}</time>
-              <p>{meeting.durationMinutes} min</p>
+              <p>{meeting.durationMinutes} دقيقة</p>
             </div>
             <div className="meeting-body">
               <h3>{meeting.title}</h3>
               <p>{meeting.description}</p>
-              <p className="feed-meta">Hosted by {meeting.createdByName}</p>
+              <p className="feed-meta">يستضيفه {meeting.createdByName}</p>
               <div className="meeting-actions">
                 {!isPast ? (
                   <a className="btn btn-primary" href={meeting.zoomUrl} target="_blank" rel="noreferrer">
-                    Join meeting
+                    الانضمام للقاء
                   </a>
                 ) : null}
                 {isAdmin ? <DeleteMeetingButton id={meeting.id} /> : null}

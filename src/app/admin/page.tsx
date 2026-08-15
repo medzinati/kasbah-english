@@ -10,7 +10,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
-  title: "Admin",
+  title: "الإدارة",
 };
 
 export const dynamic = "force-dynamic";
@@ -43,20 +43,20 @@ export default async function AdminPage() {
 
   return (
     <div className="members-shell">
-      <MembersNav name={session.user.name} role={session.user.role} title="Kasbah Admin" />
+      <MembersNav name={session.user.name} role={session.user.role} title="كاسباه الإدارة" />
 
       <main className="wrap members-main">
-        <p className="eyebrow">Admin</p>
-        <h1>Manage community</h1>
+        <p className="eyebrow">الإدارة</p>
+        <h1>تسيير المجتمع</h1>
         <p className="members-lede">
-          Accept members, post announcements, create groups, and schedule Zoom meetings.{" "}
+          قبول الأعضاء، نشر الإعلانات، إنشاء المجموعات، وجدولة لقاءات زوم.{" "}
           <Link className="text-link" href="/members/meetings">
-            View meetings
+            عرض اللقاءات
           </Link>
         </p>
 
         <section className="members-section">
-          <h2>Applications</h2>
+          <h2>طلبات التسجيل</h2>
           <AdminApplications initial={initial} />
         </section>
 

@@ -4,12 +4,12 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { newsItems } from "@/data/news";
 
 export const metadata: Metadata = {
-  title: "News",
-  description: "Updates and announcements from Kasbah English — community, courses, and member invitations.",
+  title: "الأخبار",
+  description: "أخبار وتحديثات كاسباه إنجليش — المجتمع، الدروس، ودعوات الانضمام.",
 };
 
 function formatDate(value: string) {
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat("ar", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -23,9 +23,9 @@ export default function NewsPage() {
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">News</p>
-            <h1>Stories from the Kasbah</h1>
-            <p>Friendly updates on courses, community life, and how to join us.</p>
+            <p className="eyebrow">الأخبار</p>
+            <h1>حكايات من كاسباه</h1>
+            <p>تحديثات ودّية حول الدروس، حياة المجتمع، وكيف تنضم إلينا.</p>
           </div>
         </section>
 

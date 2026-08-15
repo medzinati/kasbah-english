@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
-import { DM_Sans, Newsreader } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Noto_Naskh_Arabic } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
-const newsreader = Newsreader({
-  subsets: ["latin"],
+const naskh = Noto_Naskh_Arabic({
+  subsets: ["arabic"],
   variable: "--font-display",
   display: "swap",
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
+const plexArabic = IBM_Plex_Sans_Arabic({
+  subsets: ["arabic"],
   variable: "--font-body",
   display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Kasbah English | Speak with confidence. Grow with a community.",
-    template: "%s | Kasbah English",
+    default: "كاسباه إنجليش | تعلّم الإنجليزية بثقة ومع مجتمع داعم",
+    template: "%s | كاسباه إنجليش",
   },
   description:
-    "Kasbah English is a friendly online English community for Moroccan and international learners — free courses publicly, discussions and live Zoom meetings for accepted members.",
+    "كاسباه إنجليش مجتمع إنجليزي أونلاين للمتعلمين في المغرب والعالم — دروس مجانية للجميع، ومجتمع للأعضاء المقبولين مع نقاشات ولقاءات عبر زوم.",
 };
 
 export default function RootLayout({
@@ -31,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${newsreader.variable} ${dmSans.variable}`}>
+    <html lang="ar" dir="rtl">
+      <body className={`${naskh.variable} ${plexArabic.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>

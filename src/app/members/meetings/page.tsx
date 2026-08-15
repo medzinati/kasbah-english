@@ -7,7 +7,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
-  title: "Meetings",
+  title: "اللقاءات",
 };
 
 export const dynamic = "force-dynamic";
@@ -49,26 +49,26 @@ export default async function MeetingsPage() {
     <div className="members-shell">
       <MembersNav name={session.user.name} role={session.user.role} />
       <main className="wrap members-main">
-        <p className="eyebrow">Live practice</p>
-        <h1>Meetings</h1>
+        <p className="eyebrow">تدريب مباشر</p>
+        <h1>اللقاءات</h1>
         <p className="members-lede">
-          Join upcoming Zoom sessions. Open the link a few minutes early and come ready to speak.
+          انضم لحصص زوم القادمة. افتح الرابط قبل دقايق وجي مستعد تتكلّم.
         </p>
 
         {session.user.role === "ADMIN" ? <MeetingForm /> : null}
 
         <section className="members-section">
-          <h2>Upcoming</h2>
+          <h2>القادمة</h2>
           <MeetingList
             meetings={upcoming}
             isAdmin={session.user.role === "ADMIN"}
-            emptyText="No upcoming meetings yet. Check back soon."
+            emptyText="ما كاين حتى لقاء قادم دابا. رجّع شوف من بعد."
           />
         </section>
 
         {past.length ? (
           <section className="members-section">
-            <h2>Past</h2>
+            <h2>السابقة</h2>
             <MeetingList meetings={past} isAdmin={session.user.role === "ADMIN"} />
           </section>
         ) : null}

@@ -2,8 +2,8 @@
 
 import { FormEvent, useState } from "react";
 
-const levels = ["Beginner", "Elementary", "Intermediate", "Upper-Intermediate", "Advanced"];
-const goals = ["Conversation", "Exams (IELTS / academic)", "Career English", "General improvement"];
+const levels = ["مبتدئ", "أساسي", "متوسط", "فوق المتوسط", "متقدم"];
+const goals = ["المحادثة", "الامتحانات (IELTS / أكاديمي)", "إنجليزية العمل", "تحسين عام"];
 
 export function ApplyForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -27,16 +27,16 @@ export function ApplyForm() {
 
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "Something went wrong. Please try again.");
+        setMessage(json.error || "وقع خطأ. حاول مرة أخرى.");
         return;
       }
 
       setStatus("success");
-      setMessage("Thank you! We received your application and will email you if you’re accepted into the community.");
+      setMessage("شكرًا ليك! استلمنا طلبك وغادي نراسلك بالإيميل إلا تقبلتي في المجتمع.");
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("Network error. Check your connection and try again.");
+      setMessage("مشكلة في الاتصال. تحقق من الإنترنت وحاول مرة أخرى.");
     }
   }
 
@@ -44,26 +44,26 @@ export function ApplyForm() {
     <form className="site-form" onSubmit={onSubmit} noValidate>
       <div className="form-grid">
         <label>
-          Full name
-          <input name="name" type="text" required autoComplete="name" placeholder="Your full name" />
+          الاسم الكامل
+          <input name="name" type="text" required autoComplete="name" placeholder="اسمك الكامل" />
         </label>
         <label>
-          Email
+          البريد الإلكتروني
           <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" />
         </label>
         <label>
-          City / country
-          <input name="location" type="text" required placeholder="Casablanca, Morocco" />
+          المدينة / البلد
+          <input name="location" type="text" required placeholder="الدار البيضاء، المغرب" />
         </label>
         <label>
-          WhatsApp (optional)
-          <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+212…" />
+          واتساب (اختياري)
+          <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+212…" dir="ltr" />
         </label>
         <label>
-          Current level
+          المستوى الحالي
           <select name="level" required defaultValue="">
             <option value="" disabled>
-              Select level
+              اختر المستوى
             </option>
             {levels.map((level) => (
               <option key={level} value={level}>
@@ -73,10 +73,10 @@ export function ApplyForm() {
           </select>
         </label>
         <label>
-          Main goal
+          الهدف الرئيسي
           <select name="goal" required defaultValue="">
             <option value="" disabled>
-              Select goal
+              اختر الهدف
             </option>
             {goals.map((goal) => (
               <option key={goal} value={goal}>
@@ -88,17 +88,17 @@ export function ApplyForm() {
       </div>
 
       <label>
-        Why do you want to join Kasbah English?
+        علاش بغيتي تنضم لكاسباه إنجليش؟
         <textarea
           name="motivation"
           required
           rows={5}
-          placeholder="Tell us about your goals, schedule, and what you hope to practice in the community…"
+          placeholder="حكي لينا على أهدافك، وقتك، وشنو بغيتي تتمرّن عليه في المجتمع…"
         />
       </label>
 
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Sending…" : "Submit application"}
+        {status === "loading" ? "كيتصيفط…" : "إرسال الطلب"}
       </button>
 
       {message ? (

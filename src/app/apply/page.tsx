@@ -4,9 +4,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
-  title: "Apply",
-  description:
-    "Apply to join Kasbah English. Accepted members unlock discussions, groups, and live Zoom practice sessions.",
+  title: "التسجيل",
+  description: "سجّل للانضمام لكاسباه إنجليش. الأعضاء المقبولون يدخلون للنقاشات والمجموعات ولقاءات زوم.",
 };
 
 export default function ApplyPage() {
@@ -16,11 +15,10 @@ export default function ApplyPage() {
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">Apply</p>
-            <h1>Come practice with us</h1>
+            <p className="eyebrow">التسجيل</p>
+            <h1>تعالا تتدرّب معانا</h1>
             <p>
-              Tell us a little about your level and goals. We read every application carefully and invite accepted
-              learners into the community.
+              قول لينا شوية على مستواك وأهدافك. كنقراو كل طلب بعناية وكنستدعو المتعلمين المقبولين لدخول المجتمع.
             </p>
           </div>
         </section>
@@ -28,15 +26,15 @@ export default function ApplyPage() {
         <section className="section">
           <div className="wrap form-layout">
             <div className="form-aside">
-              <h2>What happens next</h2>
+              <h2>شنو غادي يوقع بعد؟</h2>
               <ol className="steps-list">
-                <li>You send your application (it only takes a few minutes).</li>
-                <li>We review your level, goals, and motivation with care.</li>
-                <li>If accepted, you’ll get login details for the members area.</li>
+                <li>كتصيفط طلب التسجيل (كياخد دقايق قلال).</li>
+                <li>كنراجعو مستواك وأهدافك ودافعك بعناية.</li>
+                <li>إلا تقبلتي، غادي توصلك بيانات الدخول لمساحة الأعضاء.</li>
               </ol>
               <p className="form-note">
-                Everyone can explore the public site. The community inside — discussions, groups, and meetings — is for
-                accepted members.
+                الجميع يقدر يستكشف الموقع العام. والمجتمع الداخلي — النقاشات والمجموعات واللقاءات — خاص بالأعضاء
+                المقبولين.
               </p>
             </div>
             <ApplyForm />

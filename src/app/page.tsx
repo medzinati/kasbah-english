@@ -5,16 +5,16 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 const highlights = [
   {
-    title: "Start free, no pressure",
-    text: "Browse news, try short free lessons, and learn how Kasbah English works — before you apply.",
+    title: "ابدأ مجانًا وبلا ضغط",
+    text: "تصفّح الأخبار، جرّب دروسًا قصيرة مجانية، وافهم كيف تعمل كاسباه إنجليش — قبل ما تسجّل.",
   },
   {
-    title: "A real community inside",
-    text: "Accepted members join discussions, group practice, and live Zoom meetings with supportive teachers and peers.",
+    title: "مجتمع حقيقي في الداخل",
+    text: "الأعضاء المقبولون يدخلون للنقاشات، مجموعات التدريب، ولقاءات زوم مباشرة مع مدرّسين وزملاء داعمين.",
   },
   {
-    title: "English you can use",
-    text: "We focus on speaking clearly, sounding natural, and building confidence for study, work, and everyday life.",
+    title: "إنجليزية تستعملها في حياتك",
+    text: "نركّز على التحدّث بوضوح، الصوت الطبيعي، وبناء الثقة للدراسة والعمل والحياة اليومية.",
   },
 ];
 
@@ -24,7 +24,7 @@ export default function Home() {
       <SiteHeader variant="hero" />
 
       <main id="top">
-        <section className="hero" aria-label="Kasbah English">
+        <section className="hero" aria-label="كاسباه إنجليش">
           <div className="hero-media" aria-hidden="true">
             <Image
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2400&q=80"
@@ -38,19 +38,19 @@ export default function Home() {
 
           <div className="wrap hero-content">
             <h1 className="brand">
-              Kasbah <em>English</em>
+              كاسباه <em>إنجليش</em>
             </h1>
-            <p className="headline">Speak with confidence. Grow with a community.</p>
+            <p className="headline">تكلّم بثقة. وتقدّم مع مجتمع يساندك.</p>
             <p className="lede">
-              An online English home for Moroccan learners — and friends around the world — who want practice that feels
-              human, clear, and useful.
+              بيت إنجليزي أونلاين للمتعلمين في المغرب — ولأي شخص في العالم — يبغى تدريبًا إنسانيًا، واضحًا، ومفيدًا في
+              الحياة الحقيقية.
             </p>
             <div className="cta-row">
               <Link className="btn btn-primary" href="/apply">
-                Apply to join
+                سجّل للانضمام
               </Link>
               <Link className="btn btn-ghost" href="/courses">
-                Try a free course
+                جرّب درسًا مجانيًا
               </Link>
             </div>
           </div>
@@ -59,11 +59,11 @@ export default function Home() {
         <section className="section programs">
           <div className="wrap">
             <div className="section-head">
-              <p className="eyebrow">What you’ll find here</p>
-              <h2>Friendly outside. Focused inside.</h2>
+              <p className="eyebrow">شنو غادي تلقا هنا</p>
+              <h2>ودود من برّا. مركّز من داخل.</h2>
               <p>
-                Kasbah English is open for everyone to explore. The members community is curated — so practice stays
-                warm, useful, and serious about progress.
+                كاسباه إنجليش مفتوحة للجميع باش يستكشفوها. ومجتمع الأعضاء مختار بعناية — باش التدريب يبقى دافئ، مفيد،
+                وجاد في التقدّم.
               </p>
             </div>
 
@@ -85,25 +85,22 @@ export default function Home() {
           <div className="wrap method-grid">
             <div>
               <div className="section-head">
-                <p className="eyebrow">How it works</p>
-                <h2>Three simple steps to belong.</h2>
-                <p>
-                  You don’t need to be fluent to start. You need curiosity, consistency, and a place where speaking feels
-                  safe.
-                </p>
+                <p className="eyebrow">كيف كيخدم</p>
+                <h2>ثلاث خطوات بسيطة باش تكون معانا.</h2>
+                <p>ما خاصّكش تكون طالق باش تبدا. خاصّك فضول، انتظام، ومكان تحس فيه بالأمان وأنت كتكلّم.</p>
               </div>
               <div className="method-points">
                 <article>
-                  <h3>1. Explore at your pace</h3>
-                  <p>Read the latest news, sample free courses, and see if the Kasbah vibe fits you.</p>
+                  <h3>١. استكشف بروحك</h3>
+                  <p>اقرأ الأخبار، جرّب الدروس المجانية، وشوف واش جوّ كاسباه مناسب ليك.</p>
                 </article>
                 <article>
-                  <h3>2. Apply in a few minutes</h3>
-                  <p>Tell us your level, your goal, and why you want to practice with a community.</p>
+                  <h3>٢. سجّل في دقايق</h3>
+                  <p>قول لينا مستواك، هدفك، وعلّاش بغيتي تتدرّب داخل مجتمع.</p>
                 </article>
                 <article>
-                  <h3>3. Get invited inside</h3>
-                  <p>If accepted, you’ll join discussions, groups, and live meetings with Zoom links.</p>
+                  <h3>٣. ادخل للمجتمع</h3>
+                  <p>إلا تقبلتي، غادي تدخل للنقاشات والمجموعات ولقاءات مباشرة عبر زوم.</p>
                 </article>
               </div>
             </div>
@@ -111,7 +108,7 @@ export default function Home() {
             <div className="method-visual">
               <Image
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
-                alt="Learners practicing English together online"
+                alt="متعلمون يتدرّبون على الإنجليزية معًا أونلاين"
                 fill
                 sizes="(max-width: 800px) 100vw, 45vw"
               />
@@ -122,27 +119,23 @@ export default function Home() {
         <section className="section audience">
           <div className="wrap">
             <div className="section-head">
-              <p className="eyebrow">Who it’s for</p>
-              <h2>Rooted in Morocco. Open to the world.</h2>
+              <p className="eyebrow">لمن هذا؟</p>
+              <h2>جذورنا في المغرب. وأبوابنا للعالم.</h2>
               <p>
-                Whether you think in Darija, French, or another language first — we help you build English that works in
-                real conversations.
+                سواء كتفكّر بالدارجة أو الفرنسية أو أي لغة أخرى في الأول — كنساعدوك تبني إنجليزية خدامة في المحادثات
+                الحقيقية.
               </p>
             </div>
             <div className="audience-split">
               <article>
-                <h3>For learners in Morocco</h3>
+                <h3>للمتعلمين في المغرب</h3>
                 <p>
-                  Flexible online sessions, clear explanations, and teachers who understand the journey from Darija and
-                  French to confident English.
+                  حصص أونلاين مرنة، شروحات واضحة، ومدرّسون فاهمين الرحلة من الدارجة والفرنسية إلى إنجليزية واثقة.
                 </p>
               </article>
               <article>
-                <h3>For learners everywhere</h3>
-                <p>
-                  Join a welcoming international classroom with the same care, structure, and high standard — wherever you
-                  are.
-                </p>
+                <h3>للمتعلمين في كل مكان</h3>
+                <p>انضم لفصل عالمي مرحّب بنفس العناية والتنظيم والمستوى العالي — أينما كنت.</p>
               </article>
             </div>
           </div>
@@ -150,14 +143,14 @@ export default function Home() {
 
         <section className="section final-cta">
           <div className="wrap">
-            <h2>Ready when you are.</h2>
-            <p>Apply today. We’ll review your story and guide accepted members into the community.</p>
+            <h2>حنا مستعدين لما تكون مستعد.</h2>
+            <p>سجّل اليوم. غادي نراجع طلبك ونوجّه الأعضاء المقبولين لدخول المجتمع.</p>
             <div className="cta-row" style={{ justifyContent: "center" }}>
               <Link className="btn btn-primary" href="/apply">
-                Apply now
+                سجّل الآن
               </Link>
               <Link className="btn btn-ghost dark" href="/contact">
-                Ask a question
+                اطرح سؤالًا
               </Link>
             </div>
           </div>

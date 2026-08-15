@@ -5,8 +5,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { freeCourses } from "@/data/courses";
 
 export const metadata: Metadata = {
-  title: "Free courses",
-  description: "Free English starter courses from Kasbah English — practical, friendly, and open to everyone.",
+  title: "دروس مجانية",
+  description: "دروس إنجليزية مجانية من كاسباه إنجليش — عملية، ودودة، ومفتوحة للجميع.",
 };
 
 export default function CoursesPage() {
@@ -16,11 +16,11 @@ export default function CoursesPage() {
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">Free courses</p>
-            <h1>Learn something useful today</h1>
+            <p className="eyebrow">دروس مجانية</p>
+            <h1>تعلّم حاجة مفيدة اليوم</h1>
             <p>
-              Short public lessons you can start now. When you’re ready for live practice and community support, apply to
-              join the members area.
+              دروس قصيرة عامة تقدر تبدأ بيها دابا. ولما تكون مستعد لتدريب مباشر ودعم المجتمع، سجّل للانضمام لمساحة
+              الأعضاء.
             </p>
           </div>
         </section>
@@ -41,7 +41,7 @@ export default function CoursesPage() {
                   ))}
                 </ol>
                 <Link className="text-link" href="/apply">
-                  Like this? Apply to join the community →
+                  عجبك؟ سجّل للانضمام للمجتمع ←
                 </Link>
               </article>
             ))}

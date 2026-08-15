@@ -6,7 +6,7 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
 export const metadata: Metadata = {
-  title: "Members",
+  title: "مساحة الأعضاء",
 };
 
 export const dynamic = "force-dynamic";
@@ -32,54 +32,56 @@ export default async function MembersHomePage() {
     }),
   ]);
 
+  const firstName = session.user.name?.split(" ")[0] || "عضو";
+
   return (
     <div className="members-shell">
       <MembersNav name={session.user.name} role={session.user.role} />
 
       <main className="wrap members-main">
-        <p className="eyebrow">Members area</p>
-        <h1>Welcome, {session.user.name?.split(" ")[0] || "member"}</h1>
+        <p className="eyebrow">مساحة الأعضاء</p>
+        <h1>أهلًا {firstName}</h1>
         <p className="members-lede">
-          Read announcements, join discussion groups, and attend live Zoom meetings with the community.
+          اقرأ الإعلانات، انضم لمجموعات النقاش، واحضر لقاءات زوم المباشرة مع المجتمع.
         </p>
 
         <div className="members-grid">
           <article>
-            <h2>Community</h2>
-            <p>Announcements and updates from Kasbah English.</p>
+            <h2>المجتمع</h2>
+            <p>إعلانات وتحديثات من كاسباه إنجليش.</p>
             <Link className="text-link" href="/members/community">
-              Open community →
+              افتح المجتمع ←
             </Link>
           </article>
           <article>
-            <h2>Discussion groups</h2>
-            <p>{groups.length} groups ready for conversation, exams, and career English.</p>
+            <h2>مجموعات النقاش</h2>
+            <p>{groups.length} مجموعات جاهزة للمحادثة، الامتحانات، وإنجليزية العمل.</p>
             <Link className="text-link" href="/members/groups">
-              Browse groups →
+              تصفّح المجموعات ←
             </Link>
           </article>
           <article>
-            <h2>Meetings</h2>
+            <h2>اللقاءات</h2>
             <p>
               {upcomingCount
-                ? `${upcomingCount} session${upcomingCount === 1 ? "" : "s"} on the schedule.`
-                : "Live Zoom sessions with the community."}
+                ? `${upcomingCount} جلسة في الجدول.`
+                : "حصص زوم مباشرة مع المجتمع."}
             </p>
             <Link className="text-link" href="/members/meetings">
-              View schedule →
+              شوف الجدول ←
             </Link>
           </article>
         </div>
 
         <section className="members-section">
           <div className="members-section-head">
-            <h2>Latest announcements</h2>
+            <h2>آخر الإعلانات</h2>
             <Link className="text-link" href="/members/community">
-              View all
+              عرض الكل
             </Link>
           </div>
           {announcements.length === 0 ? (
-            <p className="members-empty">No announcements yet.</p>
+            <p className="members-empty">ما كاين حتى إعلان دابا.</p>
           ) : (
             <div className="feed-list">
               {announcements.map((item) => (
@@ -87,7 +89,7 @@ export default async function MembersHomePage() {
                   <h3>{item.title}</h3>
                   <p className="feed-meta">
                     {item.author.name} ·{" "}
-                    {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(item.createdAt)}
+                    {new Intl.DateTimeFormat("ar", { dateStyle: "medium" }).format(item.createdAt)}
                   </p>
                   <p>{item.body}</p>
                 </article>

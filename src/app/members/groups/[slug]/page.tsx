@@ -11,7 +11,7 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const group = await prisma.discussionGroup.findUnique({ where: { slug } });
-  return { title: group?.title || "Group" };
+  return { title: group?.title || "مجموعة" };
 }
 
 export const dynamic = "force-dynamic";
@@ -45,7 +45,7 @@ export default async function GroupDetailPage({ params }: Props) {
       <MembersNav name={session.user.name} role={session.user.role} />
       <main className="wrap members-main">
         <p className="eyebrow">
-          <Link href="/members/groups">Groups</Link>
+          <Link href="/members/groups">المجموعات</Link>
         </p>
         <h1>{group.title}</h1>
         <p className="members-lede">{group.description}</p>
@@ -54,7 +54,7 @@ export default async function GroupDetailPage({ params }: Props) {
 
         <div className="feed-list">
           {group.posts.length === 0 ? (
-            <p className="members-empty">No discussions yet. Be the first to post.</p>
+            <p className="members-empty">ما كاين حتى نقاش دابا. كون أول واحد ينشر.</p>
           ) : (
             group.posts.map((post) => (
               <article key={post.id} className="feed-item">
@@ -63,8 +63,8 @@ export default async function GroupDetailPage({ params }: Props) {
                 </h3>
                 <p className="feed-meta">
                   {post.author.name} ·{" "}
-                  {new Intl.DateTimeFormat("en", { dateStyle: "medium" }).format(post.createdAt)} ·{" "}
-                  {post._count.comments} {post._count.comments === 1 ? "reply" : "replies"}
+                  {new Intl.DateTimeFormat("ar", { dateStyle: "medium" }).format(post.createdAt)} ·{" "}
+                  {post._count.comments} {post._count.comments === 1 ? "رد" : "ردود"}
                 </p>
                 <p>{post.body.length > 220 ? `${post.body.slice(0, 220)}…` : post.body}</p>
               </article>

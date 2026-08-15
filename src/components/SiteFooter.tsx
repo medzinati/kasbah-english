@@ -6,17 +6,17 @@ export function SiteFooter() {
       <div className="wrap footer-inner">
         <div className="footer-brand">
           <p>
-            <strong>Kasbah English</strong> — a friendly online English community for Morocco and the world.
+            <strong>كاسباه إنجليش</strong> — مجتمع ودود لتعلّم الإنجليزية أونلاين في المغرب والعالم.
           </p>
-          <nav className="footer-links" aria-label="Footer">
-            <Link href="/news">News</Link>
-            <Link href="/courses">Free courses</Link>
-            <Link href="/apply">Apply</Link>
-            <Link href="/contact">Contact</Link>
-            <Link href="/members/login">Members</Link>
+          <nav className="footer-links" aria-label="روابط التذييل">
+            <Link href="/news">الأخبار</Link>
+            <Link href="/courses">دروس مجانية</Link>
+            <Link href="/apply">التسجيل</Link>
+            <Link href="/contact">تواصل معنا</Link>
+            <Link href="/members/login">الأعضاء</Link>
           </nav>
         </div>
-        <p>© {new Date().getFullYear()} Kasbah English</p>
+        <p>© {new Date().getFullYear()} كاسباه إنجليش</p>
       </div>
     </footer>
   );

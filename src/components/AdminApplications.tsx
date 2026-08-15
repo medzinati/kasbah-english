@@ -16,6 +16,12 @@ type ApplicationRow = {
   createdAt: string;
 };
 
+const statusLabel = {
+  PENDING: "قيد المراجعة",
+  ACCEPTED: "مقبول",
+  REJECTED: "مرفوض",
+} as const;
+
 export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
   const router = useRouter();
   const [rows, setRows] = useState(initial);
@@ -41,16 +47,16 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
       };
 
       if (!res.ok || !json.ok) {
-        setNotice(json.error || "Action failed.");
+        setNotice(json.error || "العملية فشلت.");
         return;
       }
 
       if (action === "accept" && json.tempPassword) {
         setNotice(
-          `Accepted ${json.email}. Temporary password: ${json.tempPassword} — share it privately, then ask them to sign in at /members/login.`,
+          `تم قبول ${json.email}. كلمة المرور المؤقتة: ${json.tempPassword} — صيفطها بسرية، وقول ليهم يدخلو من /members/login`,
         );
       } else {
-        setNotice(json.message || "Updated.");
+        setNotice(json.message || "تم التحديث.");
       }
 
       setRows((prev) =>
@@ -62,14 +68,14 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
       );
       router.refresh();
     } catch {
-      setNotice("Network error.");
+      setNotice("مشكلة في الشبكة.");
     } finally {
       setBusyId(null);
     }
   }
 
   if (!rows.length) {
-    return <p className="members-empty">No applications yet.</p>;
+    return <p className="members-empty">ما كاين حتى طلب دابا.</p>;
   }
 
   return (
@@ -89,14 +95,14 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
                 {row.email} · {row.location}
               </p>
             </div>
-            <span className={`status-pill status-${row.status.toLowerCase()}`}>{row.status}</span>
+            <span className={`status-pill status-${row.status.toLowerCase()}`}>{statusLabel[row.status]}</span>
           </div>
           <p>
-            <strong>Level:</strong> {row.level} · <strong>Goal:</strong> {row.goal}
+            <strong>المستوى:</strong> {row.level} · <strong>الهدف:</strong> {row.goal}
           </p>
           {row.whatsapp ? (
             <p>
-              <strong>WhatsApp:</strong> {row.whatsapp}
+              <strong>واتساب:</strong> {row.whatsapp}
             </p>
           ) : null}
           <p className="admin-motivation">{row.motivation}</p>
@@ -108,7 +114,7 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
                 disabled={busyId === row.id}
                 onClick={() => act(row.id, "accept")}
               >
-                Accept & create login
+                قبول وإنشاء حساب
               </button>
               <button
                 type="button"
@@ -116,7 +122,7 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
                 disabled={busyId === row.id}
                 onClick={() => act(row.id, "reject")}
               >
-                Reject
+                رفض
               </button>
             </div>
           ) : null}
