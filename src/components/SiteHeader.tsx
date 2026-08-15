@@ -17,6 +17,7 @@ export function SiteHeader({ variant = "solid", locale, dict }: SiteHeaderProps)
   const links = [
     { href: "/news", label: dict.nav.news },
     { href: "/courses", label: dict.nav.courses },
+    { href: "/pricing", label: dict.nav.pricing },
     { href: "/apply", label: dict.nav.apply },
     { href: "/contact", label: dict.nav.contact },
     { href: "/members/login", label: dict.nav.members },

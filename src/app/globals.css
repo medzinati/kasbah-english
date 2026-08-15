@@ -903,6 +903,132 @@ body.locale-en .brand em {
   border-color: var(--teal);
 }
 
+/* Pricing */
+.pricing-section {
+  padding-top: 0.5rem;
+}
+
+.pricing-includes {
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 2.25rem;
+  max-width: 36rem;
+  color: var(--ink-soft);
+}
+
+.pricing-includes-title {
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.pricing-includes li:not(.pricing-includes-title)::before {
+  content: "✓ ";
+  color: var(--teal);
+  font-weight: 700;
+}
+
+.pricing-list {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 900px) {
+  .pricing-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.15rem;
+  }
+}
+
+.pricing-plan {
+  display: grid;
+  gap: 1rem;
+  padding: 1.35rem 1.25rem 1.4rem;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 4px;
+  align-content: start;
+}
+
+.pricing-plan.is-featured {
+  border-color: rgba(15, 107, 92, 0.45);
+  box-shadow: 0 0 0 1px rgba(15, 107, 92, 0.2);
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(224, 168, 26, 0.1), transparent 55%),
+    var(--white);
+}
+
+.pricing-plan-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.pricing-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--teal-deep);
+  margin-bottom: 0.35rem;
+}
+
+.pricing-plan h2 {
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.pricing-duration {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-top: 0.2rem;
+}
+
+.pricing-amount {
+  text-align: end;
+}
+
+.pricing-price {
+  display: block;
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: clamp(1.7rem, 4vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.pricing-price small {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.pricing-monthly {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.pricing-blurb {
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+
+.pricing-plan .btn {
+  justify-self: start;
+}
+
+.pricing-note {
+  margin-top: 1.75rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  max-width: 48ch;
+}
+
 /* Forms */
 .form-layout {
   display: grid;
