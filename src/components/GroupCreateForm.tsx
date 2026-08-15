@@ -24,7 +24,7 @@ export function GroupCreateForm() {
       const json = (await res.json()) as { ok?: boolean; error?: string; slug?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "ما قدرناش نخلق المجموعة.");
+        setMessage(json.error || "تعذّر إنشاء المجموعة.");
         return;
       }
       form.reset();
@@ -48,10 +48,10 @@ export function GroupCreateForm() {
       </label>
       <label>
         الوصف
-        <textarea name="description" required rows={3} placeholder="علاش هاد المجموعة؟" />
+        <textarea name="description" required rows={3} placeholder="ما الهدف من هذه المجموعة؟" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كيتحضّر…" : "إنشاء المجموعة"}
+        {status === "loading" ? "جاري الإنشاء…" : "إنشاء المجموعة"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

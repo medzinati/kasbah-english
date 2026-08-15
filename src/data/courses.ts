@@ -16,16 +16,16 @@ export const freeCourses: FreeCourse[] = [
     level: { ar: "مبتدئ", en: "Beginner" },
     duration: { ar: "٥ دروس قصيرة", en: "5 short lessons" },
     summary: {
-      ar: "إنجليزية دافئة وعملية للحياة اليومية — تحيات، روتين، ومحادثات مهذبة تقدر تستعملها هاد الأسبوع.",
+      ar: "إنجليزية دافئة وعملية للحياة اليومية — تحيات وروتين يومي ومحادثات مهذبة يمكنك استعمالها هذا الأسبوع.",
       en: "Warm, practical English for real life — greetings, daily routines, and polite conversations you can use this week.",
     },
     lessons: {
       ar: [
-        "سلّم وقدّم راسك بسهولة",
-        "حكي على نهارك بجمل بسيطة وطبيعية",
-        "طلب المساعدة بأدب (وفهم الجواب)",
-        "نظّم مواعيد: الأكل، الوقت، ولقا الأصدقاء",
-        "تحدي كلام قصير باش تزيد الثقة",
+        "سلّم وقدّم نفسك بسهولة",
+        "تحدّث عن يومك بجمل بسيطة وطبيعية",
+        "اطلب المساعدة بأدب (وافهم الجواب)",
+        "رتّب مواعيد: الطعام والوقت ولقاء الأصدقاء",
+        "تحدٍّ قصير في الكلام لزيادة الثقة",
       ],
       en: [
         "Say hello and introduce yourself with ease",
@@ -42,15 +42,15 @@ export const freeCourses: FreeCourse[] = [
     level: { ar: "مبتدئ–متوسط", en: "Beginner–Intermediate" },
     duration: { ar: "٤ دروس قصيرة", en: "4 short lessons" },
     summary: {
-      ar: "عادات نطق صغيرة كتخلي الناس يفهموك من أول مرة — بلا ما تبان آلي.",
+      ar: "عادات نطق صغيرة تساعد الناس على فهمك من المرة الأولى — دون أن تبدو آليًا.",
       en: "Small pronunciation habits that help people understand you the first time — without sounding robotic.",
     },
     lessons: {
       ar: [
-        "الأصوات اللي كتبدّل المعنى أكثر",
-        "نبر الكلمات باش تبان طبيعي",
+        "الأصوات التي تغيّر المعنى أكثر من غيرها",
+        "نبر الكلمات لتصبح طبيعيًا",
         "ربط الكلمات بسلاسة في العبارات اليومية",
-        "تمرين بجمل غادي تقولها فعلًا",
+        "تمرين بجمل ستقولها فعلًا",
       ],
       en: [
         "The sounds that change meaning most",
@@ -66,12 +66,12 @@ export const freeCourses: FreeCourse[] = [
     level: { ar: "متوسط", en: "Intermediate" },
     duration: { ar: "٤ دروس قصيرة", en: "4 short lessons" },
     summary: {
-      ar: "اكتب إيميلات ورسائل مهنية، لطيفة، وواضحة — مثالية للعمل والدراسة.",
+      ar: "اكتب رسائل بريد إلكتروني ورسائل مهنية لطيفة وواضحة — مثالية للعمل والدراسة.",
       en: "Write emails and messages that sound professional, kind, and clear — perfect for work and study.",
     },
     lessons: {
       ar: [
-        "عناوين موضوع الناس كتفتحها",
+        "عناوين موضوع يفتحها الناس فعلًا",
         "طلبات مهذبة ومتابعات ودّية",
         "تحديثات قصيرة يفهمها الفريق بسرعة",
         "قائمة مراجعة في دقيقتين للوضوح",

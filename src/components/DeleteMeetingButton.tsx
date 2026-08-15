@@ -8,7 +8,7 @@ export function DeleteMeetingButton({ id }: { id: string }) {
   const [busy, setBusy] = useState(false);
 
   async function onDelete() {
-    if (!confirm("تحذف هاد اللقاء؟")) {
+    if (!confirm("هل تريد حذف هذا اللقاء؟")) {
       return;
     }
     setBusy(true);
@@ -26,7 +26,7 @@ export function DeleteMeetingButton({ id }: { id: string }) {
 
   return (
     <button type="button" className="btn btn-ghost dark" disabled={busy} onClick={onDelete}>
-      {busy ? "كيتحذف…" : "حذف"}
+      {busy ? "جاري الحذف…" : "حذف"}
     </button>
   );
 }

@@ -24,7 +24,7 @@ function formatWhen(iso: string) {
 export function MeetingList({
   meetings,
   isAdmin = false,
-  emptyText = "ما كاين حتى لقاء مجدول دابا.",
+  emptyText = "لا يوجد لقاء مجدول حاليًا.",
 }: {
   meetings: MeetingCardData[];
   isAdmin?: boolean;

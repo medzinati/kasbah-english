@@ -53,7 +53,7 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
 
       if (action === "accept" && json.tempPassword) {
         setNotice(
-          `تم قبول ${json.email}. كلمة المرور المؤقتة: ${json.tempPassword} — صيفطها بسرية، وقول ليهم يدخلو من /members/login`,
+          `تم قبول ${json.email}. كلمة المرور المؤقتة: ${json.tempPassword} — أرسلها بسرية، واطلب منهم الدخول من /members/login`,
         );
       } else {
         setNotice(json.message || "تم التحديث.");
@@ -75,7 +75,7 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
   }
 
   if (!rows.length) {
-    return <p className="members-empty">ما كاين حتى طلب دابا.</p>;
+    return <p className="members-empty">لا توجد طلبات حاليًا.</p>;
   }
 
   return (

@@ -21,7 +21,7 @@ export const newsItems: NewsItem[] = [
       en: "Kasbah English is live — with free public lessons outside, and a members community for practice, discussions, and Zoom meetings.",
     },
     body: {
-      ar: "كنستقبل أول مجموعة من المتعلمين. استكشف الدروس المجانية، وبعدها سجّل باش تدخل مساحة الأعضاء. الأعضاء المقبولون كيحصلو على مجموعات نقاش، إعلانات المجتمع، وحصص تدريب مباشرة. إلا كنت متحمّس وبغيتي تتكلّم أكثر، مرحبا بيك.",
+      ar: "نستقبل أول مجموعة من المتعلمين. استكشف الدروس المجانية، ثم سجّل للدخول إلى مساحة الأعضاء. يحصل الأعضاء المقبولون على مجموعات نقاش وإعلانات المجتمع وحصص تدريب مباشرة. إذا كنت متحمسًا وترغب في التحدّث أكثر، فمرحبًا بك.",
       en: "We’re welcoming our first cohort of learners. Explore the free courses, then apply to join the members area. Accepted members get access to discussion groups, community announcements, and live practice sessions. If you’re motivated and ready to speak more, we’d love to meet you.",
     },
   },
@@ -29,15 +29,15 @@ export const newsItems: NewsItem[] = [
     slug: "free-courses-to-start",
     date: "2026-08-12",
     title: {
-      ar: "ثلاثة دروس مجانية تقدر تبدأ بيها اليوم",
+      ar: "ثلاثة دروس مجانية يمكنك البدء بها اليوم",
       en: "Three free courses to start today",
     },
     summary: {
-      ar: "بلا حساب. ابنِ ثقتك مع الإنجليزية اليومية، النطق الواضح، والكتابة للعمل.",
+      ar: "لا حاجة إلى حساب. ابنِ ثقتك مع الإنجليزية اليومية والنطق الواضح والكتابة للعمل.",
       en: "No account needed. Build confidence with Everyday English, Clear Speech, and Work-Ready Writing.",
     },
     body: {
-      ar: "ما عارفش منين تبدا؟ ابدأ بدرس مجاني قصير. كل درس عملي، ودود، ومصمم للحياة الحقيقية — ومن بعد سجّل لما تكون مستعد لتجربة المجتمع الكاملة مع المجموعات واللقاءات المباشرة.",
+      ar: "لا تعرف من أين تبدأ؟ ابدأ بدرس مجاني قصير. كل درس عملي وودود ومصمم للحياة الواقعية — ثم سجّل عندما تكون مستعدًا لتجربة المجتمع الكاملة مع المجموعات واللقاءات المباشرة.",
       en: "Not sure where to begin? Start with a short free course. Each one is practical, friendly, and designed for real life — then apply when you’re ready for the full community experience with groups and live meetings.",
     },
   },
@@ -45,15 +45,15 @@ export const newsItems: NewsItem[] = [
     slug: "why-acceptance-matters",
     date: "2026-08-08",
     title: {
-      ar: "علاش كنراجعو كل طلب تسجيل",
+      ar: "لماذا نراجع كل طلب تسجيل",
       en: "Why we review every application",
     },
     summary: {
-      ar: "مجتمع أصغر ومقصود كيعني محادثات أفضل ومساحات تدريب ألطف.",
+      ar: "مجتمع أصغر ومقصود يعني محادثات أفضل ومساحات تدريب ألطف.",
       en: "A smaller, intentional community means better conversations and kinder practice spaces.",
     },
     body: {
-      ar: "قصبة إنجليش ماشي دردشة مفتوحة كبيرة. كنراجعو الطلبات باش الأعضاء يشاركو هدف واضح: تحسين الإنجليزية عبر تدريب محترم. هكذا النقاشات تبقى مفيدة، واللقاءات مركّزة، وكل واحد يحس بالأمان وهو كيتحاور — حتى وهو باقي كيتعلّم.",
+      ar: "قصبة إنجليش ليست دردشة مفتوحة كبيرة. نراجع الطلبات ليشارك الأعضاء هدفًا واضحًا: تحسين الإنجليزية عبر تدريب محترم. هكذا تبقى النقاشات مفيدة، واللقاءات مركّزة، ويشعر الجميع بالأمان وهم يتحاورون — حتى وهم ما زالوا يتعلمون.",
       en: "Kasbah English is not a giant open chat. We review applications so members share a clear goal: improve English through respectful practice. That helps discussions stay useful, meetings stay focused, and everyone feel safe to speak — even when they’re still learning.",
     },
   },

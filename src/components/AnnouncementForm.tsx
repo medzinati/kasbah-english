@@ -24,7 +24,7 @@ export function AnnouncementForm() {
       const json = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "ما قدرناش ننشر الإعلان.");
+        setMessage(json.error || "تعذّر نشر الإعلان.");
         return;
       }
       form.reset();
@@ -45,10 +45,10 @@ export function AnnouncementForm() {
       </label>
       <label>
         الرسالة
-        <textarea name="body" required rows={4} placeholder="شنو خاص الأعضاء يعرفو؟" />
+        <textarea name="body" required rows={4} placeholder="ماذا يحتاج الأعضاء إلى معرفته؟" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كينتشر…" : "نشر الإعلان"}
+        {status === "loading" ? "جاري النشر…" : "نشر الإعلان"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

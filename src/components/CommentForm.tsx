@@ -24,7 +24,7 @@ export function CommentForm({ postId }: { postId: string }) {
       const json = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "ما قدرناش نضيف الرد.");
+        setMessage(json.error || "تعذّر إضافة الرد.");
         return;
       }
       form.reset();
@@ -43,7 +43,7 @@ export function CommentForm({ postId }: { postId: string }) {
         <textarea name="body" required rows={3} placeholder="اكتب ردك…" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كيتحضّر…" : "رد"}
+        {status === "loading" ? "جاري الإرسال…" : "رد"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

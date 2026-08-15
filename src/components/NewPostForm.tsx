@@ -24,7 +24,7 @@ export function NewPostForm({ groupSlug }: { groupSlug: string }) {
       const json = (await res.json()) as { ok?: boolean; error?: string; postId?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "ما قدرناش ننشر الموضوع.");
+        setMessage(json.error || "تعذّر نشر الموضوع.");
         return;
       }
       form.reset();
@@ -51,7 +51,7 @@ export function NewPostForm({ groupSlug }: { groupSlug: string }) {
         <textarea name="body" required rows={5} placeholder="شارك فكرتك أو سؤالك…" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كينتشر…" : "نشر في المجموعة"}
+        {status === "loading" ? "جاري النشر…" : "نشر في المجموعة"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>

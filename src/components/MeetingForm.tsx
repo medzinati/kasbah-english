@@ -36,7 +36,7 @@ export function MeetingForm() {
       const json = (await res.json()) as { ok?: boolean; error?: string };
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "ما قدرناش نجدول اللقاء.");
+        setMessage(json.error || "تعذّر جدولة اللقاء.");
         return;
       }
       form.reset();
@@ -61,7 +61,7 @@ export function MeetingForm() {
       </label>
       <label>
         الوصف
-        <textarea name="description" required rows={3} placeholder="شنو غادي يتمرّنو الأعضاء؟" />
+        <textarea name="description" required rows={3} placeholder="على ماذا سيتمّرن الأعضاء؟" />
       </label>
       <div className="form-grid">
         <label>
@@ -78,7 +78,7 @@ export function MeetingForm() {
         <input name="zoomUrl" type="url" required placeholder="https://zoom.us/j/…" dir="ltr" />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كيتحفظ…" : "إضافة اللقاء"}
+        {status === "loading" ? "جاري الحفظ…" : "إضافة اللقاء"}
       </button>
       {message ? <p className="form-status is-error">{message}</p> : null}
     </form>
