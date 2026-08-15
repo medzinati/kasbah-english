@@ -43,6 +43,7 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
         error?: string;
         email?: string;
         tempPassword?: string;
+        emailSent?: boolean;
         message?: string;
       };
 
@@ -51,10 +52,16 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
         return;
       }
 
-      if (action === "accept" && json.tempPassword) {
-        setNotice(
-          `تم قبول ${json.email}. كلمة المرور المؤقتة: ${json.tempPassword} — أرسلها بسرية، واطلب منهم الدخول من /members/login`,
-        );
+      if (action === "accept") {
+        if (json.emailSent) {
+          setNotice(json.message || `تم القبول وإرسال بيانات الدخول إلى ${json.email}.`);
+        } else if (json.tempPassword) {
+          setNotice(
+            `تم قبول ${json.email}. الإيميل لم يُرسل بعد — كلمة المرور المؤقتة: ${json.tempPassword} (أدخل إعدادات الإيميل أو أرسلها يدويًا). الدخول من /members/login`,
+          );
+        } else {
+          setNotice(json.message || "تم التحديث.");
+        }
       } else {
         setNotice(json.message || "تم التحديث.");
       }

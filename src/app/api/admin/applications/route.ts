@@ -2,6 +2,7 @@ import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { sendMemberWelcomeEmail } from "@/lib/mail";
 import { generateTempPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
       where: { id: applicationId },
       data: { status: "REJECTED", reviewedAt: new Date() },
     });
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, message: "تم رفض الطلب." });
   }
 
   if (application.status === "ACCEPTED" && application.userId) {
@@ -56,8 +57,9 @@ export async function POST(request: Request) {
     });
     return NextResponse.json({
       ok: true,
-      message: "Application linked to an existing member account.",
+      message: "تم ربط الطلب بحساب عضو موجود مسبقًا.",
       email: existing.email,
+      emailSent: false,
     });
   }
 
@@ -82,10 +84,20 @@ export async function POST(request: Request) {
     },
   });
 
+  const mail = await sendMemberWelcomeEmail({
+    to: user.email,
+    name: user.name,
+    tempPassword,
+  });
+
   return NextResponse.json({
     ok: true,
     email: user.email,
     tempPassword,
-    message: "Member created. Share the temporary password privately (WhatsApp/email).",
+    emailSent: mail.sent,
+    message: mail.sent
+      ? `تم قبول العضو وإرسال كلمة المرور إلى ${user.email}.`
+      : `تم قبول العضو، لكن الإيميل لم يُرسل. أرسل كلمة المرور يدويًا: ${tempPassword}`,
+    mailError: mail.sent ? undefined : mail.error,
   });
 }
