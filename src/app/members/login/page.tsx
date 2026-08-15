@@ -4,11 +4,15 @@ import { redirect } from "next/navigation";
 import { LoginForm } from "@/components/LoginForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getDictionary } from "@/i18n/dictionaries";
+import { getLocale } from "@/i18n/get-locale";
 import { getSession } from "@/lib/session";
 
-export const metadata: Metadata = {
-  title: "دخول الأعضاء",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return { title: dict.members.loginTitle };
+}
 
 export default async function MembersLoginPage() {
   const session = await getSession();
@@ -16,33 +20,34 @@ export default async function MembersLoginPage() {
     redirect(session.user.role === "ADMIN" ? "/admin" : "/members");
   }
 
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeader locale={locale} dict={dict} />
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">الأعضاء</p>
-            <h1>مرحبًا بعودتك</h1>
-            <p>ادخل لمجتمع كاسباه إنجليش — نقاشات، مجموعات، ولقاءات مباشرة كتسناك.</p>
+            <p className="eyebrow">{dict.nav.members}</p>
+            <h1>{dict.members.loginHero}</h1>
+            <p>{dict.members.loginLede}</p>
           </div>
         </section>
         <section className="section">
           <div className="wrap form-layout">
             <div className="form-aside">
-              <h2>ما زلت مش عضو؟</h2>
-              <p className="form-note">
-                ماشي مشكل — ابدأ بدرس مجاني، ومن بعد سجّل. بعد القبول غادي توصلك بيانات الدخول.
-              </p>
+              <h2>{dict.members.notMember}</h2>
+              <p className="form-note">{dict.members.notMemberNote}</p>
               <Link className="text-link" href="/apply">
-                اذهب للتسجيل ←
+                {dict.members.goApply}
               </Link>
             </div>
-            <LoginForm />
+            <LoginForm dict={dict.members} />
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter dict={dict} />
     </>
   );
 }

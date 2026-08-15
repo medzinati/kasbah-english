@@ -2,46 +2,47 @@ import type { Metadata } from "next";
 import { ApplyForm } from "@/components/ApplyForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getDictionary } from "@/i18n/dictionaries";
+import { getLocale } from "@/i18n/get-locale";
 
-export const metadata: Metadata = {
-  title: "التسجيل",
-  description: "سجّل للانضمام لكاسباه إنجليش. الأعضاء المقبولون يدخلون للنقاشات والمجموعات ولقاءات زوم.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return { title: dict.apply.title, description: dict.apply.meta };
+}
 
-export default function ApplyPage() {
+export default async function ApplyPage() {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeader locale={locale} dict={dict} />
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">التسجيل</p>
-            <h1>تعالا تتدرّب معانا</h1>
-            <p>
-              قول لينا شوية على مستواك وأهدافك. كنقراو كل طلب بعناية وكنستدعو المتعلمين المقبولين لدخول المجتمع.
-            </p>
+            <p className="eyebrow">{dict.apply.title}</p>
+            <h1>{dict.apply.hero}</h1>
+            <p>{dict.apply.lede}</p>
           </div>
         </section>
 
         <section className="section">
           <div className="wrap form-layout">
             <div className="form-aside">
-              <h2>شنو غادي يوقع بعد؟</h2>
+              <h2>{dict.apply.nextTitle}</h2>
               <ol className="steps-list">
-                <li>كتصيفط طلب التسجيل (كياخد دقايق قلال).</li>
-                <li>كنراجعو مستواك وأهدافك ودافعك بعناية.</li>
-                <li>إلا تقبلتي، غادي توصلك بيانات الدخول لمساحة الأعضاء.</li>
+                <li>{dict.apply.step1}</li>
+                <li>{dict.apply.step2}</li>
+                <li>{dict.apply.step3}</li>
               </ol>
-              <p className="form-note">
-                الجميع يقدر يستكشف الموقع العام. والمجتمع الداخلي — النقاشات والمجموعات واللقاءات — خاص بالأعضاء
-                المقبولين.
-              </p>
+              <p className="form-note">{dict.apply.note}</p>
             </div>
-            <ApplyForm />
+            <ApplyForm dict={dict.apply} />
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter dict={dict} />
     </>
   );
 }

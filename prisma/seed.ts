@@ -22,7 +22,7 @@ const defaultGroups = [
   {
     slug: "general",
     title: "المجتمع العام",
-    description: "تعارف، إنجازات، أسئلة، ومحادثة دافئة مع متعلمي كاسباه.",
+    description: "تعارف، إنجازات، أسئلة، ومحادثة دافئة مع متعلمي قصبة.",
   },
 ];
 
@@ -62,7 +62,7 @@ async function main() {
     });
   }
 
-  const welcomeTitle = "مرحبًا بك في كاسباه إنجليش";
+  const welcomeTitle = "مرحبًا بك في قصبة إنجليش";
   const welcomeBody =
     "نتا دابا داخل. اقرأ الإعلانات، انضم لمجموعة نقاش، قدّم راسك، وجي للقاءات زوم مستعد تتكلّم. فرحانين بيك — التقدّم كيبغي الانتظام واللطف.";
 
@@ -70,6 +70,7 @@ async function main() {
     where: {
       OR: [
         { title: welcomeTitle },
+        { title: "مرحبًا بك في كاسباه إنجليش" },
         { title: "Welcome to Kasbah English" },
         { title: "Welcome to the Kasbah English community" },
       ],

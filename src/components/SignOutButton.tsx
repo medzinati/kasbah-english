@@ -2,10 +2,10 @@
 
 import { signOut } from "next-auth/react";
 
-export function SignOutButton() {
+export function SignOutButton({ label }: { label: string }) {
   return (
     <button type="button" className="btn btn-ghost dark" onClick={() => signOut({ callbackUrl: "/" })}>
-      خروج
+      {label}
     </button>
   );
 }

@@ -3,25 +3,28 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { freeCourses } from "@/data/courses";
+import { getDictionary } from "@/i18n/dictionaries";
+import { getLocale } from "@/i18n/get-locale";
 
-export const metadata: Metadata = {
-  title: "دروس مجانية",
-  description: "دروس إنجليزية مجانية من كاسباه إنجليش — عملية، ودودة، ومفتوحة للجميع.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return { title: dict.courses.title, description: dict.courses.meta };
+}
 
-export default function CoursesPage() {
+export default async function CoursesPage() {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   return (
     <>
-      <SiteHeader />
+      <SiteHeader locale={locale} dict={dict} />
       <main>
         <section className="page-hero">
           <div className="wrap page-hero-inner">
-            <p className="eyebrow">دروس مجانية</p>
-            <h1>تعلّم حاجة مفيدة اليوم</h1>
-            <p>
-              دروس قصيرة عامة تقدر تبدأ بيها دابا. ولما تكون مستعد لتدريب مباشر ودعم المجتمع، سجّل للانضمام لمساحة
-              الأعضاء.
-            </p>
+            <p className="eyebrow">{dict.courses.title}</p>
+            <h1>{dict.courses.hero}</h1>
+            <p>{dict.courses.lede}</p>
           </div>
         </section>
 
@@ -30,25 +33,25 @@ export default function CoursesPage() {
             {freeCourses.map((course) => (
               <article className="course-item" key={course.slug} id={course.slug}>
                 <div className="course-meta">
-                  <span>{course.level}</span>
-                  <span>{course.duration}</span>
+                  <span>{course.level[locale]}</span>
+                  <span>{course.duration[locale]}</span>
                 </div>
-                <h2>{course.title}</h2>
-                <p>{course.summary}</p>
+                <h2>{course.title[locale]}</h2>
+                <p>{course.summary[locale]}</p>
                 <ol>
-                  {course.lessons.map((lesson) => (
+                  {course.lessons[locale].map((lesson) => (
                     <li key={lesson}>{lesson}</li>
                   ))}
                 </ol>
                 <Link className="text-link" href="/apply">
-                  عجبك؟ سجّل للانضمام للمجتمع ←
+                  {dict.courses.cta}
                 </Link>
               </article>
             ))}
           </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter dict={dict} />
     </>
   );
 }

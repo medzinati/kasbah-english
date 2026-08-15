@@ -3,12 +3,16 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { GroupCreateForm } from "@/components/GroupCreateForm";
 import { MembersNav } from "@/components/MembersNav";
+import { getDictionary } from "@/i18n/dictionaries";
+import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
-export const metadata: Metadata = {
-  title: "مجموعات النقاش",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return { title: dict.members.groups };
+}
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +22,9 @@ export default async function GroupsPage() {
     redirect("/members/login");
   }
 
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+
   const groups = await prisma.discussionGroup.findMany({
     orderBy: { title: "asc" },
     include: { _count: { select: { posts: true } } },
@@ -25,11 +32,11 @@ export default async function GroupsPage() {
 
   return (
     <div className="members-shell">
-      <MembersNav name={session.user.name} role={session.user.role} />
+      <MembersNav name={session.user.name} role={session.user.role} locale={locale} dict={dict} />
       <main className="wrap members-main">
-        <p className="eyebrow">النقاشات</p>
-        <h1>المجموعات</h1>
-        <p className="members-lede">اختار مجموعة، ابدأ موضوع، وتدرّب مع المجتمع.</p>
+        <p className="eyebrow">{dict.members.discussions}</p>
+        <h1>{dict.members.groups}</h1>
+        <p className="members-lede">{dict.members.groupsHero}</p>
 
         {session.user.role === "ADMIN" ? <GroupCreateForm /> : null}
 
@@ -43,7 +50,7 @@ export default async function GroupsPage() {
                 <p>{group.description}</p>
               </div>
               <p className="group-count">
-                {group._count.posts} {group._count.posts === 1 ? "منشور" : "منشورات"}
+                {group._count.posts} {group._count.posts === 1 ? dict.members.post : dict.members.posts}
               </p>
             </article>
           ))}

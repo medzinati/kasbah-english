@@ -2,21 +2,25 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import type { Locale } from "@/i18n/config";
+import type { Dictionary } from "@/i18n/dictionaries";
 
 type SiteHeaderProps = {
   variant?: "hero" | "solid";
+  locale: Locale;
+  dict: Dictionary;
 };
 
-const links = [
-  { href: "/news", label: "الأخبار" },
-  { href: "/courses", label: "دروس مجانية" },
-  { href: "/apply", label: "التسجيل" },
-  { href: "/contact", label: "تواصل معنا" },
-  { href: "/members/login", label: "الأعضاء" },
-];
-
-export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
+export function SiteHeader({ variant = "solid", locale, dict }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
+  const links = [
+    { href: "/news", label: dict.nav.news },
+    { href: "/courses", label: dict.nav.courses },
+    { href: "/apply", label: dict.nav.apply },
+    { href: "/contact", label: dict.nav.contact },
+    { href: "/members/login", label: dict.nav.members },
+  ];
 
   function close() {
     setOpen(false);
@@ -26,10 +30,10 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
     <header className={`nav ${variant === "solid" ? "nav-solid" : ""} ${open ? "is-open" : ""}`}>
       <div className="wrap nav-inner">
         <Link className="logo" href="/" onClick={close}>
-          كاسباه <span>إنجليش</span>
+          {dict.brandShort} <span>{dict.brandAccent}</span>
         </Link>
 
-        <nav className="nav-links" aria-label="القائمة الرئيسية">
+        <nav className="nav-links" aria-label={dict.nav.mainNav}>
           {links.map((link) => (
             <Link key={link.href} href={link.href}>
               {link.label}
@@ -38,15 +42,16 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
         </nav>
 
         <div className="nav-actions">
+          <LanguageSwitcher locale={locale} labelAr={dict.lang.ar} labelEn={dict.lang.en} />
           <Link className="nav-cta" href="/apply" onClick={close}>
-            سجّل الآن
+            {dict.nav.applyNow}
           </Link>
           <button
             type="button"
             className="nav-toggle"
             aria-expanded={open}
             aria-controls="mobile-nav"
-            aria-label={open ? "إغلاق القائمة" : "فتح القائمة"}
+            aria-label={open ? dict.nav.closeMenu : dict.nav.openMenu}
             onClick={() => setOpen((value) => !value)}
           >
             <span />
@@ -64,7 +69,7 @@ export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
             </Link>
           ))}
           <Link className="btn btn-primary mobile-nav-cta" href="/apply" onClick={close}>
-            انضم إلينا
+            {dict.nav.joinUs}
           </Link>
         </div>
       </div>

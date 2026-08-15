@@ -1,8 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export function ContactForm() {
+export function ContactForm({ dict }: { dict: Dictionary["contact"] }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -24,16 +25,16 @@ export function ContactForm() {
 
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "وقع خطأ. حاول مرة أخرى.");
+        setMessage(json.error || dict.error);
         return;
       }
 
       setStatus("success");
-      setMessage("تم إرسال الرسالة. غادي نرجعو ليك قريب إن شاء الله.");
+      setMessage(dict.success);
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("مشكلة في الاتصال. تحقق من الإنترنت وحاول مرة أخرى.");
+      setMessage(dict.network);
     }
   }
 
@@ -41,24 +42,24 @@ export function ContactForm() {
     <form className="site-form" onSubmit={onSubmit} noValidate>
       <div className="form-grid">
         <label>
-          الاسم
-          <input name="name" type="text" required autoComplete="name" placeholder="اسمك" />
+          {dict.name}
+          <input name="name" type="text" required autoComplete="name" placeholder={dict.phName} />
         </label>
         <label>
-          البريد الإلكتروني
+          {dict.email}
           <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
         </label>
       </div>
       <label>
-        الموضوع
-        <input name="subject" type="text" required placeholder="كيف نقدر نساعدوك؟" />
+        {dict.subject}
+        <input name="subject" type="text" required placeholder={dict.phSubject} />
       </label>
       <label>
-        الرسالة
-        <textarea name="message" required rows={6} placeholder="اكتب رسالتك…" />
+        {dict.message}
+        <textarea name="message" required rows={6} placeholder={dict.phMessage} />
       </label>
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كيتصيفط…" : "إرسال الرسالة"}
+        {status === "loading" ? dict.sending : dict.submit}
       </button>
       {message ? (
         <p className={`form-status ${status === "success" ? "is-success" : "is-error"}`} role="status">

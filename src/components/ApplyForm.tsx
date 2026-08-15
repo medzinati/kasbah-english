@@ -1,11 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-const levels = ["مبتدئ", "أساسي", "متوسط", "فوق المتوسط", "متقدم"];
-const goals = ["المحادثة", "الامتحانات (IELTS / أكاديمي)", "إنجليزية العمل", "تحسين عام"];
-
-export function ApplyForm() {
+export function ApplyForm({ dict }: { dict: Dictionary["apply"] }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -27,16 +25,16 @@ export function ApplyForm() {
 
       if (!res.ok || !json.ok) {
         setStatus("error");
-        setMessage(json.error || "وقع خطأ. حاول مرة أخرى.");
+        setMessage(json.error || dict.error);
         return;
       }
 
       setStatus("success");
-      setMessage("شكرًا ليك! استلمنا طلبك وغادي نراسلك بالإيميل إلا تقبلتي في المجتمع.");
+      setMessage(dict.success);
       form.reset();
     } catch {
       setStatus("error");
-      setMessage("مشكلة في الاتصال. تحقق من الإنترنت وحاول مرة أخرى.");
+      setMessage(dict.network);
     }
   }
 
@@ -44,28 +42,28 @@ export function ApplyForm() {
     <form className="site-form" onSubmit={onSubmit} noValidate>
       <div className="form-grid">
         <label>
-          الاسم الكامل
-          <input name="name" type="text" required autoComplete="name" placeholder="اسمك الكامل" />
+          {dict.name}
+          <input name="name" type="text" required autoComplete="name" placeholder={dict.phName} />
         </label>
         <label>
-          البريد الإلكتروني
-          <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" />
+          {dict.email}
+          <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
         </label>
         <label>
-          المدينة / البلد
-          <input name="location" type="text" required placeholder="الدار البيضاء، المغرب" />
+          {dict.location}
+          <input name="location" type="text" required placeholder={dict.phLocation} />
         </label>
         <label>
-          واتساب (اختياري)
+          {dict.whatsapp}
           <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+212…" dir="ltr" />
         </label>
         <label>
-          المستوى الحالي
+          {dict.level}
           <select name="level" required defaultValue="">
             <option value="" disabled>
-              اختر المستوى
+              {dict.selectLevel}
             </option>
-            {levels.map((level) => (
+            {dict.levels.map((level) => (
               <option key={level} value={level}>
                 {level}
               </option>
@@ -73,12 +71,12 @@ export function ApplyForm() {
           </select>
         </label>
         <label>
-          الهدف الرئيسي
+          {dict.goal}
           <select name="goal" required defaultValue="">
             <option value="" disabled>
-              اختر الهدف
+              {dict.selectGoal}
             </option>
-            {goals.map((goal) => (
+            {dict.goals.map((goal) => (
               <option key={goal} value={goal}>
                 {goal}
               </option>
@@ -88,17 +86,12 @@ export function ApplyForm() {
       </div>
 
       <label>
-        علاش بغيتي تنضم لكاسباه إنجليش؟
-        <textarea
-          name="motivation"
-          required
-          rows={5}
-          placeholder="حكي لينا على أهدافك، وقتك، وشنو بغيتي تتمرّن عليه في المجتمع…"
-        />
+        {dict.motivation}
+        <textarea name="motivation" required rows={5} placeholder={dict.phMotivation} />
       </label>
 
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "كيتصيفط…" : "إرسال الطلب"}
+        {status === "loading" ? dict.sending : dict.submit}
       </button>
 
       {message ? (

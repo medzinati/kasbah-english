@@ -1,22 +1,25 @@
 import Link from "next/link";
+import type { Dictionary } from "@/i18n/dictionaries";
 
-export function SiteFooter() {
+export function SiteFooter({ dict }: { dict: Dictionary }) {
   return (
     <footer className="footer">
       <div className="wrap footer-inner">
         <div className="footer-brand">
           <p>
-            <strong>كاسباه إنجليش</strong> — مجتمع ودود لتعلّم الإنجليزية أونلاين في المغرب والعالم.
+            <strong>{dict.brand}</strong> — {dict.footer.tagline}
           </p>
-          <nav className="footer-links" aria-label="روابط التذييل">
-            <Link href="/news">الأخبار</Link>
-            <Link href="/courses">دروس مجانية</Link>
-            <Link href="/apply">التسجيل</Link>
-            <Link href="/contact">تواصل معنا</Link>
-            <Link href="/members/login">الأعضاء</Link>
+          <nav className="footer-links" aria-label={dict.footer.links}>
+            <Link href="/news">{dict.nav.news}</Link>
+            <Link href="/courses">{dict.nav.courses}</Link>
+            <Link href="/apply">{dict.nav.apply}</Link>
+            <Link href="/contact">{dict.nav.contact}</Link>
+            <Link href="/members/login">{dict.nav.members}</Link>
           </nav>
         </div>
-        <p>© {new Date().getFullYear()} كاسباه إنجليش</p>
+        <p>
+          © {new Date().getFullYear()} {dict.brand}
+        </p>
       </div>
     </footer>
   );

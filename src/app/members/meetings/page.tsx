@@ -3,12 +3,16 @@ import { redirect } from "next/navigation";
 import { MeetingForm } from "@/components/MeetingForm";
 import { MeetingList } from "@/components/MeetingList";
 import { MembersNav } from "@/components/MembersNav";
+import { getDictionary } from "@/i18n/dictionaries";
+import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
-export const metadata: Metadata = {
-  title: "اللقاءات",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return { title: dict.members.meetings };
+}
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +21,9 @@ export default async function MeetingsPage() {
   if (!session?.user) {
     redirect("/members/login");
   }
+
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
 
   const meetings = await prisma.meeting.findMany({
     orderBy: { startsAt: "asc" },
@@ -47,28 +54,26 @@ export default async function MeetingsPage() {
 
   return (
     <div className="members-shell">
-      <MembersNav name={session.user.name} role={session.user.role} />
+      <MembersNav name={session.user.name} role={session.user.role} locale={locale} dict={dict} />
       <main className="wrap members-main">
-        <p className="eyebrow">تدريب مباشر</p>
-        <h1>اللقاءات</h1>
-        <p className="members-lede">
-          انضم لحصص زوم القادمة. افتح الرابط قبل دقايق وجي مستعد تتكلّم.
-        </p>
+        <p className="eyebrow">{dict.members.livePractice}</p>
+        <h1>{dict.members.meetings}</h1>
+        <p className="members-lede">{dict.members.meetingsLede}</p>
 
         {session.user.role === "ADMIN" ? <MeetingForm /> : null}
 
         <section className="members-section">
-          <h2>القادمة</h2>
+          <h2>{dict.members.upcoming}</h2>
           <MeetingList
             meetings={upcoming}
             isAdmin={session.user.role === "ADMIN"}
-            emptyText="ما كاين حتى لقاء قادم دابا. رجّع شوف من بعد."
+            emptyText={dict.members.noUpcoming}
           />
         </section>
 
         {past.length ? (
           <section className="members-section">
-            <h2>السابقة</h2>
+            <h2>{dict.members.past}</h2>
             <MeetingList meetings={past} isAdmin={session.user.role === "ADMIN"} />
           </section>
         ) : null}

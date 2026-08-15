@@ -24,15 +24,62 @@ html {
 }
 
 body {
-  font-family: var(--font-body), "Segoe UI", Tahoma, sans-serif;
   color: var(--ink);
   background:
     radial-gradient(ellipse 90% 50% at 0% -10%, rgba(11, 107, 115, 0.07), transparent 50%),
     radial-gradient(ellipse 60% 40% at 100% 100%, rgba(196, 163, 90, 0.06), transparent 45%),
     var(--paper);
-  line-height: 1.75;
-  letter-spacing: 0;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
+}
+
+body.locale-ar {
+  font-family: var(--font-body-ar), "Segoe UI", Tahoma, sans-serif;
+  letter-spacing: 0;
+  line-height: 1.75;
+  --font-display: var(--font-display-ar);
+  --font-body: var(--font-body-ar);
+}
+
+body.locale-en {
+  font-family: var(--font-body-en), "Segoe UI", sans-serif;
+  letter-spacing: -0.011em;
+  line-height: 1.65;
+  --font-display: var(--font-display-en);
+  --font-body: var(--font-body-en);
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.lang-switch button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 0.25rem 0.2rem;
+  opacity: 0.7;
+  font: inherit;
+  font-weight: 600;
+}
+
+.lang-switch button.is-active {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.nav-solid .lang-switch {
+  color: var(--ink-soft);
+}
+
+.nav:not(.nav-solid) .lang-switch {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 a {
@@ -83,6 +130,10 @@ img {
   font-style: normal;
   font-weight: 500;
   opacity: 0.9;
+}
+
+body.locale-en .logo span {
+  font-style: italic;
 }
 
 .nav-links {
