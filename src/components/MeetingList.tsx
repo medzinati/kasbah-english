@@ -1,4 +1,5 @@
 import { DeleteMeetingButton } from "@/components/DeleteMeetingButton";
+import { MeetingRsvpButton } from "@/components/MeetingRsvpButton";
 
 export type MeetingCardData = {
   id: string;
@@ -8,6 +9,8 @@ export type MeetingCardData = {
   durationMinutes: number;
   zoomUrl: string;
   createdByName: string;
+  registered?: boolean;
+  attendeeCount?: number;
 };
 
 function formatWhen(iso: string) {
@@ -52,6 +55,7 @@ export function MeetingList({
               </span>
               <time dateTime={meeting.startsAt}>{formatWhen(meeting.startsAt)}</time>
               <p>{meeting.durationMinutes} دقيقة</p>
+              {typeof meeting.attendeeCount === "number" ? <p>{meeting.attendeeCount} مسجّل</p> : null}
             </div>
             <div className="meeting-body">
               <h3>{meeting.title}</h3>
@@ -59,9 +63,12 @@ export function MeetingList({
               <p className="feed-meta">يستضيفه {meeting.createdByName}</p>
               <div className="meeting-actions">
                 {!isPast ? (
-                  <a className="btn btn-primary" href={meeting.zoomUrl} target="_blank" rel="noreferrer">
-                    الانضمام للقاء
-                  </a>
+                  <>
+                    <a className="btn btn-primary" href={meeting.zoomUrl} target="_blank" rel="noreferrer">
+                      الانضمام للقاء
+                    </a>
+                    <MeetingRsvpButton meetingId={meeting.id} alreadyRegistered={Boolean(meeting.registered)} />
+                  </>
                 ) : null}
                 {isAdmin ? <DeleteMeetingButton id={meeting.id} /> : null}
               </div>

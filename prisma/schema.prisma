@@ -32,6 +32,9 @@ model User {
   comments      DiscussionComment[]
   groupsCreated DiscussionGroup[]    @relation("GroupCreator")
   meetings      Meeting[]
+  videos        Video[]
+  freeLessons   FreeLesson[]
+  meetingRegs   MeetingRegistration[]
 }
 
 model Application {
@@ -105,15 +108,59 @@ model DiscussionComment {
 }
 
 model Meeting {
-  id               String   @id @default(cuid())
+  id               String                 @id @default(cuid())
   title            String
   description      String
   startsAt         DateTime
-  durationMinutes  Int      @default(60)
+  durationMinutes  Int                    @default(60)
   zoomUrl          String
   createdById      String
-  createdBy        User     @relation(fields: [createdById], references: [id])
-  createdAt        DateTime @default(now())
+  createdBy        User                   @relation(fields: [createdById], references: [id])
+  createdAt        DateTime               @default(now())
+  registrations    MeetingRegistration[]
 
   @@index([startsAt])
+}
+
+model MeetingRegistration {
+  id        String   @id @default(cuid())
+  meetingId String
+  meeting   Meeting  @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([meetingId, userId])
+  @@index([meetingId])
+}
+
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  url         String
+  published   Boolean  @default(true)
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, createdAt])
+}
+
+model FreeLesson {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String
+  level       String
+  duration    String
+  lessons     String
+  published   Boolean  @default(true)
+  sortOrder   Int      @default(0)
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, sortOrder])
 }

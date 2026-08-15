@@ -1207,6 +1207,127 @@ body.locale-en .brand em {
     var(--paper);
 }
 
+.admin-layout {
+  display: grid;
+  gap: 1.5rem;
+  padding: 1.5rem 0 3rem;
+}
+
+@media (min-width: 900px) {
+  .admin-layout {
+    grid-template-columns: 220px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.admin-side {
+  border: 1px solid var(--line);
+  background: var(--white);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.admin-side-title {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.admin-side-nav {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.admin-side-nav a {
+  display: block;
+  padding: 0.65rem 0.7rem;
+  border-radius: 4px;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.admin-side-nav a:hover {
+  background: rgba(15, 107, 92, 0.08);
+  color: var(--teal-deep);
+}
+
+.admin-main {
+  padding-top: 0;
+}
+
+.admin-stats {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  margin: 1.5rem 0 2rem;
+}
+
+.admin-stat {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 4px;
+}
+
+.admin-stat strong {
+  font-size: 1.8rem;
+  font-family: var(--font-display), Cairo, sans-serif;
+  line-height: 1;
+}
+
+.admin-stat span {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.admin-quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.admin-stack {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.admin-check {
+  display: flex !important;
+  align-items: center;
+  gap: 0.55rem;
+  font-weight: 600;
+}
+
+.admin-check input {
+  width: auto;
+  min-height: auto;
+}
+
+.admin-attendees {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.admin-attendees h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.admin-attendees ul {
+  margin: 0;
+  padding-inline-start: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.admin-attendees li {
+  margin-bottom: 0.25rem;
+}
+
 .members-top {
   border-bottom: 1px solid var(--line);
   background: rgba(246, 247, 249, 0.94);

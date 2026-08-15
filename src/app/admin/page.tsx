@@ -1,96 +1,70 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { redirect } from "next/navigation";
-import { AdminApplications } from "@/components/AdminApplications";
-import { AnnouncementForm } from "@/components/AnnouncementForm";
-import { GroupCreateForm } from "@/components/GroupCreateForm";
-import { MeetingForm } from "@/components/MeetingForm";
-import { MembersNav } from "@/components/MembersNav";
+import { AdminShell } from "@/components/AdminShell";
+import { requireAdmin } from "@/lib/admin";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
-import { getSession } from "@/lib/session";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = await getLocale();
-  const dict = getDictionary(locale);
-  return { title: dict.members.admin };
+  return { title: "لوحة التحكم" };
 }
 
 export const dynamic = "force-dynamic";
 
-export default async function AdminPage() {
-  const session = await getSession();
-  if (!session?.user) {
-    redirect("/members/login");
-  }
-  if (session.user.role !== "ADMIN") {
-    redirect("/members");
-  }
-
+export default async function AdminDashboardPage() {
+  const session = await requireAdmin();
   const locale = await getLocale();
   const dict = getDictionary(locale);
 
-  const applications = await prisma.application.findMany({
-    orderBy: { createdAt: "desc" },
-  });
+  const [pendingApps, members, videos, lessons, upcomingMeetings, announcements] = await Promise.all([
+    prisma.application.count({ where: { status: "PENDING" } }),
+    prisma.user.count({ where: { role: "MEMBER" } }),
+    prisma.video.count(),
+    prisma.freeLesson.count(),
+    prisma.meeting.count({ where: { startsAt: { gte: new Date() } } }),
+    prisma.announcement.count(),
+  ]);
 
-  const planLabels: Record<string, string> = {
-    "1m": "شهر واحد — 99 ر.س",
-    "3m": "٣ أشهر — 249 ر.س",
-    "6m": "٦ أشهر — 399 ر.س",
-    "12m": "سنة واحدة — 699 ر.س",
-    "36m": "٣ سنوات — 1499 ر.س",
-  };
-
-  const initial = applications.map((item) => ({
-    id: item.id,
-    name: item.name,
-    email: item.email,
-    location: item.location,
-    whatsapp: item.whatsapp,
-    level: item.level,
-    goal: item.goal,
-    plan: item.plan ? planLabels[item.plan] || item.plan : null,
-    motivation: item.motivation,
-    status: item.status,
-    createdAt: item.createdAt.toISOString(),
-  }));
+  const cards = [
+    { href: "/admin/applications", label: "طلبات بانتظار المراجعة", value: pendingApps },
+    { href: "/admin/members", label: "الأعضاء", value: members },
+    { href: "/admin/videos", label: "الفيديوهات", value: videos },
+    { href: "/admin/content", label: "دروس مجانية", value: lessons },
+    { href: "/admin/meetings", label: "لقاءات قادمة", value: upcomingMeetings },
+    { href: "/admin/community", label: "إعلانات", value: announcements },
+  ];
 
   return (
-    <div className="members-shell">
-      <MembersNav
-        name={session.user.name}
-        role={session.user.role}
-        locale={locale}
-        dict={dict}
-        title={locale === "ar" ? "قصبة الإدارة" : "Kasbah Admin"}
-      />
+    <AdminShell name={session.user.name} locale={locale} dict={dict} title="لوحة التحكم">
+      <p className="members-lede">تحكم كامل في الموقع: الأعضاء، المحتوى، الفيديوهات، واللقاءات.</p>
 
-      <main className="wrap members-main">
-        <p className="eyebrow">{dict.members.admin}</p>
-        <h1>{dict.members.manage}</h1>
-        <p className="members-lede">
-          {dict.members.manageLede}{" "}
-          <Link className="text-link" href="/members/meetings">
-            {dict.members.viewMeetings}
+      <div className="admin-stats">
+        {cards.map((card) => (
+          <Link key={card.href} href={card.href} className="admin-stat">
+            <strong>{card.value}</strong>
+            <span>{card.label}</span>
           </Link>
-        </p>
+        ))}
+      </div>
 
-        <section className="members-section">
-          <h2>{dict.members.applications}</h2>
-          <AdminApplications initial={initial} />
-        </section>
-
-        <section className="members-section admin-tools">
-          <AnnouncementForm />
-          <GroupCreateForm />
-        </section>
-
-        <section className="members-section">
-          <MeetingForm />
-        </section>
-      </main>
-    </div>
+      <section className="members-section">
+        <h2>اختصارات سريعة</h2>
+        <div className="admin-quick">
+          <Link className="btn btn-primary" href="/admin/videos">
+            إضافة فيديو
+          </Link>
+          <Link className="btn btn-ghost dark" href="/admin/content">
+            إضافة محتوى مجاني
+          </Link>
+          <Link className="btn btn-ghost dark" href="/admin/meetings">
+            إدارة اللقاءات
+          </Link>
+          <Link className="btn btn-ghost dark" href="/admin/members">
+            إدارة الأعضاء
+          </Link>
+        </div>
+      </section>
+    </AdminShell>
   );
 }

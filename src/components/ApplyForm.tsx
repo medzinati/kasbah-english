@@ -17,7 +17,7 @@ export function ApplyForm({
   initialPlan = "",
 }: {
   dict: Dictionary["apply"];
-  plans: PlanOption[];
+  plans: readonly PlanOption[];
   currency: string;
   initialPlan?: string;
 }) {

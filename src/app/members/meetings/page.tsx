@@ -24,10 +24,14 @@ export default async function MeetingsPage() {
 
   const locale = await getLocale();
   const dict = getDictionary(locale);
+  const userId = session.user.id!;
 
   const meetings = await prisma.meeting.findMany({
     orderBy: { startsAt: "asc" },
-    include: { createdBy: { select: { name: true } } },
+    include: {
+      createdBy: { select: { name: true } },
+      registrations: { select: { userId: true } },
+    },
   });
 
   const now = Date.now();
@@ -39,6 +43,8 @@ export default async function MeetingsPage() {
     durationMinutes: m.durationMinutes,
     zoomUrl: m.zoomUrl,
     createdByName: m.createdBy.name,
+    registered: m.registrations.some((r) => r.userId === userId),
+    attendeeCount: m.registrations.length,
   }));
 
   const upcoming = mapped.filter((m) => {
