@@ -27,7 +27,7 @@ export default function Home() {
         <section className="hero" aria-label="Kasbah English">
           <div className="hero-media" aria-hidden="true">
             <Image
-              src="https://images.unsplash.com/photo-1539020140153-e479b8c22e70?auto=format&fit=crop&w=2400&q=80"
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2400&q=80"
               alt=""
               fill
               priority

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Fraunces, Outfit } from "next/font/google";
+import { DM_Sans, Newsreader } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const newsreader = Newsreader({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
+  style: ["normal", "italic"],
 });
 
-const outfit = Outfit({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-body",
   display: "swap",
@@ -31,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${fraunces.variable} ${outfit.variable}`}>
+      <body className={`${newsreader.variable} ${dmSans.variable}`}>
         <Providers>{children}</Providers>
       </body>
     </html>
