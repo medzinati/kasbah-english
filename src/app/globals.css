@@ -1,13 +1,15 @@
 :root {
-  --ink: #101826;
-  --ink-soft: #5b6577;
-  --paper: #f6f7f9;
-  --paper-deep: #eceff3;
-  --teal: #0b6b73;
-  --teal-deep: #08545b;
-  --gold: #c4a35a;
-  --sand: #d7c7a5;
-  --line: rgba(16, 24, 38, 0.1);
+  --ink: #12101a;
+  --ink-soft: #5c5668;
+  --paper: #f3f1ec;
+  --paper-deep: #e7e2d8;
+  --teal: #0f6b5c;
+  --teal-deep: #0a3d38;
+  --gold: #e0a81a;
+  --gold-deep: #c48e0a;
+  --sand: #e6d5a8;
+  --night: #0b0a12;
+  --line: rgba(18, 16, 26, 0.12);
   --white: #ffffff;
   --max: 1120px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -26,8 +28,8 @@ html {
 body {
   color: var(--ink);
   background:
-    radial-gradient(ellipse 90% 50% at 0% -10%, rgba(11, 107, 115, 0.07), transparent 50%),
-    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(196, 163, 90, 0.06), transparent 45%),
+    radial-gradient(ellipse 80% 45% at 100% -5%, rgba(15, 107, 92, 0.08), transparent 55%),
+    radial-gradient(ellipse 55% 35% at 0% 100%, rgba(224, 168, 26, 0.07), transparent 50%),
     var(--paper);
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -119,9 +121,9 @@ img {
 }
 
 .logo {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-weight: 700;
-  font-size: 1.12rem;
+  font-size: 1.18rem;
   letter-spacing: 0;
   color: var(--white);
 }
@@ -248,7 +250,7 @@ body.locale-en .logo span {
 .nav-solid {
   position: sticky;
   top: 0;
-  background: rgba(246, 247, 249, 0.94);
+  background: rgba(243, 241, 236, 0.92);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -266,13 +268,13 @@ body.locale-en .logo span {
 }
 
 .nav-solid .nav-cta {
-  border-color: rgba(11, 107, 115, 0.28);
+  border-color: rgba(15, 107, 92, 0.3);
   color: var(--teal-deep);
   background: transparent;
 }
 
 .nav-solid .nav-cta:hover {
-  background: rgba(11, 107, 115, 0.08);
+  background: rgba(15, 107, 92, 0.08);
   border-color: var(--teal);
 }
 
@@ -336,89 +338,112 @@ body.locale-en .logo span {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transform: scale(1.06);
-  animation: heroZoom 18s var(--ease) forwards;
+  object-position: 55% 40%;
+  transform: scale(1.08);
+  animation: heroZoom 22s var(--ease) forwards;
 }
 
 .hero-shade {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(10, 16, 28, 0.5) 0%, rgba(10, 16, 28, 0.28) 42%, rgba(10, 16, 28, 0.9) 100%),
-    linear-gradient(90deg, rgba(10, 16, 28, 0.62) 0%, rgba(10, 16, 28, 0.18) 58%, transparent 100%);
+    linear-gradient(180deg, rgba(11, 10, 18, 0.55) 0%, rgba(11, 10, 18, 0.2) 38%, rgba(11, 10, 18, 0.88) 100%),
+    linear-gradient(to left, rgba(11, 10, 18, 0.15) 0%, rgba(11, 10, 18, 0.55) 70%);
+}
+
+body.locale-en .hero-shade {
+  background:
+    linear-gradient(180deg, rgba(11, 10, 18, 0.55) 0%, rgba(11, 10, 18, 0.2) 38%, rgba(11, 10, 18, 0.88) 100%),
+    linear-gradient(to right, rgba(11, 10, 18, 0.55) 0%, rgba(11, 10, 18, 0.15) 70%);
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.28;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  mix-blend-mode: soft-light;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 6.5rem 0 3rem;
-  max-width: 40rem;
+  padding: 7rem 0 3.25rem;
+  max-width: 38rem;
+  text-align: start;
 }
 
 .brand {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: clamp(2.4rem, 10vw, 4.8rem);
+  font-family: var(--font-display), Amiri, serif;
+  font-size: clamp(3rem, 13vw, 5.8rem);
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.05;
   letter-spacing: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
   opacity: 0;
-  animation: rise 1s var(--ease) 0.15s forwards;
+  animation: rise 1.05s var(--ease) 0.12s forwards;
+  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
 }
 
 .brand em {
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--gold);
 }
 
-.headline {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: clamp(1.2rem, 4vw, 1.75rem);
+body.locale-en .brand em {
+  font-style: italic;
   font-weight: 600;
+}
+
+.headline {
+  font-family: var(--font-display), Amiri, serif;
+  font-size: clamp(1.25rem, 4.2vw, 1.85rem);
+  font-weight: 700;
   font-style: normal;
-  line-height: 1.45;
+  line-height: 1.4;
   letter-spacing: 0;
-  max-width: 22ch;
-  margin-bottom: 0.85rem;
+  max-width: 18ch;
+  margin-bottom: 0.9rem;
   opacity: 0;
-  animation: rise 1s var(--ease) 0.35s forwards;
+  animation: rise 1.05s var(--ease) 0.28s forwards;
 }
 
 .lede {
-  font-size: clamp(0.98rem, 2.8vw, 1.08rem);
-  color: rgba(255, 255, 255, 0.88);
-  max-width: 34ch;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+  color: rgba(255, 255, 255, 0.86);
+  max-width: 32ch;
+  margin-bottom: 1.65rem;
+  line-height: 1.65;
   opacity: 0;
-  animation: rise 1s var(--ease) 0.5s forwards;
+  animation: rise 1.05s var(--ease) 0.42s forwards;
 }
 
 .cta-row {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.75rem;
   opacity: 0;
-  animation: rise 1s var(--ease) 0.65s forwards;
+  animation: rise 1.05s var(--ease) 0.56s forwards;
 }
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: 0.9rem 1.25rem;
+  min-height: 50px;
+  padding: 0.95rem 1.35rem;
   font-size: 0.95rem;
   font-weight: 600;
   letter-spacing: -0.01em;
-  border-radius: 10px;
-  transition: transform 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease);
+  border-radius: 4px;
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
 @media (min-width: 640px) {
   .hero-content {
-    padding: 0 0 4.5rem;
+    padding: 0 0 5rem;
   }
 
   .cta-row {
@@ -443,20 +468,23 @@ body.locale-en .logo span {
 
 .btn-primary {
   background: var(--gold);
-  color: var(--ink);
+  color: var(--night);
+  box-shadow: 0 10px 28px rgba(224, 168, 26, 0.28);
 }
 
 .btn-primary:hover {
-  background: #d4b36a;
+  background: #f0b820;
 }
 
 .btn-ghost {
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   color: var(--white);
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ——— Sections ——— */
@@ -479,9 +507,9 @@ body.locale-en .logo span {
 }
 
 .section-head h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: clamp(1.75rem, 4.2vw, 2.6rem);
-  line-height: 1.25;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: clamp(1.85rem, 4.4vw, 2.75rem);
+  line-height: 1.22;
   letter-spacing: 0;
   margin-bottom: 0.85rem;
   font-weight: 700;
@@ -515,20 +543,20 @@ body.locale-en .logo span {
 }
 
 .program:hover {
-  background: linear-gradient(90deg, rgba(13, 92, 99, 0.04), transparent);
+  background: linear-gradient(90deg, rgba(15, 107, 92, 0.05), transparent);
 }
 
 .program-num {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: 1.1rem;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: 1.15rem;
   color: var(--teal);
   padding-top: 0.2rem;
 }
 
 .program h3 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: 1.4rem;
+  letter-spacing: 0;
   margin-bottom: 0.35rem;
 }
 
@@ -540,8 +568,8 @@ body.locale-en .logo span {
 /* Method */
 .method {
   background:
-    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(11, 107, 115, 0.1), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(196, 163, 90, 0.09), transparent 50%),
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(15, 107, 92, 0.1), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 0% 100%, rgba(224, 168, 26, 0.1), transparent 50%),
     var(--paper);
 }
 
@@ -560,15 +588,17 @@ body.locale-en .logo span {
 
 .method-visual {
   position: relative;
-  min-height: 22rem;
+  min-height: 24rem;
   overflow: hidden;
+  border-radius: 2px;
 }
 
 .method-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  min-height: 22rem;
+  min-height: 24rem;
+  animation: heroZoom 28s var(--ease) forwards;
 }
 
 .method-points {
@@ -577,10 +607,10 @@ body.locale-en .logo span {
 }
 
 .method-points article h3 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: 1.25rem;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: 1.3rem;
   margin-bottom: 0.4rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .method-points article p {
@@ -589,12 +619,14 @@ body.locale-en .logo span {
 
 /* Audience */
 .audience {
-  background: var(--teal-deep);
+  background:
+    radial-gradient(ellipse 70% 80% at 0% 0%, rgba(224, 168, 26, 0.14), transparent 50%),
+    var(--night);
   color: var(--white);
 }
 
 .audience .eyebrow {
-  color: var(--sand);
+  color: var(--gold);
 }
 
 .audience .section-head p {
@@ -614,10 +646,10 @@ body.locale-en .logo span {
 }
 
 .audience-split h3 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: 1.5rem;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: 1.55rem;
   margin-bottom: 0.55rem;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .audience-split p {
@@ -627,28 +659,37 @@ body.locale-en .logo span {
 
 /* Final CTA */
 .final-cta {
-  background: var(--paper-deep);
-  text-align: center;
+  background:
+    linear-gradient(180deg, var(--paper-deep) 0%, #ddd6c8 100%);
+  text-align: start;
+}
+
+.final-cta .wrap {
+  max-width: 40rem;
 }
 
 .final-cta h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.03em;
-  line-height: 1.1;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: clamp(2.1rem, 5.5vw, 3.2rem);
+  letter-spacing: 0;
+  line-height: 1.15;
   margin-bottom: 0.85rem;
 }
 
 .final-cta p {
   color: var(--ink-soft);
   margin-bottom: 1.75rem;
-  max-width: 38ch;
-  margin-inline: auto;
+  max-width: 36ch;
+}
+
+.final-cta .cta-row {
+  justify-content: flex-start;
 }
 
 .final-cta .btn-primary {
   background: var(--teal);
   color: var(--white);
+  box-shadow: 0 10px 28px rgba(15, 107, 92, 0.25);
 }
 
 .final-cta .btn-primary:hover {
@@ -656,21 +697,22 @@ body.locale-en .logo span {
 }
 
 .btn-ghost.dark {
-  border-color: rgba(20, 32, 28, 0.25);
+  border-color: rgba(18, 16, 26, 0.28);
   color: var(--ink);
+  background: transparent;
 }
 
 .btn-ghost.dark:hover {
-  background: rgba(20, 32, 28, 0.05);
+  background: rgba(18, 16, 26, 0.05);
 }
 
 /* Page hero (interior) */
 .page-hero {
   padding: clamp(4.5rem, 10vw, 7.5rem) 0 2.25rem;
   background:
-    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(11, 107, 115, 0.12), transparent 55%),
-    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(196, 163, 90, 0.1), transparent 50%),
-    linear-gradient(180deg, #eef1f5 0%, var(--paper) 100%);
+    radial-gradient(ellipse 70% 80% at 100% 0%, rgba(15, 107, 92, 0.12), transparent 55%),
+    radial-gradient(ellipse 50% 50% at 0% 100%, rgba(224, 168, 26, 0.12), transparent 50%),
+    linear-gradient(180deg, #ebe6dc 0%, var(--paper) 100%);
 }
 
 .page-hero-inner {
@@ -678,9 +720,9 @@ body.locale-en .logo span {
 }
 
 .page-hero h1 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
-  font-size: clamp(1.9rem, 6.5vw, 3.2rem);
-  line-height: 1.25;
+  font-family: var(--font-display), Amiri, serif;
+  font-size: clamp(2.1rem, 7vw, 3.4rem);
+  line-height: 1.2;
   letter-spacing: 0;
   margin-bottom: 0.9rem;
   font-weight: 700;
@@ -716,7 +758,7 @@ body.locale-en .logo span {
 }
 
 .news-item h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: clamp(1.45rem, 3vw, 1.9rem);
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -763,7 +805,7 @@ body.locale-en .logo span {
 }
 
 .course-item h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   letter-spacing: -0.02em;
   margin-bottom: 0.55rem;
@@ -812,7 +854,7 @@ body.locale-en .logo span {
 }
 
 .form-aside h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -955,7 +997,7 @@ body.locale-en .logo span {
 
 .footer strong {
   color: var(--white);
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-weight: 600;
 }
 
@@ -1061,7 +1103,7 @@ body.locale-en .logo span {
 
 .members-section > h2,
 .members-section-head h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -1091,7 +1133,7 @@ body.locale-en .logo span {
 }
 
 .feed-item h3 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -1145,7 +1187,7 @@ body.locale-en .logo span {
 }
 
 .group-item h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -1174,7 +1216,7 @@ body.locale-en .logo span {
 }
 
 .community-form h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.25rem;
   margin-bottom: 0.35rem;
 }
@@ -1223,7 +1265,7 @@ body.locale-en .logo span {
 }
 
 .meeting-when time {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -1235,7 +1277,7 @@ body.locale-en .logo span {
 }
 
 .meeting-body h3 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.4rem;
@@ -1259,7 +1301,7 @@ body.locale-en .logo span {
 }
 
 .members-main h1 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: clamp(1.85rem, 6vw, 2.8rem);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -1289,7 +1331,7 @@ body.locale-en .logo span {
 }
 
 .members-grid h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.35rem;
   margin-bottom: 0.45rem;
   letter-spacing: -0.02em;
@@ -1331,7 +1373,7 @@ body.locale-en .logo span {
 }
 
 .admin-item h2 {
-  font-family: var(--font-display), "Noto Naskh Arabic", serif;
+  font-family: var(--font-display), Amiri, serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }

@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { DM_Sans, IBM_Plex_Sans_Arabic, Newsreader, Noto_Naskh_Arabic } from "next/font/google";
+import { Amiri, DM_Sans, Fraunces, IBM_Plex_Sans_Arabic } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import "./globals.css";
 
-const naskh = Noto_Naskh_Arabic({
-  subsets: ["arabic"],
+const amiri = Amiri({
+  subsets: ["arabic", "latin"],
   variable: "--font-display-ar",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "700"],
 });
 
 const plexArabic = IBM_Plex_Sans_Arabic({
@@ -19,7 +19,7 @@ const plexArabic = IBM_Plex_Sans_Arabic({
   weight: ["400", "500", "600", "700"],
 });
 
-const newsreader = Newsreader({
+const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-display-en",
   display: "swap",
@@ -61,7 +61,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir}>
       <body
-        className={`locale-${locale} ${naskh.variable} ${plexArabic.variable} ${newsreader.variable} ${dmSans.variable}`}
+        className={`locale-${locale} ${amiri.variable} ${plexArabic.variable} ${fraunces.variable} ${dmSans.variable}`}
       >
         <Providers>{children}</Providers>
       </body>

@@ -24,13 +24,14 @@ export default async function Home() {
         <section className="hero" aria-label={dict.brand}>
           <div className="hero-media" aria-hidden="true">
             <Image
-              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2400&q=80"
+              src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=2400&q=80"
               alt=""
               fill
               priority
               sizes="100vw"
             />
             <div className="hero-shade" />
+            <div className="hero-grain" aria-hidden="true" />
           </div>
 
           <div className="wrap hero-content">
@@ -98,7 +99,7 @@ export default async function Home() {
 
             <div className="method-visual">
               <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
+                src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1400&q=80"
                 alt={h.visualAlt}
                 fill
                 sizes="(max-width: 800px) 100vw, 45vw"
@@ -131,7 +132,7 @@ export default async function Home() {
           <div className="wrap">
             <h2>{h.finalTitle}</h2>
             <p>{h.finalText}</p>
-            <div className="cta-row" style={{ justifyContent: "center" }}>
+            <div className="cta-row">
               <Link className="btn btn-primary" href="/apply">
                 {dict.nav.applyNow}
               </Link>
