@@ -338,7 +338,7 @@ body.locale-en .logo span {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 30%;
+  object-position: 50% 35%;
   transform: scale(1.08);
   animation: heroZoom 22s var(--ease) forwards;
 }

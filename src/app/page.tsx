@@ -24,7 +24,7 @@ export default async function Home() {
         <section className="hero" aria-label={dict.brand}>
           <div className="hero-media" aria-hidden="true">
             <Image
-              src="https://images.unsplash.com/photo-1652784549134-bae822a7c4a3?auto=format&fit=crop&w=2400&q=80"
+              src="https://images.pexels.com/photos/32711384/pexels-photo-32711384.jpeg?auto=compress&cs=tinysrgb&w=2400"
               alt=""
               fill
               priority
@@ -99,7 +99,7 @@ export default async function Home() {
 
             <div className="method-visual">
               <Image
-                src="https://images.unsplash.com/photo-1700680056772-adfd5f82820f?auto=format&fit=crop&w=1400&q=80"
+                src="https://images.pexels.com/photos/32711388/pexels-photo-32711388.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 alt={h.visualAlt}
                 fill
                 sizes="(max-width: 800px) 100vw, 45vw"
