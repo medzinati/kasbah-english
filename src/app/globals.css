@@ -36,19 +36,19 @@ body {
 }
 
 body.locale-ar {
-  font-family: var(--font-body-ar), "Segoe UI", Tahoma, sans-serif;
+  font-family: var(--font-cairo), "Segoe UI", Tahoma, sans-serif;
   letter-spacing: 0;
   line-height: 1.75;
-  --font-display: var(--font-display-ar);
-  --font-body: var(--font-body-ar);
+  --font-display: var(--font-cairo);
+  --font-body: var(--font-cairo);
 }
 
 body.locale-en {
-  font-family: var(--font-body-en), "Segoe UI", sans-serif;
+  font-family: var(--font-cairo), "Segoe UI", sans-serif;
   letter-spacing: -0.011em;
   line-height: 1.65;
-  --font-display: var(--font-display-en);
-  --font-body: var(--font-body-en);
+  --font-display: var(--font-cairo);
+  --font-body: var(--font-cairo);
 }
 
 .lang-switch {
@@ -121,7 +121,7 @@ img {
 }
 
 .logo {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-weight: 700;
   font-size: 1.18rem;
   letter-spacing: 0;
@@ -135,7 +135,7 @@ img {
 }
 
 body.locale-en .logo span {
-  font-style: italic;
+  font-style: normal;
 }
 
 .nav-links {
@@ -375,9 +375,9 @@ body.locale-en .hero-shade {
 }
 
 .brand {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(3rem, 13vw, 5.8rem);
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1.05;
   letter-spacing: 0;
   margin-bottom: 1.15rem;
@@ -393,12 +393,12 @@ body.locale-en .hero-shade {
 }
 
 body.locale-en .brand em {
-  font-style: italic;
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .headline {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.25rem, 4.2vw, 1.85rem);
   font-weight: 700;
   font-style: normal;
@@ -507,7 +507,7 @@ body.locale-en .brand em {
 }
 
 .section-head h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.85rem, 4.4vw, 2.75rem);
   line-height: 1.22;
   letter-spacing: 0;
@@ -558,7 +558,7 @@ body.locale-en .brand em {
 }
 
 .review-quote {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.15rem, 2.6vw, 1.4rem);
   line-height: 1.55;
   margin-bottom: 0.75rem;
@@ -611,14 +611,14 @@ body.locale-en .brand em {
 }
 
 .program-num {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.15rem;
   color: var(--teal);
   padding-top: 0.2rem;
 }
 
 .program h3 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.4rem;
   letter-spacing: 0;
   margin-bottom: 0.35rem;
@@ -671,7 +671,7 @@ body.locale-en .brand em {
 }
 
 .method-points article h3 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.3rem;
   margin-bottom: 0.4rem;
   letter-spacing: 0;
@@ -710,7 +710,7 @@ body.locale-en .brand em {
 }
 
 .audience-split h3 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.55rem;
   margin-bottom: 0.55rem;
   letter-spacing: 0;
@@ -733,7 +733,7 @@ body.locale-en .brand em {
 }
 
 .final-cta h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(2.1rem, 5.5vw, 3.2rem);
   letter-spacing: 0;
   line-height: 1.15;
@@ -784,7 +784,7 @@ body.locale-en .brand em {
 }
 
 .page-hero h1 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(2.1rem, 7vw, 3.4rem);
   line-height: 1.2;
   letter-spacing: 0;
@@ -822,7 +822,7 @@ body.locale-en .brand em {
 }
 
 .news-item h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.45rem, 3vw, 1.9rem);
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -869,7 +869,7 @@ body.locale-en .brand em {
 }
 
 .course-item h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   letter-spacing: -0.02em;
   margin-bottom: 0.55rem;
@@ -918,7 +918,7 @@ body.locale-en .brand em {
 }
 
 .form-aside h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -1061,7 +1061,7 @@ body.locale-en .brand em {
 
 .footer strong {
   color: var(--white);
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-weight: 600;
 }
 
@@ -1167,7 +1167,7 @@ body.locale-en .brand em {
 
 .members-section > h2,
 .members-section-head h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -1197,7 +1197,7 @@ body.locale-en .brand em {
 }
 
 .feed-item h3 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -1251,7 +1251,7 @@ body.locale-en .brand em {
 }
 
 .group-item h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -1280,7 +1280,7 @@ body.locale-en .brand em {
 }
 
 .community-form h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.25rem;
   margin-bottom: 0.35rem;
 }
@@ -1329,7 +1329,7 @@ body.locale-en .brand em {
 }
 
 .meeting-when time {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -1341,7 +1341,7 @@ body.locale-en .brand em {
 }
 
 .meeting-body h3 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.4rem;
@@ -1365,7 +1365,7 @@ body.locale-en .brand em {
 }
 
 .members-main h1 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.85rem, 6vw, 2.8rem);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -1395,7 +1395,7 @@ body.locale-en .brand em {
 }
 
 .members-grid h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.35rem;
   margin-bottom: 0.45rem;
   letter-spacing: -0.02em;
@@ -1437,7 +1437,7 @@ body.locale-en .brand em {
 }
 
 .admin-item h2 {
-  font-family: var(--font-display), Amiri, serif;
+  font-family: var(--font-display), Cairo, sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
