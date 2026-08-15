@@ -1,78 +1,75 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
+import { prisma } from "@/lib/prisma";
 
-type ApplyBody = {
-  name?: string;
-  email?: string;
-  location?: string;
-  whatsapp?: string;
-  level?: string;
-  goal?: string;
-  motivation?: string;
-};
-
-function isEmail(value: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-}
+const schema = z.object({
+  name: z.string().trim().min(2),
+  email: z.string().trim().email(),
+  location: z.string().trim().min(2),
+  whatsapp: z.string().trim().optional(),
+  level: z.string().trim().min(2),
+  goal: z.string().trim().min(2),
+  motivation: z.string().trim().min(10),
+});
 
 export async function POST(request: Request) {
-  let body: ApplyBody;
+  let json: unknown;
 
   try {
-    body = (await request.json()) as ApplyBody;
+    json = await request.json();
   } catch {
     return NextResponse.json({ ok: false, error: "Invalid request." }, { status: 400 });
   }
 
-  const name = String(body.name || "").trim();
-  const email = String(body.email || "").trim();
-  const location = String(body.location || "").trim();
-  const whatsapp = String(body.whatsapp || "").trim();
-  const level = String(body.level || "").trim();
-  const goal = String(body.goal || "").trim();
-  const motivation = String(body.motivation || "").trim();
-
-  if (!name || !email || !location || !level || !goal || !motivation) {
-    return NextResponse.json({ ok: false, error: "Please fill in all required fields." }, { status: 400 });
+  const parsed = schema.safeParse(json);
+  if (!parsed.success) {
+    return NextResponse.json({ ok: false, error: "Please fill in all required fields correctly." }, { status: 400 });
   }
 
-  if (!isEmail(email)) {
-    return NextResponse.json({ ok: false, error: "Please enter a valid email." }, { status: 400 });
-  }
-
-  const inbox = process.env.CONTACT_EMAIL || "mohamed.ketrani.zinati@gmail.com";
+  const data = parsed.data;
+  const email = data.email.toLowerCase();
 
   try {
+    await prisma.application.create({
+      data: {
+        name: data.name,
+        email,
+        location: data.location,
+        whatsapp: data.whatsapp || null,
+        level: data.level,
+        goal: data.goal,
+        motivation: data.motivation,
+      },
+    });
+  } catch (error) {
+    console.error("Apply DB error", error);
+    return NextResponse.json(
+      { ok: false, error: "Could not save application. Please try again shortly." },
+      { status: 500 },
+    );
+  }
+
+  // Best-effort email notify (does not block success)
+  const inbox = process.env.CONTACT_EMAIL || "mohamed.ketrani.zinati@gmail.com";
+  try {
     const form = new FormData();
-    form.set("name", name);
+    form.set("name", data.name);
     form.set("email", email);
-    form.set("location", location);
-    form.set("whatsapp", whatsapp || "—");
-    form.set("level", level);
-    form.set("goal", goal);
-    form.set("motivation", motivation);
-    form.set("_subject", `Kasbah English application — ${name}`);
+    form.set("location", data.location);
+    form.set("whatsapp", data.whatsapp || "—");
+    form.set("level", data.level);
+    form.set("goal", data.goal);
+    form.set("motivation", data.motivation);
+    form.set("_subject", `Kasbah English application — ${data.name}`);
     form.set("_template", "table");
     form.set("_captcha", "false");
-
-    const res = await fetch(`https://formsubmit.co/ajax/${inbox}`, {
+    await fetch(`https://formsubmit.co/ajax/${inbox}`, {
       method: "POST",
       body: form,
       headers: { Accept: "application/json" },
     });
-
-    if (!res.ok) {
-      console.error("Apply formsubmit failed", await res.text());
-      return NextResponse.json(
-        { ok: false, error: "Could not send application right now. Please try again or use the contact page." },
-        { status: 502 },
-      );
-    }
   } catch (error) {
-    console.error("Apply submit error", error);
-    return NextResponse.json(
-      { ok: false, error: "Could not send application right now. Please try again or use the contact page." },
-      { status: 502 },
-    );
+    console.error("Apply notify error", error);
   }
 
   return NextResponse.json({ ok: true });

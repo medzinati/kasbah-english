@@ -754,6 +754,163 @@ img {
   font-weight: 600;
 }
 
+/* Members / Admin */
+.logo.ink {
+  color: var(--ink);
+}
+
+.members-shell {
+  min-height: 100svh;
+  background:
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(13, 92, 99, 0.1), transparent 55%),
+    var(--paper);
+}
+
+.members-top {
+  border-bottom: 1px solid rgba(20, 32, 28, 0.08);
+  background: rgba(244, 247, 245, 0.92);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
+
+.members-top-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.members-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.members-main {
+  padding: 2.5rem 0 4rem;
+}
+
+.members-main h1 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.members-lede {
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-bottom: 2rem;
+}
+
+.members-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 800px) {
+  .members-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.members-grid article {
+  padding: 1.35rem 0;
+  border-top: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.members-grid h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.35rem;
+  margin-bottom: 0.45rem;
+  letter-spacing: -0.02em;
+}
+
+.members-grid p {
+  color: var(--ink-soft);
+  margin-bottom: 0.85rem;
+}
+
+.soon {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.members-empty {
+  color: var(--ink-soft);
+}
+
+.admin-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.admin-item {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.admin-item-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 0.75rem;
+}
+
+.admin-item h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.admin-item p {
+  color: var(--ink-soft);
+  margin-bottom: 0.35rem;
+}
+
+.admin-motivation {
+  margin: 0.85rem 0 1rem;
+  max-width: 62ch;
+}
+
+.admin-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.status-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.55rem;
+  border: 1px solid rgba(20, 32, 28, 0.15);
+}
+
+.status-pending {
+  color: #8a6a1f;
+  border-color: rgba(138, 106, 31, 0.35);
+}
+
+.status-accepted {
+  color: var(--teal-deep);
+  border-color: rgba(13, 92, 99, 0.35);
+}
+
+.status-rejected {
+  color: #8a2f2f;
+  border-color: rgba(138, 47, 47, 0.35);
+}
+
 @keyframes rise {
   from {
     opacity: 0;

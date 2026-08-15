@@ -11,6 +11,7 @@ export function SiteFooter() {
             <a href="/courses">Free courses</a>
             <a href="/apply">Apply</a>
             <a href="/contact">Contact</a>
+            <a href="/members/login">Members</a>
           </nav>
         </div>
         <p>© {new Date().getFullYear()} Kasbah English</p>

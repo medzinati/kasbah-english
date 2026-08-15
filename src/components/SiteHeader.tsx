@@ -7,6 +7,7 @@ const links = [
   { href: "/courses", label: "Free courses" },
   { href: "/apply", label: "Apply" },
   { href: "/contact", label: "Contact" },
+  { href: "/members/login", label: "Members" },
 ];
 
 export function SiteHeader({ variant = "solid" }: SiteHeaderProps) {
