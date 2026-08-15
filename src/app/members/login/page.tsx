@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LoginForm } from "@/components/LoginForm";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -33,9 +34,9 @@ export default async function MembersLoginPage() {
               <p className="form-note">
                 Submit an application. After we accept you, you’ll receive login details for the members area.
               </p>
-              <a className="text-link" href="/apply">
+              <Link className="text-link" href="/apply">
                 Go to apply →
-              </a>
+              </Link>
             </div>
             <LoginForm />
           </div>

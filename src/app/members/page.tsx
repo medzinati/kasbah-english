@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SignOutButton } from "@/components/SignOutButton";
 import { getSession } from "@/lib/session";
@@ -17,14 +18,14 @@ export default async function MembersHomePage() {
     <div className="members-shell">
       <header className="members-top">
         <div className="wrap members-top-inner">
-          <a className="logo ink" href="/members">
+          <Link className="logo ink" href="/members">
             Kasbah <span>English</span>
-          </a>
+          </Link>
           <div className="members-top-actions">
             {session.user.role === "ADMIN" ? (
-              <a className="text-link" href="/admin">
+              <Link className="text-link" href="/admin">
                 Admin
-              </a>
+              </Link>
             ) : null}
             <SignOutButton />
           </div>

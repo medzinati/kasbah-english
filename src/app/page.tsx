@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 
@@ -44,12 +45,12 @@ export default function Home() {
               Learn in public. Grow inside — discussions, group meetings, and real progress after you’re accepted.
             </p>
             <div className="cta-row">
-              <a className="btn btn-primary" href="/apply">
+              <Link className="btn btn-primary" href="/apply">
                 Apply to join
-              </a>
-              <a className="btn btn-ghost" href="/courses">
+              </Link>
+              <Link className="btn btn-ghost" href="/courses">
                 Try free courses
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -144,12 +145,12 @@ export default function Home() {
             <h2>Ready to apply?</h2>
             <p>We’ll review your application and invite accepted learners into the community.</p>
             <div className="cta-row" style={{ justifyContent: "center" }}>
-              <a className="btn btn-primary" href="/apply">
+              <Link className="btn btn-primary" href="/apply">
                 Apply now
-              </a>
-              <a className="btn btn-ghost dark" href="/contact">
+              </Link>
+              <Link className="btn btn-ghost dark" href="/contact">
                 Contact us
-              </a>
+              </Link>
             </div>
           </div>
         </section>

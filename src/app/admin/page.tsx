@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AdminApplications } from "@/components/AdminApplications";
 import { SignOutButton } from "@/components/SignOutButton";
@@ -41,13 +42,13 @@ export default async function AdminPage() {
     <div className="members-shell">
       <header className="members-top">
         <div className="wrap members-top-inner">
-          <a className="logo ink" href="/admin">
+          <Link className="logo ink" href="/admin">
             Kasbah <span>Admin</span>
-          </a>
+          </Link>
           <div className="members-top-actions">
-            <a className="text-link" href="/members">
+            <Link className="text-link" href="/members">
               Members home
-            </a>
+            </Link>
             <SignOutButton />
           </div>
         </div>

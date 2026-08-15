@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { freeCourses } from "@/data/courses";
@@ -36,9 +37,9 @@ export default function CoursesPage() {
                     <li key={lesson}>{lesson}</li>
                   ))}
                 </ol>
-                <a className="text-link" href="/apply">
+                <Link className="text-link" href="/apply">
                   Ready for the community? Apply →
-                </a>
+                </Link>
               </article>
             ))}
           </div>
