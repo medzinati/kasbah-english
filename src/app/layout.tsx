@@ -18,11 +18,11 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kasbah English | English community for Morocco & the world",
+    default: "Kasbah English | Speak with confidence. Grow with a community.",
     template: "%s | Kasbah English",
   },
   description:
-    "Kasbah English is an online English community — free public courses outside, discussions and live meetings inside after you’re accepted.",
+    "Kasbah English is a friendly online English community for Moroccan and international learners — free courses publicly, discussions and live Zoom meetings for accepted members.",
 };
 
 export default function RootLayout({

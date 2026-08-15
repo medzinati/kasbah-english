@@ -23,8 +23,8 @@ export default async function MembersLoginPage() {
         <section className="page-hero">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">Members</p>
-            <h1>Sign in to the community</h1>
-            <p>Access is only for accepted members. Apply first if you don’t have an account yet.</p>
+            <h1>Welcome back</h1>
+            <p>Sign in to your Kasbah English community — discussions, groups, and live meetings await.</p>
           </div>
         </section>
         <section className="section">
@@ -32,7 +32,7 @@ export default async function MembersLoginPage() {
             <div className="form-aside">
               <h2>Not a member yet?</h2>
               <p className="form-note">
-                Submit an application. After we accept you, you’ll receive login details for the members area.
+                That’s okay — start with a free course, then apply. After we accept you, you’ll receive login details.
               </p>
               <Link className="text-link" href="/apply">
                 Go to apply →

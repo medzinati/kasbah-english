@@ -6,7 +6,7 @@ import { freeCourses } from "@/data/courses";
 
 export const metadata: Metadata = {
   title: "Free courses",
-  description: "Free English starter courses from Kasbah English — no account required.",
+  description: "Free English starter courses from Kasbah English — practical, friendly, and open to everyone.",
 };
 
 export default function CoursesPage() {
@@ -17,8 +17,11 @@ export default function CoursesPage() {
         <section className="page-hero">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">Free courses</p>
-            <h1>Start learning before you apply</h1>
-            <p>Short public lessons you can use today. The full community opens after acceptance.</p>
+            <h1>Learn something useful today</h1>
+            <p>
+              Short public lessons you can start now. When you’re ready for live practice and community support, apply to
+              join the members area.
+            </p>
           </div>
         </section>
 
@@ -38,7 +41,7 @@ export default function CoursesPage() {
                   ))}
                 </ol>
                 <Link className="text-link" href="/apply">
-                  Ready for the community? Apply →
+                  Like this? Apply to join the community →
                 </Link>
               </article>
             ))}

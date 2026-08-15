@@ -5,7 +5,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Contact Kasbah English for questions about programs, applications, and the community.",
+  description: "Contact Kasbah English with questions about free courses, applications, or the members community.",
 };
 
 export default function ContactPage() {
@@ -16,22 +16,22 @@ export default function ContactPage() {
         <section className="page-hero">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">Contact</p>
-            <h1>Talk to us</h1>
-            <p>Questions about applying, free courses, or the members community — send a message.</p>
+            <h1>We’re happy to help</h1>
+            <p>Questions about applying, free courses, levels, or the community? Send a message — we read every one.</p>
           </div>
         </section>
 
         <section className="section">
           <div className="wrap form-layout">
             <div className="form-aside">
-              <h2>Other ways to reach us</h2>
+              <h2>Prefer email?</h2>
               <p>
-                Prefer email? Write to{" "}
+                Write to{" "}
                 <a className="text-link" href="mailto:mohamed.ketrani.zinati@gmail.com">
                   mohamed.ketrani.zinati@gmail.com
                 </a>
               </p>
-              <p className="form-note">We usually reply within 1–2 business days.</p>
+              <p className="form-note">We usually reply within 1–2 business days. For applications, use the Apply page.</p>
             </div>
             <ContactForm />
           </div>

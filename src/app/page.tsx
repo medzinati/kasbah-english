@@ -5,16 +5,16 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 const highlights = [
   {
-    title: "Public learning",
-    text: "News, free courses, and a clear path to apply — open to everyone.",
+    title: "Start free, no pressure",
+    text: "Browse news, try short free lessons, and learn how Kasbah English works — before you apply.",
   },
   {
-    title: "Members community",
-    text: "After acceptance: discussion groups, announcements, and live meetings.",
+    title: "A real community inside",
+    text: "Accepted members join discussions, group practice, and live Zoom meetings with supportive teachers and peers.",
   },
   {
-    title: "Real practice",
-    text: "Small-group sessions focused on speaking, clarity, and confidence.",
+    title: "English you can use",
+    text: "We focus on speaking clearly, sounding natural, and building confidence for study, work, and everyday life.",
   },
 ];
 
@@ -40,16 +40,17 @@ export default function Home() {
             <h1 className="brand">
               Kasbah <em>English</em>
             </h1>
-            <p className="headline">An English community that practices together.</p>
+            <p className="headline">Speak with confidence. Grow with a community.</p>
             <p className="lede">
-              Learn in public. Grow inside — discussions, group meetings, and real progress after you’re accepted.
+              An online English home for Moroccan learners — and friends around the world — who want practice that feels
+              human, clear, and useful.
             </p>
             <div className="cta-row">
               <Link className="btn btn-primary" href="/apply">
                 Apply to join
               </Link>
               <Link className="btn btn-ghost" href="/courses">
-                Try free courses
+                Try a free course
               </Link>
             </div>
           </div>
@@ -58,11 +59,11 @@ export default function Home() {
         <section className="section programs">
           <div className="wrap">
             <div className="section-head">
-              <p className="eyebrow">What Kasbah English is</p>
-              <h2>A center outside. A community inside.</h2>
+              <p className="eyebrow">What you’ll find here</p>
+              <h2>Friendly outside. Focused inside.</h2>
               <p>
-                Everyone can explore news, free lessons, and how to apply. Members who are accepted unlock discussion
-                groups and live meetings.
+                Kasbah English is open for everyone to explore. The members community is curated — so practice stays
+                warm, useful, and serious about progress.
               </p>
             </div>
 
@@ -85,23 +86,24 @@ export default function Home() {
             <div>
               <div className="section-head">
                 <p className="eyebrow">How it works</p>
-                <h2>Apply. Get accepted. Practice with us.</h2>
+                <h2>Three simple steps to belong.</h2>
                 <p>
-                  Access to the inner community is intentional — so discussions stay useful and meetings stay focused.
+                  You don’t need to be fluent to start. You need curiosity, consistency, and a place where speaking feels
+                  safe.
                 </p>
               </div>
               <div className="method-points">
                 <article>
-                  <h3>1. Explore freely</h3>
-                  <p>Read news, try free courses, and see if Kasbah English fits your goals.</p>
+                  <h3>1. Explore at your pace</h3>
+                  <p>Read the latest news, sample free courses, and see if the Kasbah vibe fits you.</p>
                 </article>
                 <article>
-                  <h3>2. Submit your application</h3>
-                  <p>Tell us your level, goals, and why you want to join the community.</p>
+                  <h3>2. Apply in a few minutes</h3>
+                  <p>Tell us your level, your goal, and why you want to practice with a community.</p>
                 </article>
                 <article>
-                  <h3>3. Join the inside</h3>
-                  <p>Accepted members enter discussions, group spaces, and Zoom-style meetings.</p>
+                  <h3>3. Get invited inside</h3>
+                  <p>If accepted, you’ll join discussions, groups, and live meetings with Zoom links.</p>
                 </article>
               </div>
             </div>
@@ -121,20 +123,26 @@ export default function Home() {
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">Who it’s for</p>
-              <h2>From Morocco to everywhere.</h2>
-              <p>Built for Darija speakers and international learners who want English that works in real life.</p>
+              <h2>Rooted in Morocco. Open to the world.</h2>
+              <p>
+                Whether you think in Darija, French, or another language first — we help you build English that works in
+                real conversations.
+              </p>
             </div>
             <div className="audience-split">
               <article>
-                <h3>For Morocco</h3>
+                <h3>For learners in Morocco</h3>
                 <p>
-                  Clear paths from Darija and French to confident English — with flexible online practice that fits real
-                  schedules.
+                  Flexible online sessions, clear explanations, and teachers who understand the journey from Darija and
+                  French to confident English.
                 </p>
               </article>
               <article>
-                <h3>For the world</h3>
-                <p>Join a global community with the same standard, whether you’re home or abroad.</p>
+                <h3>For learners everywhere</h3>
+                <p>
+                  Join a welcoming international classroom with the same care, structure, and high standard — wherever you
+                  are.
+                </p>
               </article>
             </div>
           </div>
@@ -142,14 +150,14 @@ export default function Home() {
 
         <section className="section final-cta">
           <div className="wrap">
-            <h2>Ready to apply?</h2>
-            <p>We’ll review your application and invite accepted learners into the community.</p>
+            <h2>Ready when you are.</h2>
+            <p>Apply today. We’ll review your story and guide accepted members into the community.</p>
             <div className="cta-row" style={{ justifyContent: "center" }}>
               <Link className="btn btn-primary" href="/apply">
                 Apply now
               </Link>
               <Link className="btn btn-ghost dark" href="/contact">
-                Contact us
+                Ask a question
               </Link>
             </div>
           </div>

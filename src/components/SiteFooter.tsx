@@ -6,7 +6,7 @@ export function SiteFooter() {
       <div className="wrap footer-inner">
         <div className="footer-brand">
           <p>
-            <strong>Kasbah English</strong> — community &amp; learning for Morocco &amp; the world.
+            <strong>Kasbah English</strong> — a friendly online English community for Morocco and the world.
           </p>
           <nav className="footer-links" aria-label="Footer">
             <Link href="/news">News</Link>

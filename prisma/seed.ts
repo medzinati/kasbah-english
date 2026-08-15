@@ -7,22 +7,22 @@ const defaultGroups = [
   {
     slug: "conversation",
     title: "Conversation Lab",
-    description: "Practice everyday speaking, fluency, and real-life situations.",
+    description: "Friendly speaking practice for everyday life — fluency, clarity, and real situations.",
   },
   {
     slug: "exam-track",
     title: "Exam Track",
-    description: "IELTS and academic English tips, questions, and study plans.",
+    description: "IELTS and academic English support: strategies, questions, and steady progress.",
   },
   {
     slug: "career-english",
     title: "Career English",
-    description: "Emails, meetings, interviews, and workplace English.",
+    description: "Emails, meetings, interviews, and workplace English that sounds natural and professional.",
   },
   {
     slug: "general",
     title: "General Community",
-    description: "Introductions, wins, questions, and anything Kasbah English.",
+    description: "Introductions, wins, questions, and warm conversation with fellow Kasbah learners.",
   },
 ];
 
@@ -62,17 +62,24 @@ async function main() {
     });
   }
 
+  const welcomeTitle = "Welcome to Kasbah English";
+  const welcomeBody =
+    "You’re inside. Read announcements, join a discussion group, introduce yourself, and come to live Zoom meetings ready to speak. We’re glad you’re here — progress loves consistency and kindness.";
+
   const existingWelcome = await prisma.announcement.findFirst({
-    where: { title: "Welcome to the Kasbah English community" },
+    where: {
+      OR: [{ title: welcomeTitle }, { title: "Welcome to the Kasbah English community" }],
+    },
   });
 
-  if (!existingWelcome) {
+  if (existingWelcome) {
+    await prisma.announcement.update({
+      where: { id: existingWelcome.id },
+      data: { title: welcomeTitle, body: welcomeBody, authorId: admin.id },
+    });
+  } else {
     await prisma.announcement.create({
-      data: {
-        title: "Welcome to the Kasbah English community",
-        body: "This is your members space. Read announcements here, join discussion groups, and share practice with other learners. Meetings with Zoom links come next.",
-        authorId: admin.id,
-      },
+      data: { title: welcomeTitle, body: welcomeBody, authorId: admin.id },
     });
   }
 

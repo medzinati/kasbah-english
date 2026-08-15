@@ -32,7 +32,7 @@ export function ApplyForm() {
       }
 
       setStatus("success");
-      setMessage("Application received. We’ll review it and email you if you’re accepted into the community.");
+      setMessage("Thank you! We received your application and will email you if you’re accepted into the community.");
       form.reset();
     } catch {
       setStatus("error");

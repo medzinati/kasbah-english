@@ -5,7 +5,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 
 export const metadata: Metadata = {
   title: "Apply",
-  description: "Apply to join the Kasbah English community. Accepted members get discussions and live meetings.",
+  description:
+    "Apply to join Kasbah English. Accepted members unlock discussions, groups, and live Zoom practice sessions.",
 };
 
 export default function ApplyPage() {
@@ -16,9 +17,10 @@ export default function ApplyPage() {
         <section className="page-hero">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">Apply</p>
-            <h1>Join the Kasbah English community</h1>
+            <h1>Come practice with us</h1>
             <p>
-              Fill in the form. We review every application and invite accepted learners into discussions and meetings.
+              Tell us a little about your level and goals. We read every application carefully and invite accepted
+              learners into the community.
             </p>
           </div>
         </section>
@@ -28,12 +30,13 @@ export default function ApplyPage() {
             <div className="form-aside">
               <h2>What happens next</h2>
               <ol className="steps-list">
-                <li>You submit your application.</li>
-                <li>We review your level, goals, and motivation.</li>
-                <li>If accepted, you receive access to the members area.</li>
+                <li>You send your application (it only takes a few minutes).</li>
+                <li>We review your level, goals, and motivation with care.</li>
+                <li>If accepted, you’ll get login details for the members area.</li>
               </ol>
               <p className="form-note">
-                The public site stays open to everyone. The community inside is for accepted members only.
+                Everyone can explore the public site. The community inside — discussions, groups, and meetings — is for
+                accepted members.
               </p>
             </div>
             <ApplyForm />

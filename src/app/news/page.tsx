@@ -5,7 +5,7 @@ import { newsItems } from "@/data/news";
 
 export const metadata: Metadata = {
   title: "News",
-  description: "Updates, launches, and announcements from Kasbah English.",
+  description: "Updates and announcements from Kasbah English — community, courses, and member invitations.",
 };
 
 function formatDate(value: string) {
@@ -24,8 +24,8 @@ export default function NewsPage() {
         <section className="page-hero">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">News</p>
-            <h1>What’s happening at Kasbah English</h1>
-            <p>Announcements, launches, and notes for learners — public and clear.</p>
+            <h1>Stories from the Kasbah</h1>
+            <p>Friendly updates on courses, community life, and how to join us.</p>
           </div>
         </section>
 

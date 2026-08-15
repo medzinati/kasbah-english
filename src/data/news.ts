@@ -8,25 +8,25 @@ export type NewsItem = {
 
 export const newsItems: NewsItem[] = [
   {
-    slug: "community-platform-launch",
-    title: "Kasbah English community is taking shape",
+    slug: "welcome-founding-members",
+    title: "Applications are open for founding members",
     date: "2026-08-15",
     summary:
-      "We’re building a members-only space for discussions, group practice, and live meetings — applications are open.",
-    body: "Soon, accepted members will access discussion groups, weekly announcements, and live Zoom-style meetings inside the Kasbah English platform. For now, explore free courses and apply to join the founding cohort.",
+      "Kasbah English is live — with free public lessons outside, and a members community for practice, discussions, and Zoom meetings.",
+    body: "We’re welcoming our first cohort of learners. Explore the free courses, then apply to join the members area. Accepted members get access to discussion groups, community announcements, and live practice sessions. If you’re motivated and ready to speak more, we’d love to meet you.",
   },
   {
-    slug: "free-starter-lessons",
-    title: "Free starter lessons are live",
-    date: "2026-08-10",
-    summary: "Begin with short, practical lessons you can use today — no account required.",
-    body: "Our free courses cover everyday conversation, clear pronunciation habits, and simple writing for work. They’re designed as a first step before joining the full community.",
+    slug: "free-courses-to-start",
+    title: "Three free courses to start today",
+    date: "2026-08-12",
+    summary: "No account needed. Build confidence with Everyday English, Clear Speech, and Work-Ready Writing.",
+    body: "Not sure where to begin? Start with a short free course. Each one is practical, friendly, and designed for real life — then apply when you’re ready for the full community experience with groups and live meetings.",
   },
   {
-    slug: "how-applications-work",
-    title: "How applications work",
-    date: "2026-08-05",
-    summary: "Tell us your level and goals. We review each application and invite accepted learners inside.",
-    body: "Kasbah English is not an open free-for-all. After you apply, our team reviews your form and contacts you. Only accepted members get access to community discussions and meetings.",
+    slug: "why-acceptance-matters",
+    title: "Why we review every application",
+    date: "2026-08-08",
+    summary: "A smaller, intentional community means better conversations and kinder practice spaces.",
+    body: "Kasbah English is not a giant open chat. We review applications so members share a clear goal: improve English through respectful practice. That helps discussions stay useful, meetings stay focused, and everyone feel safe to speak — even when they’re still learning.",
   },
 ];
