@@ -789,6 +789,161 @@ img {
   gap: 1rem;
 }
 
+.members-nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.members-nav-links a {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.members-nav-links a:hover {
+  color: var(--teal);
+}
+
+.members-user {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+@media (min-width: 860px) {
+  .members-nav-links {
+    display: flex;
+  }
+}
+
+.members-section {
+  margin-top: 2.75rem;
+}
+
+.members-section > h2,
+.members-section-head h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.members-section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.members-section-head h2 {
+  margin-bottom: 0;
+}
+
+.feed-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.feed-item {
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.feed-item h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.feed-item h3 a:hover {
+  color: var(--teal-deep);
+}
+
+.feed-meta {
+  font-size: 0.88rem;
+  color: var(--teal);
+  margin-bottom: 0.55rem !important;
+}
+
+.feed-item p {
+  color: var(--ink-soft);
+  max-width: 62ch;
+  white-space: pre-wrap;
+}
+
+.post-body {
+  color: var(--ink);
+  font-size: 1.05rem;
+  max-width: 62ch;
+  margin: 1rem 0 2rem;
+  white-space: pre-wrap;
+}
+
+.group-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(20, 32, 28, 0.12);
+  margin-top: 1.5rem;
+}
+
+.group-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.35rem 0;
+  border-bottom: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.group-item h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.35rem;
+}
+
+.group-item h2 a:hover {
+  color: var(--teal-deep);
+}
+
+.group-item p {
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+.group-count {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--teal);
+  white-space: nowrap;
+}
+
+.community-form {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.community-form h2 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.admin-tools {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 880px) {
+  .admin-tools {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+}
+
 .members-main {
   padding: 2.5rem 0 4rem;
 }

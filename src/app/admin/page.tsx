@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AdminApplications } from "@/components/AdminApplications";
-import { SignOutButton } from "@/components/SignOutButton";
+import { AnnouncementForm } from "@/components/AnnouncementForm";
+import { GroupCreateForm } from "@/components/GroupCreateForm";
+import { MembersNav } from "@/components/MembersNav";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
@@ -40,27 +42,27 @@ export default async function AdminPage() {
 
   return (
     <div className="members-shell">
-      <header className="members-top">
-        <div className="wrap members-top-inner">
-          <Link className="logo ink" href="/admin">
-            Kasbah <span>Admin</span>
-          </Link>
-          <div className="members-top-actions">
-            <Link className="text-link" href="/members">
-              Members home
-            </Link>
-            <SignOutButton />
-          </div>
-        </div>
-      </header>
+      <MembersNav name={session.user.name} role={session.user.role} title="Kasbah Admin" />
 
       <main className="wrap members-main">
-        <p className="eyebrow">Applications</p>
-        <h1>Review & accept members</h1>
+        <p className="eyebrow">Admin</p>
+        <h1>Manage community</h1>
         <p className="members-lede">
-          Accepting an application creates a member login. Copy the temporary password and send it privately.
+          Accept members, post announcements, and create discussion groups.{" "}
+          <Link className="text-link" href="/members/community">
+            View community
+          </Link>
         </p>
-        <AdminApplications initial={initial} />
+
+        <section className="members-section">
+          <h2>Applications</h2>
+          <AdminApplications initial={initial} />
+        </section>
+
+        <section className="members-section admin-tools">
+          <AnnouncementForm />
+          <GroupCreateForm />
+        </section>
       </main>
     </div>
   );
