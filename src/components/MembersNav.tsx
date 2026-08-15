@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { SignOutButton } from "@/components/SignOutButton";
 
@@ -8,6 +10,14 @@ type MembersNavProps = {
 };
 
 export function MembersNav({ name, role, title = "Kasbah English" }: MembersNavProps) {
+  const links = [
+    { href: "/members", label: "Home" },
+    { href: "/members/community", label: "Community" },
+    { href: "/members/groups", label: "Groups" },
+    { href: "/members/meetings", label: "Meetings" },
+    ...(role === "ADMIN" ? [{ href: "/admin", label: "Admin" }] : []),
+  ];
+
   return (
     <header className="members-top">
       <div className="wrap members-top-inner">
@@ -20,18 +30,18 @@ export function MembersNav({ name, role, title = "Kasbah English" }: MembersNavP
             title
           )}
         </Link>
-        <nav className="members-nav-links" aria-label="Members">
-          <Link href="/members">Home</Link>
-          <Link href="/members/community">Community</Link>
-          <Link href="/members/groups">Groups</Link>
-          <Link href="/members/meetings">Meetings</Link>
-          {role === "ADMIN" ? <Link href="/admin">Admin</Link> : null}
-        </nav>
         <div className="members-top-actions">
           {name ? <span className="members-user">{name.split(" ")[0]}</span> : null}
           <SignOutButton />
         </div>
       </div>
+      <nav className="members-nav-links wrap" aria-label="Members">
+        {links.map((link) => (
+          <Link key={link.href} href={link.href}>
+            {link.label}
+          </Link>
+        ))}
+      </nav>
     </header>
   );
 }
