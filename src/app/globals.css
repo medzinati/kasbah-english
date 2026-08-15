@@ -944,6 +944,68 @@ img {
   }
 }
 
+.meeting-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+.meeting-item {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(20, 32, 28, 0.12);
+}
+
+@media (min-width: 720px) {
+  .meeting-item {
+    grid-template-columns: 11rem 1fr;
+    gap: 1.75rem;
+  }
+}
+
+.meeting-item.is-past {
+  opacity: 0.72;
+}
+
+.meeting-when {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+}
+
+.meeting-when time {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.meeting-when p {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.meeting-body h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.meeting-body > p {
+  color: var(--ink-soft);
+  max-width: 54ch;
+  margin-bottom: 0.35rem;
+}
+
+.meeting-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .members-main {
   padding: 2.5rem 0 4rem;
 }

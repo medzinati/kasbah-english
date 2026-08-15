@@ -31,6 +31,7 @@ model User {
   posts         DiscussionPost[]
   comments      DiscussionComment[]
   groupsCreated DiscussionGroup[]    @relation("GroupCreator")
+  meetings      Meeting[]
 }
 
 model Application {
@@ -100,4 +101,18 @@ model DiscussionComment {
   createdAt DateTime       @default(now())
 
   @@index([postId, createdAt])
+}
+
+model Meeting {
+  id               String   @id @default(cuid())
+  title            String
+  description      String
+  startsAt         DateTime
+  durationMinutes  Int      @default(60)
+  zoomUrl          String
+  createdById      String
+  createdBy        User     @relation(fields: [createdById], references: [id])
+  createdAt        DateTime @default(now())
+
+  @@index([startsAt])
 }

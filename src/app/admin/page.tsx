@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { AdminApplications } from "@/components/AdminApplications";
 import { AnnouncementForm } from "@/components/AnnouncementForm";
 import { GroupCreateForm } from "@/components/GroupCreateForm";
+import { MeetingForm } from "@/components/MeetingForm";
 import { MembersNav } from "@/components/MembersNav";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
@@ -48,9 +49,9 @@ export default async function AdminPage() {
         <p className="eyebrow">Admin</p>
         <h1>Manage community</h1>
         <p className="members-lede">
-          Accept members, post announcements, and create discussion groups.{" "}
-          <Link className="text-link" href="/members/community">
-            View community
+          Accept members, post announcements, create groups, and schedule Zoom meetings.{" "}
+          <Link className="text-link" href="/members/meetings">
+            View meetings
           </Link>
         </p>
 
@@ -62,6 +63,10 @@ export default async function AdminPage() {
         <section className="members-section admin-tools">
           <AnnouncementForm />
           <GroupCreateForm />
+        </section>
+
+        <section className="members-section">
+          <MeetingForm />
         </section>
       </main>
     </div>

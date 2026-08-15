@@ -24,6 +24,7 @@ export function MembersNav({ name, role, title = "Kasbah English" }: MembersNavP
           <Link href="/members">Home</Link>
           <Link href="/members/community">Community</Link>
           <Link href="/members/groups">Groups</Link>
+          <Link href="/members/meetings">Meetings</Link>
           {role === "ADMIN" ? <Link href="/admin">Admin</Link> : null}
         </nav>
         <div className="members-top-actions">

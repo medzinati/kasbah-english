@@ -17,7 +17,7 @@ export default async function MembersHomePage() {
     redirect("/members/login");
   }
 
-  const [announcements, groups] = await Promise.all([
+  const [announcements, groups, upcomingCount] = await Promise.all([
     prisma.announcement.findMany({
       take: 3,
       orderBy: { createdAt: "desc" },
@@ -26,6 +26,9 @@ export default async function MembersHomePage() {
     prisma.discussionGroup.findMany({
       orderBy: { title: "asc" },
       include: { _count: { select: { posts: true } } },
+    }),
+    prisma.meeting.count({
+      where: { startsAt: { gte: new Date(Date.now() - 3 * 60 * 60 * 1000) } },
     }),
   ]);
 
@@ -37,7 +40,7 @@ export default async function MembersHomePage() {
         <p className="eyebrow">Members area</p>
         <h1>Welcome, {session.user.name?.split(" ")[0] || "member"}</h1>
         <p className="members-lede">
-          Read community announcements, join discussion groups, and practice with other learners.
+          Read announcements, join discussion groups, and attend live Zoom meetings with the community.
         </p>
 
         <div className="members-grid">
@@ -57,8 +60,14 @@ export default async function MembersHomePage() {
           </article>
           <article>
             <h2>Meetings</h2>
-            <p>Live sessions with Zoom links and a simple schedule.</p>
-            <span className="soon">Coming in Phase 4</span>
+            <p>
+              {upcomingCount
+                ? `${upcomingCount} session${upcomingCount === 1 ? "" : "s"} on the schedule.`
+                : "Live Zoom sessions with the community."}
+            </p>
+            <Link className="text-link" href="/members/meetings">
+              View schedule →
+            </Link>
           </article>
         </div>
 
