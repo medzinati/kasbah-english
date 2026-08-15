@@ -549,6 +549,14 @@ body.locale-en .brand em {
   background: var(--paper-deep);
 }
 
+.review-stars {
+  color: var(--gold);
+  font-size: 1.05rem;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  margin-bottom: 0.55rem;
+}
+
 .review-quote {
   font-family: var(--font-display), Amiri, serif;
   font-size: clamp(1.15rem, 2.6vw, 1.4rem);

@@ -70,10 +70,15 @@ export default async function Home() {
                     height={88}
                   />
                   <div>
+                    <div className="review-stars" aria-label={locale === "ar" ? "تقييم ٥ من ٥" : "5 out of 5 stars"}>
+                      <span aria-hidden="true">★★★★★</span>
+                    </div>
                     <p className="review-quote">“{item.quote}”</p>
                     <p className="review-meta">
                       <strong>{item.name}</strong>
-                      <span>{item.place}</span>
+                      <span>
+                        {item.nationality} · {item.country}
+                      </span>
                     </p>
                   </div>
                 </article>
