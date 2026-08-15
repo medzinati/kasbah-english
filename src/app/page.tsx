@@ -1,51 +1,26 @@
 import Image from "next/image";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 
-const programs = [
+const highlights = [
   {
-    num: "01",
-    title: "Conversation Lab",
-    text: "Speak naturally in real situations — work, travel, and everyday life — with guided live practice.",
+    title: "Public learning",
+    text: "News, free courses, and a clear path to apply — open to everyone.",
   },
   {
-    num: "02",
-    title: "Exam Track",
-    text: "Focused preparation for IELTS and academic English, with clear milestones and feedback.",
+    title: "Members community",
+    text: "After acceptance: discussion groups, announcements, and live meetings.",
   },
   {
-    num: "03",
-    title: "Career English",
-    text: "Meetings, emails, interviews, and presentations — English that moves your career forward.",
-  },
-];
-
-const methods = [
-  {
-    title: "Live small groups",
-    text: "Interactive sessions where you speak more than you listen to lectures.",
-  },
-  {
-    title: "Personal feedback",
-    text: "Teachers correct what matters most for clarity, confidence, and fluency.",
-  },
-  {
-    title: "Progress you can feel",
-    text: "Short goals, weekly rhythm, and practice that fits busy Moroccan and global schedules.",
+    title: "Real practice",
+    text: "Small-group sessions focused on speaking, clarity, and confidence.",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <header className="nav">
-        <div className="wrap nav-inner">
-          <a className="logo" href="#top">
-            Kasbah <span>English</span>
-          </a>
-          <a className="nav-cta" href="#start">
-            Start learning
-          </a>
-        </div>
-      </header>
+      <SiteHeader variant="hero" />
 
       <main id="top">
         <section className="hero" aria-label="Kasbah English">
@@ -64,33 +39,36 @@ export default function Home() {
             <h1 className="brand">
               Kasbah <em>English</em>
             </h1>
-            <p className="headline">English that opens doors.</p>
+            <p className="headline">An English community that practices together.</p>
             <p className="lede">
-              An online English center for Moroccan learners — and anyone worldwide ready to speak with confidence.
+              Learn in public. Grow inside — discussions, group meetings, and real progress after you’re accepted.
             </p>
             <div className="cta-row">
-              <a className="btn btn-primary" href="#start">
-                Book a free intro
+              <a className="btn btn-primary" href="/apply">
+                Apply to join
               </a>
-              <a className="btn btn-ghost" href="#programs">
-                See programs
+              <a className="btn btn-ghost" href="/courses">
+                Try free courses
               </a>
             </div>
           </div>
         </section>
 
-        <section className="section programs" id="programs">
+        <section className="section programs">
           <div className="wrap">
             <div className="section-head">
-              <p className="eyebrow">Programs</p>
-              <h2>Learn with purpose, not pressure.</h2>
-              <p>Choose the path that matches your goal — then practice until English feels natural.</p>
+              <p className="eyebrow">What Kasbah English is</p>
+              <h2>A center outside. A community inside.</h2>
+              <p>
+                Everyone can explore news, free lessons, and how to apply. Members who are accepted unlock discussion
+                groups and live meetings.
+              </p>
             </div>
 
             <div className="program-list">
-              {programs.map((item) => (
-                <article className="program" key={item.num}>
-                  <span className="program-num">{item.num}</span>
+              {highlights.map((item, index) => (
+                <article className="program" key={item.title}>
+                  <span className="program-num">{String(index + 1).padStart(2, "0")}</span>
                   <div>
                     <h3>{item.title}</h3>
                     <p>{item.text}</p>
@@ -101,30 +79,36 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section method" id="method">
+        <section className="section method">
           <div className="wrap method-grid">
             <div>
               <div className="section-head">
                 <p className="eyebrow">How it works</p>
-                <h2>A modern classroom with a kasbah soul.</h2>
+                <h2>Apply. Get accepted. Practice with us.</h2>
                 <p>
-                  Rooted in Morocco, designed for the world — live online lessons that feel close, human, and practical.
+                  Access to the inner community is intentional — so discussions stay useful and meetings stay focused.
                 </p>
               </div>
               <div className="method-points">
-                {methods.map((item) => (
-                  <article key={item.title}>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </article>
-                ))}
+                <article>
+                  <h3>1. Explore freely</h3>
+                  <p>Read news, try free courses, and see if Kasbah English fits your goals.</p>
+                </article>
+                <article>
+                  <h3>2. Submit your application</h3>
+                  <p>Tell us your level, goals, and why you want to join the community.</p>
+                </article>
+                <article>
+                  <h3>3. Join the inside</h3>
+                  <p>Accepted members enter discussions, group spaces, and Zoom-style meetings.</p>
+                </article>
               </div>
             </div>
 
             <div className="method-visual">
               <Image
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
-                alt="Students learning together online"
+                alt="Learners practicing English together online"
                 fill
                 sizes="(max-width: 800px) 100vw, 45vw"
               />
@@ -132,7 +116,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section audience" id="audience">
+        <section className="section audience">
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">Who it’s for</p>
@@ -143,39 +127,35 @@ export default function Home() {
               <article>
                 <h3>For Morocco</h3>
                 <p>
-                  Clear explanations, flexible hours, and teachers who understand the journey from Darija and French to
-                  fluent English.
+                  Clear paths from Darija and French to confident English — with flexible online practice that fits real
+                  schedules.
                 </p>
               </article>
               <article>
                 <h3>For the world</h3>
-                <p>
-                  Join a global classroom with the same high standard — whether you’re in Casablanca, Paris, or beyond.
-                </p>
+                <p>Join a global community with the same standard, whether you’re home or abroad.</p>
               </article>
             </div>
           </div>
         </section>
 
-        <section className="section final-cta" id="start">
+        <section className="section final-cta">
           <div className="wrap">
-            <h2>Ready to speak with confidence?</h2>
-            <p>Tell us your level and goal — we’ll help you start the right program this week.</p>
-            <a className="btn btn-primary" href="mailto:hello@kasbahenglish.com">
-              Email hello@kasbahenglish.com
-            </a>
+            <h2>Ready to apply?</h2>
+            <p>We’ll review your application and invite accepted learners into the community.</p>
+            <div className="cta-row" style={{ justifyContent: "center" }}>
+              <a className="btn btn-primary" href="/apply">
+                Apply now
+              </a>
+              <a className="btn btn-ghost dark" href="/contact">
+                Contact us
+              </a>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="wrap footer-inner">
-          <p>
-            <strong>Kasbah English</strong> — online English for Morocco & the world.
-          </p>
-          <p>© {new Date().getFullYear()} Kasbah English</p>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

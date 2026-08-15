@@ -15,9 +15,12 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Kasbah English | Online English for Morocco & the World",
+  title: {
+    default: "Kasbah English | English community for Morocco & the world",
+    template: "%s | Kasbah English",
+  },
   description:
-    "Kasbah English is an online English language center helping Moroccan and international learners speak with clarity and confidence.",
+    "Kasbah English is an online English community — free public courses outside, discussions and live meetings inside after you’re accepted.",
 };
 
 export default function RootLayout({
