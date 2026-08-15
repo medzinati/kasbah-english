@@ -53,7 +53,7 @@ const dictionaries = {
       finalTitle: "نحن مستعدون عندما تكون مستعدًا.",
       finalText: "سجّل اليوم. سنراجع طلبك ونوجّه الأعضاء المقبولين لدخول المجتمع.",
       askQuestion: "اطرح سؤالًا",
-      visualAlt: "متعلمون من الخليج يتدرّبون على الإنجليزية",
+      visualAlt: "متعلمون سعوديون يتدرّبون على الإنجليزية معًا",
     },
     news: {
       title: "الأخبار",
@@ -232,7 +232,7 @@ const dictionaries = {
       finalTitle: "Ready when you are.",
       finalText: "Apply today. We’ll review your story and guide accepted members into the community.",
       askQuestion: "Ask a question",
-      visualAlt: "Gulf learners practicing English together",
+      visualAlt: "Saudi learners practicing English together",
     },
     news: {
       title: "News",
