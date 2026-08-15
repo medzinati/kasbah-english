@@ -5,15 +5,21 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 
+type Props = {
+  searchParams: Promise<{ plan?: string }>;
+};
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
   return { title: dict.apply.title, description: dict.apply.meta };
 }
 
-export default async function ApplyPage() {
+export default async function ApplyPage({ searchParams }: Props) {
   const locale = await getLocale();
   const dict = getDictionary(locale);
+  const params = await searchParams;
+  const initialPlan = params.plan?.trim() || "";
 
   return (
     <>
@@ -38,7 +44,12 @@ export default async function ApplyPage() {
               </ol>
               <p className="form-note">{dict.apply.note}</p>
             </div>
-            <ApplyForm dict={dict.apply} />
+            <ApplyForm
+              dict={dict.apply}
+              plans={dict.pricing.plans}
+              currency={dict.pricing.currency}
+              initialPlan={initialPlan}
+            />
           </div>
         </section>
       </main>

@@ -11,6 +11,7 @@ type ApplicationRow = {
   whatsapp: string | null;
   level: string;
   goal: string;
+  plan: string | null;
   motivation: string;
   status: "PENDING" | "ACCEPTED" | "REJECTED";
   createdAt: string;
@@ -106,6 +107,12 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
           </div>
           <p>
             <strong>المستوى:</strong> {row.level} · <strong>الهدف:</strong> {row.goal}
+            {row.plan ? (
+              <>
+                {" "}
+                · <strong>الباقة:</strong> {row.plan}
+              </>
+            ) : null}
           </p>
           {row.whatsapp ? (
             <p>

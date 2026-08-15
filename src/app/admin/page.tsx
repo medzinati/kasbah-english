@@ -35,6 +35,14 @@ export default async function AdminPage() {
     orderBy: { createdAt: "desc" },
   });
 
+  const planLabels: Record<string, string> = {
+    "1m": "شهر واحد — 99 ر.س",
+    "3m": "٣ أشهر — 249 ر.س",
+    "6m": "٦ أشهر — 399 ر.س",
+    "12m": "سنة واحدة — 699 ر.س",
+    "36m": "٣ سنوات — 1499 ر.س",
+  };
+
   const initial = applications.map((item) => ({
     id: item.id,
     name: item.name,
@@ -43,6 +51,7 @@ export default async function AdminPage() {
     whatsapp: item.whatsapp,
     level: item.level,
     goal: item.goal,
+    plan: item.plan ? planLabels[item.plan] || item.plan : null,
     motivation: item.motivation,
     status: item.status,
     createdAt: item.createdAt.toISOString(),

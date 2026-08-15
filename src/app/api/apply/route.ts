@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
+const planIds = ["1m", "3m", "6m", "12m", "36m"] as const;
+
 const schema = z.object({
   name: z.string().trim().min(2),
   email: z.string().trim().email(),
@@ -9,6 +11,7 @@ const schema = z.object({
   whatsapp: z.string().trim().optional(),
   level: z.string().trim().min(2),
   goal: z.string().trim().min(2),
+  plan: z.enum(planIds),
   motivation: z.string().trim().min(10),
 });
 
@@ -38,6 +41,7 @@ export async function POST(request: Request) {
         whatsapp: data.whatsapp || null,
         level: data.level,
         goal: data.goal,
+        plan: data.plan,
         motivation: data.motivation,
       },
     });
@@ -49,7 +53,6 @@ export async function POST(request: Request) {
     );
   }
 
-  // Best-effort email notify (does not block success)
   const inbox = process.env.CONTACT_EMAIL || "mohamed.ketrani.zinati@gmail.com";
   try {
     const form = new FormData();
@@ -59,6 +62,7 @@ export async function POST(request: Request) {
     form.set("whatsapp", data.whatsapp || "—");
     form.set("level", data.level);
     form.set("goal", data.goal);
+    form.set("plan", data.plan);
     form.set("motivation", data.motivation);
     form.set("_subject", `Kasbah English application — ${data.name}`);
     form.set("_template", "table");

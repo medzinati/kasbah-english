@@ -3,9 +3,27 @@
 import { FormEvent, useState } from "react";
 import type { Dictionary } from "@/i18n/dictionaries";
 
-export function ApplyForm({ dict }: { dict: Dictionary["apply"] }) {
+type PlanOption = {
+  id: string;
+  name: string;
+  duration: string;
+  price: string;
+};
+
+export function ApplyForm({
+  dict,
+  plans,
+  currency,
+  initialPlan = "",
+}: {
+  dict: Dictionary["apply"];
+  plans: PlanOption[];
+  currency: string;
+  initialPlan?: string;
+}) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
+  const validInitial = plans.some((plan) => plan.id === initialPlan) ? initialPlan : "";
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -79,6 +97,19 @@ export function ApplyForm({ dict }: { dict: Dictionary["apply"] }) {
             {dict.goals.map((goal) => (
               <option key={goal} value={goal}>
                 {goal}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="form-span-2">
+          {dict.plan}
+          <select name="plan" required defaultValue={validInitial}>
+            <option value="" disabled>
+              {dict.selectPlan}
+            </option>
+            {plans.map((plan) => (
+              <option key={plan.id} value={plan.id}>
+                {plan.name} — {plan.price} {currency} ({plan.duration})
               </option>
             ))}
           </select>
