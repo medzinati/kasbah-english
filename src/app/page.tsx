@@ -76,9 +76,7 @@ export default async function Home() {
                     <p className="review-quote">“{item.quote}”</p>
                     <p className="review-meta">
                       <strong>{item.name}</strong>
-                      <span>
-                        {item.nationality} · {item.country}
-                      </span>
+                      <span>{item.country}</span>
                     </p>
                   </div>
                 </article>

@@ -34,19 +34,16 @@ const dictionaries = {
       reviews: [
         {
           name: "خالد المنصوري",
-          nationality: "إماراتي",
           country: "الإمارات",
           quote: "صرت أتحدّث في الاجتماعات بثقة أكبر. الجوّ محترم والتدريب عملي جدًا.",
         },
         {
           name: "مريم العجمي",
-          nationality: "كويتية",
           country: "الكويت",
           quote: "أحسست بالأمان وأنا أتمرّن. المدرّسون واضحون والمجموعة تشجّعني كل أسبوع.",
         },
         {
           name: "يوسف الكواري",
-          nationality: "قطري",
           country: "قطر",
           quote: "من أول لقاء زوم لاحظت فرقًا في طلاقتي. أنصح أي شخص يريد تقدّمًا حقيقيًا.",
         },
@@ -232,19 +229,16 @@ const dictionaries = {
       reviews: [
         {
           name: "Khalid Al-Mansoori",
-          nationality: "Emirati",
           country: "UAE",
           quote: "I speak in meetings with more confidence now. The vibe is respectful and the practice is truly practical.",
         },
         {
           name: "Maryam Al-Ajmi",
-          nationality: "Kuwaiti",
           country: "Kuwait",
           quote: "I felt safe while practicing. The teachers are clear and the group encourages me every week.",
         },
         {
           name: "Yousef Al-Kuwari",
-          nationality: "Qatari",
           country: "Qatar",
           quote: "From the first Zoom session I noticed better fluency. I recommend it to anyone who wants real progress.",
         },
