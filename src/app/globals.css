@@ -521,7 +521,63 @@ body.locale-en .brand em {
   max-width: 40ch;
 }
 
-/* Programs */
+/* Reviews */
+.reviews {
+  background: var(--white);
+}
+
+.review-list {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.review {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.15rem 1.35rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+
+.review-photo {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--paper-deep);
+}
+
+.review-quote {
+  font-family: var(--font-display), Amiri, serif;
+  font-size: clamp(1.15rem, 2.6vw, 1.4rem);
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+  max-width: 42ch;
+}
+
+.review-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.85rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.review-meta strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (min-width: 800px) {
+  .review-photo {
+    width: 88px;
+    height: 88px;
+  }
+}
+
+/* Programs (legacy helpers kept if reused) */
 .programs {
   background: var(--white);
 }

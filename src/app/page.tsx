@@ -10,10 +10,10 @@ export default async function Home() {
   const dict = getDictionary(locale);
   const h = dict.home;
 
-  const highlights = [
-    { title: h.h1, text: h.h1text },
-    { title: h.h2, text: h.h2text },
-    { title: h.h3, text: h.h3text },
+  const reviews = [
+    { ...h.reviews[0], photo: "/images/reviews/1.png" },
+    { ...h.reviews[1], photo: "/images/reviews/2.png" },
+    { ...h.reviews[2], photo: "/images/reviews/3.png" },
   ];
 
   return (
@@ -51,7 +51,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section programs">
+        <section className="section reviews">
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">{h.whatEyebrow}</p>
@@ -59,13 +59,22 @@ export default async function Home() {
               <p>{h.whatText}</p>
             </div>
 
-            <div className="program-list">
-              {highlights.map((item, index) => (
-                <article className="program" key={item.title}>
-                  <span className="program-num">{String(index + 1).padStart(2, "0")}</span>
+            <div className="review-list">
+              {reviews.map((item) => (
+                <article className="review" key={item.name}>
+                  <Image
+                    className="review-photo"
+                    src={item.photo}
+                    alt={item.name}
+                    width={88}
+                    height={88}
+                  />
                   <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
+                    <p className="review-quote">“{item.quote}”</p>
+                    <p className="review-meta">
+                      <strong>{item.name}</strong>
+                      <span>{item.place}</span>
+                    </p>
                   </div>
                 </article>
               ))}
