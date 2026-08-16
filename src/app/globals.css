@@ -168,60 +168,6 @@ img {
   font-size: 1.18rem;
   letter-spacing: 0;
   color: var(--white);
-  display: inline-flex;
-  align-items: center;
-  line-height: 0;
-}
-
-.logo.logo-image {
-  padding-block: 0.15rem;
-}
-
-.brand-logo {
-  display: inline-flex;
-  line-height: 0;
-}
-
-.brand-logo-img {
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.brand-logo-nav {
-  width: clamp(3.4rem, 9vw, 4.35rem);
-  height: auto;
-  max-height: 3.35rem;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.18));
-}
-
-.nav-solid .brand-logo-nav {
-  filter: none;
-}
-
-.brand-logo-hero {
-  width: clamp(9.5rem, 38vw, 15.5rem);
-  height: auto;
-  max-width: 100%;
-  filter: drop-shadow(0 8px 24px rgba(8, 24, 42, 0.35));
-}
-
-.brand-logo-footer {
-  width: 5.5rem;
-  height: auto;
-}
-
-.brand-logo-mark {
-  width: 2.25rem;
-  height: auto;
-}
-
-.brand.brand-logo-heading {
-  font-size: 0;
-  line-height: 0;
-  text-shadow: none;
-  margin-bottom: 1.25rem;
 }
 
 .logo span {
@@ -425,11 +371,6 @@ body.locale-en .logo span {
 
   .logo {
     font-size: 1.2rem;
-  }
-
-  .brand-logo-nav {
-    width: 4.5rem;
-    max-height: 3.6rem;
   }
 }
 
@@ -1956,12 +1897,6 @@ body.locale-ar .whatsapp-float {
 .footer-brand {
   display: grid;
   gap: 0.85rem;
-}
-
-.footer-logo {
-  display: inline-flex;
-  width: fit-content;
-  line-height: 0;
 }
 
 .footer-links {

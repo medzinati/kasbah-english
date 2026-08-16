@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getLocale } from "@/i18n/get-locale";
@@ -37,8 +36,8 @@ export default async function Home() {
           </div>
 
           <div className="wrap hero-content">
-            <h1 className="brand brand-logo-heading">
-              <BrandLogo size="hero" alt={dict.brand} priority />
+            <h1 className="brand">
+              {dict.brandShort} <em>{dict.brandAccent}</em>
             </h1>
             <p className="headline">{h.headline}</p>
             <p className="lede">{h.lede}</p>

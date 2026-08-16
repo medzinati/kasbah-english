@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { SignOutButton } from "@/components/SignOutButton";
 import type { Locale } from "@/i18n/config";
@@ -16,6 +15,8 @@ type MembersNavProps = {
 };
 
 export function MembersNav({ name, role, locale, dict, title }: MembersNavProps) {
+  const brand = title || dict.brand;
+  const parts = brand.split(" ");
   const links = [
     { href: "/members", label: dict.members.home },
     { href: "/members/community", label: dict.members.community },
@@ -25,13 +26,17 @@ export function MembersNav({ name, role, locale, dict, title }: MembersNavProps)
     ...(role === "ADMIN" ? [{ href: "/admin", label: dict.members.admin }] : []),
   ];
 
-  const homeHref = role === "ADMIN" && title ? "/admin" : "/members";
-
   return (
     <header className="members-top">
       <div className="wrap members-top-inner">
-        <Link className="logo logo-image ink" href={homeHref} aria-label={title || dict.brand}>
-          <BrandLogo size="nav" alt={title || dict.brand} />
+        <Link className="logo ink" href="/members">
+          {parts.length > 1 ? (
+            <>
+              {parts[0]} <span>{parts.slice(1).join(" ")}</span>
+            </>
+          ) : (
+            brand
+          )}
         </Link>
         <div className="members-top-actions">
           <LanguageSwitcher locale={locale} labelAr={dict.lang.ar} labelEn={dict.lang.en} />
