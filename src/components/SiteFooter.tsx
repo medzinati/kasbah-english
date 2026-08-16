@@ -7,7 +7,7 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
       <div className="wrap footer-inner">
         <div className="footer-brand">
           <p>
-            <strong>{dict.brand}</strong> — {dict.footer.tagline}
+            <strong>{dict.brand}</strong> · {dict.footer.tagline}
           </p>
           <nav className="footer-links" aria-label={dict.footer.links}>
             <Link href="/news">{dict.nav.news}</Link>

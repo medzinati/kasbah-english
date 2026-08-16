@@ -321,11 +321,19 @@ body.locale-en .logo span {
 /* ——— Hero ——— */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 68svh;
+  max-height: 42rem;
   display: grid;
   align-items: flex-end;
   color: var(--white);
   overflow: hidden;
+}
+
+@media (min-width: 800px) {
+  .hero {
+    min-height: 78svh;
+    max-height: 52rem;
+  }
 }
 
 .hero-media {
@@ -369,9 +377,15 @@ body.locale-en .hero-shade {
 .hero-content {
   position: relative;
   z-index: 1;
-  padding: 7rem 0 3.25rem;
+  padding: 5.5rem 0 2.5rem;
   max-width: 38rem;
   text-align: start;
+}
+
+@media (min-width: 800px) {
+  .hero-content {
+    padding: 6.5rem 0 3rem;
+  }
 }
 
 .brand {
@@ -753,19 +767,24 @@ body.locale-en .brand em {
 .final-cta .btn-primary {
   background: var(--teal);
   color: var(--white);
-  box-shadow: 0 10px 28px rgba(15, 107, 92, 0.25);
+  border-color: var(--teal);
+  box-shadow: 0 10px 28px rgba(15, 107, 92, 0.28);
 }
 
 .final-cta .btn-primary:hover {
   background: var(--teal-deep);
+  border-color: var(--teal-deep);
 }
 
+.final-cta .btn-ghost.dark,
 .btn-ghost.dark {
-  border-color: rgba(18, 16, 26, 0.28);
+  border: 2px solid var(--ink);
   color: var(--ink);
-  background: transparent;
+  background: var(--white);
+  font-weight: 700;
 }
 
+.final-cta .btn-ghost.dark:hover,
 .btn-ghost.dark:hover {
   background: rgba(18, 16, 26, 0.05);
 }

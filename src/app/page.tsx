@@ -28,7 +28,8 @@ export default async function Home() {
               alt=""
               fill
               priority
-              sizes="100vw"
+              quality={72}
+              sizes="(max-width: 800px) 100vw, 1400px"
             />
             <div className="hero-shade" />
             <div className="hero-grain" aria-hidden="true" />
