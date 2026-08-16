@@ -191,6 +191,27 @@ model NewsPost {
   @@index([published, date])
 }
 
+model SiteSetting {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model PricingPlan {
+  id         String  @id
+  nameAr     String
+  nameEn     String
+  durationAr String
+  durationEn String
+  priceSar   Int
+  blurbAr    String
+  blurbEn    String
+  badge      String  @default("")
+  sortOrder  Int     @default(0)
+  active     Boolean @default(true)
+  updatedAt  DateTime @updatedAt
+}
+
 model PasswordResetToken {
   id        String   @id @default(cuid())
   email     String

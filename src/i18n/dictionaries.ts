@@ -971,6 +971,8 @@ const dictionaries = {
   },
 } as const;
 
+export { dictionaries };
+
 export type Dictionary = (typeof dictionaries)["ar"];
 
 export function getDictionary(locale: Locale): Dictionary {

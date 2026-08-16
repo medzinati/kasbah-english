@@ -5,6 +5,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 
 const links = [
   { href: "/admin", label: "لوحة التحكم" },
+  { href: "/admin/site", label: "محتوى الموقع" },
   { href: "/admin/applications", label: "الطلبات" },
   { href: "/admin/members", label: "الأعضاء" },
   { href: "/admin/news", label: "الأخبار" },

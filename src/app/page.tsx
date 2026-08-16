@@ -2,19 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getReviewPhotos, getSiteDictionary } from "@/lib/site-content";
 
 export default async function Home() {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   const h = dict.home;
+  const photos = await getReviewPhotos();
 
-  const reviews = [
-    { ...h.reviews[0], photo: "/images/reviews/1.png" },
-    { ...h.reviews[1], photo: "/images/reviews/2.png" },
-    { ...h.reviews[2], photo: "/images/reviews/3.png" },
-  ];
+  const reviews = h.reviews.map((item, index) => ({
+    ...item,
+    photo: photos[index] || photos[0] || "/images/reviews/1.png",
+  }));
 
   return (
     <>

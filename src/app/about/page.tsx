@@ -2,20 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
-import { getWhatsAppHref, SITE_EMAIL } from "@/lib/site-contact";
+import { getWhatsAppHref, getSiteContact } from "@/lib/site-contact";
+import { getSiteDictionary } from "@/lib/site-content";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   return { title: dict.about.title, description: dict.about.meta };
 }
 
 export default async function AboutPage() {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   const a = dict.about;
+  const contact = await getSiteContact();
 
   return (
     <>
@@ -64,7 +65,7 @@ export default async function AboutPage() {
               </Link>
               <a
                 className="btn btn-ghost dark"
-                href={getWhatsAppHref(dict.whatsapp.prefill)}
+                href={getWhatsAppHref(dict.whatsapp.prefill, contact.whatsapp)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -73,8 +74,8 @@ export default async function AboutPage() {
             </div>
             <p className="about-email">
               {a.emailLabel}{" "}
-              <a className="text-link" href={`mailto:${SITE_EMAIL}`}>
-                {SITE_EMAIL}
+              <a className="text-link" href={`mailto:${contact.email}`}>
+                {contact.email}
               </a>
             </p>
           </div>

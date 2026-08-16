@@ -1,12 +1,15 @@
-export const planPricesSar: Record<string, number> = {
-  "1m": 99,
-  "3m": 249,
-  "6m": 399,
-  "12m": 699,
-  "36m": 1499,
-};
+import { planPricesSar as fallbackPrices } from "@/lib/pricing-fallback";
+import { prisma } from "@/lib/prisma";
 
-export function planCheckoutAmountSar(planId: string | null | undefined): number | null {
+export async function planCheckoutAmountSar(planId: string | null | undefined): Promise<number | null> {
   if (!planId) return null;
-  return planPricesSar[planId] ?? null;
+  try {
+    const plan = await prisma.pricingPlan.findUnique({ where: { id: planId } });
+    if (plan?.active) return plan.priceSar;
+  } catch {
+    // fall through
+  }
+  return fallbackPrices[planId] ?? null;
 }
+
+export { fallbackPrices as planPricesSar };

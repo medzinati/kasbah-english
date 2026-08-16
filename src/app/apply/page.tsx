@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { ApplyForm } from "@/components/ApplyForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getSiteDictionary } from "@/lib/site-content";
 
 type Props = {
   searchParams: Promise<{ plan?: string; level?: string }>;
@@ -11,13 +11,13 @@ type Props = {
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   return { title: dict.apply.title, description: dict.apply.meta };
 }
 
 export default async function ApplyPage({ searchParams }: Props) {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   const params = await searchParams;
   const initialPlan = params.plan?.trim() || "";
   const initialLevel = params.level?.trim() || "";

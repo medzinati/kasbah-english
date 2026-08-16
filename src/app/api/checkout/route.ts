@@ -38,7 +38,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "هذا الطلب مدفوع مسبقًا." }, { status: 400 });
   }
 
-  const amountSar = planCheckoutAmountSar(application.plan);
+  const amountSar = await planCheckoutAmountSar(application.plan);
   if (!amountSar) {
     return NextResponse.json(
       { ok: false, error: "اختر باقة أولًا أو ادفع عبر واتساب." },

@@ -27,6 +27,7 @@ export default async function AdminDashboardPage() {
   ]);
 
   const cards = [
+    { href: "/admin/site", label: "محتوى الموقع", value: "CMS" },
     { href: "/admin/applications", label: "طلبات بانتظار المراجعة", value: pendingApps },
     { href: "/admin/members", label: "الأعضاء", value: members },
     { href: "/admin/videos", label: "الفيديوهات", value: videos },
@@ -37,7 +38,7 @@ export default async function AdminDashboardPage() {
 
   return (
     <AdminShell name={session.user.name} locale={locale} dict={dict} title="لوحة التحكم">
-      <p className="members-lede">تحكم كامل في الموقع: الأعضاء، المحتوى، الفيديوهات، واللقاءات.</p>
+      <p className="members-lede">تحكم كامل: محتوى الموقع العام، الأعضاء، الأخبار، الفيديوهات، واللقاءات.</p>
 
       <div className="admin-stats">
         {cards.map((card) => (
@@ -51,7 +52,10 @@ export default async function AdminDashboardPage() {
       <section className="members-section">
         <h2>اختصارات سريعة</h2>
         <div className="admin-quick">
-          <Link className="btn btn-primary" href="/admin/videos">
+          <Link className="btn btn-primary" href="/admin/site">
+            تعديل محتوى الموقع
+          </Link>
+          <Link className="btn btn-ghost dark" href="/admin/videos">
             إضافة فيديو
           </Link>
           <Link className="btn btn-ghost dark" href="/admin/content">

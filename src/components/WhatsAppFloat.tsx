@@ -3,13 +3,14 @@ import { getWhatsAppHref } from "@/lib/site-contact";
 type WhatsAppFloatProps = {
   label: string;
   prefill: string;
+  number?: string;
 };
 
-export function WhatsAppFloat({ label, prefill }: WhatsAppFloatProps) {
+export function WhatsAppFloat({ label, prefill, number }: WhatsAppFloatProps) {
   return (
     <a
       className="whatsapp-float"
-      href={getWhatsAppHref(prefill)}
+      href={getWhatsAppHref(prefill, number)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}

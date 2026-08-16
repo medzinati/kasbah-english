@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getSiteDictionary } from "@/lib/site-content";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   return { title: dict.pricing.title, description: dict.pricing.meta };
 }
 
@@ -20,7 +20,7 @@ const monthsByPlan: Record<string, number> = {
 
 export default async function PricingPage() {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   const p = dict.pricing;
 
   return (

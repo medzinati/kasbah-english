@@ -2,19 +2,20 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
-import { getWhatsAppHref, SITE_EMAIL } from "@/lib/site-contact";
+import { getWhatsAppHref, getSiteContact } from "@/lib/site-contact";
+import { getSiteDictionary } from "@/lib/site-content";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
   return { title: dict.contact.title, description: dict.contact.meta };
 }
 
 export default async function ContactPage() {
   const locale = await getLocale();
-  const dict = getDictionary(locale);
+  const dict = await getSiteDictionary(locale);
+  const contact = await getSiteContact();
 
   return (
     <>
@@ -34,15 +35,15 @@ export default async function ContactPage() {
               <h2>{dict.contact.preferEmail}</h2>
               <p>
                 {dict.contact.writeTo}{" "}
-                <a className="text-link" href={`mailto:${SITE_EMAIL}`}>
-                  {SITE_EMAIL}
+                <a className="text-link" href={`mailto:${contact.email}`}>
+                  {contact.email}
                 </a>
               </p>
               <p>
                 {dict.whatsapp.label}:{" "}
                 <a
                   className="text-link"
-                  href={getWhatsAppHref(dict.whatsapp.prefill)}
+                  href={getWhatsAppHref(dict.whatsapp.prefill, contact.whatsapp)}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
