@@ -78,19 +78,19 @@ body {
 }
 
 body.locale-ar {
-  font-family: var(--font-cairo), "Segoe UI", Tahoma, sans-serif;
+  font-family: var(--font-ar), "Segoe UI", Tahoma, sans-serif;
   letter-spacing: 0;
   line-height: 1.75;
-  --font-display: var(--font-cairo);
-  --font-body: var(--font-cairo);
+  --font-display: var(--font-ar);
+  --font-body: var(--font-ar);
 }
 
 body.locale-en {
-  font-family: var(--font-cairo), "Segoe UI", sans-serif;
-  letter-spacing: -0.011em;
+  font-family: var(--font-en), "Segoe UI", sans-serif;
+  letter-spacing: -0.016em;
   line-height: 1.65;
-  --font-display: var(--font-cairo);
-  --font-body: var(--font-cairo);
+  --font-display: var(--font-en);
+  --font-body: var(--font-en);
 }
 
 .lang-switch {
@@ -163,7 +163,7 @@ img {
 }
 
 .logo {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 700;
   font-size: 1.18rem;
   letter-spacing: 0;
@@ -445,7 +445,7 @@ body.locale-en .hero-shade {
 }
 
 .brand {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(3rem, 13vw, 5.8rem);
   font-weight: 800;
   line-height: 1.05;
@@ -468,7 +468,7 @@ body.locale-en .brand em {
 }
 
 .headline {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.25rem, 4.2vw, 1.85rem);
   font-weight: 700;
   font-style: normal;
@@ -594,7 +594,7 @@ body.locale-en .brand em {
 }
 
 .section-head h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.85rem, 4.4vw, 2.75rem);
   line-height: 1.22;
   letter-spacing: 0;
@@ -652,7 +652,7 @@ body.locale-en .brand em {
 }
 
 .review-quote {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.15rem, 2.6vw, 1.4rem);
   line-height: 1.55;
   margin-bottom: 0.75rem;
@@ -705,14 +705,14 @@ body.locale-en .brand em {
 }
 
 .program-num {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.15rem;
   color: var(--teal);
   padding-top: 0.2rem;
 }
 
 .program h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.4rem;
   letter-spacing: 0;
   margin-bottom: 0.35rem;
@@ -765,7 +765,7 @@ body.locale-en .brand em {
 }
 
 .method-points article h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.3rem;
   margin-bottom: 0.4rem;
   letter-spacing: 0;
@@ -804,7 +804,7 @@ body.locale-en .brand em {
 }
 
 .audience-split h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.55rem;
   margin-bottom: 0.55rem;
   letter-spacing: 0;
@@ -827,7 +827,7 @@ body.locale-en .brand em {
 }
 
 .final-cta h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(2.1rem, 5.5vw, 3.2rem);
   letter-spacing: 0;
   line-height: 1.15;
@@ -883,7 +883,7 @@ body.locale-en .brand em {
 }
 
 .page-hero h1 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(2.1rem, 7vw, 3.4rem);
   line-height: 1.2;
   letter-spacing: 0;
@@ -942,7 +942,7 @@ body.locale-en .brand em {
 }
 
 .news-item h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.45rem, 3vw, 1.9rem);
   letter-spacing: 0;
   line-height: 1.25;
@@ -994,7 +994,7 @@ body.locale-en .brand em {
 }
 
 .news-article h1 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.85rem, 5vw, 2.75rem);
   line-height: 1.2;
   margin-bottom: 0.85rem;
@@ -1096,7 +1096,7 @@ body.locale-en .brand em {
 }
 
 .course-item h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.4rem, 3vw, 1.85rem);
   margin-bottom: 0.55rem;
   letter-spacing: 0;
@@ -1222,7 +1222,7 @@ body.locale-en .brand em {
 }
 
 .pricing-plan h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.45rem;
   font-weight: 700;
   line-height: 1.2;
@@ -1240,7 +1240,7 @@ body.locale-en .brand em {
 
 .pricing-price {
   display: block;
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.7rem, 4vw, 2.1rem);
   font-weight: 800;
   line-height: 1;
@@ -1291,7 +1291,7 @@ body.locale-en .brand em {
 }
 
 .form-aside h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.6rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -1476,7 +1476,7 @@ body.locale-en .brand em {
 }
 
 .about-value-list h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.25rem;
   margin-bottom: 0.4rem;
   letter-spacing: 0;
@@ -1578,7 +1578,7 @@ body.locale-ar .whatsapp-float {
 
 .why-list h3,
 .trust-list h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.2rem;
   margin-bottom: 0.35rem;
 }
@@ -1651,7 +1651,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .level-prompt {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.35rem, 3vw, 1.75rem);
   line-height: 1.35;
 }
@@ -1686,7 +1686,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .level-result h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.6rem, 4vw, 2.1rem);
   margin-bottom: 0.5rem;
 }
@@ -1734,7 +1734,7 @@ body.locale-ar .whatsapp-float {
 
 .footer strong {
   color: var(--white);
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-weight: 600;
 }
 
@@ -1817,7 +1817,7 @@ body.locale-ar .whatsapp-float {
 
 .admin-stat strong {
   font-size: 1.8rem;
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   line-height: 1;
 }
 
@@ -1961,7 +1961,7 @@ body.locale-ar .whatsapp-float {
 
 .members-section > h2,
 .members-section-head h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
@@ -1991,7 +1991,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .feed-item h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.25rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -2045,7 +2045,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .group-item h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.35rem;
@@ -2074,7 +2074,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .community-form h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.25rem;
   margin-bottom: 0.35rem;
 }
@@ -2123,7 +2123,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .meeting-when time {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.05rem;
   letter-spacing: -0.02em;
   color: var(--ink);
@@ -2135,7 +2135,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .meeting-body h3 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
   margin-bottom: 0.4rem;
@@ -2159,7 +2159,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .members-main h1 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.85rem, 6vw, 2.8rem);
   letter-spacing: -0.03em;
   line-height: 1.12;
@@ -2189,7 +2189,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .members-grid h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.35rem;
   margin-bottom: 0.45rem;
   letter-spacing: -0.02em;
@@ -2231,7 +2231,7 @@ body.locale-ar .whatsapp-float {
 }
 
 .admin-item h2 {
-  font-family: var(--font-display), Cairo, sans-serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.35rem;
   letter-spacing: -0.02em;
 }
