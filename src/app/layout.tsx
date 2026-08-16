@@ -35,6 +35,11 @@ export async function generateMetadata(): Promise<Metadata> {
       locale === "ar"
         ? "قصبة إنجليش مجتمع إنجليزي عبر الإنترنت للمتعلمين في الخليج والعالم. دروس مجانية للجميع، ومجتمع للأعضاء المقبولين مع نقاشات ولقاءات عبر زوم."
         : "Kasbah English is a friendly online English community for Gulf and international learners. Free courses publicly, discussions and live Zoom meetings for accepted members.",
+    icons: {
+      icon: [{ url: "/images/kasbah-logo.png", type: "image/png" }],
+      apple: [{ url: "/images/kasbah-logo.png", type: "image/png" }],
+      shortcut: ["/images/kasbah-logo.png"],
+    },
   };
 }
 

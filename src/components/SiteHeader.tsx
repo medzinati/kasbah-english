@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { BrandLogo } from "@/components/BrandLogo";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -39,8 +40,8 @@ export function SiteHeader({ variant = "solid", locale, dict }: SiteHeaderProps)
   return (
     <header className={`nav ${variant === "solid" ? "nav-solid" : ""} ${open ? "is-open" : ""}`}>
       <div className="wrap nav-inner">
-        <Link className="logo" href="/" onClick={close}>
-          {dict.brandShort} <span>{dict.brandAccent}</span>
+        <Link className="logo logo-image" href="/" onClick={close} aria-label={dict.brand}>
+          <BrandLogo size="nav" alt={dict.brand} priority />
         </Link>
 
         <nav className="nav-links" aria-label={dict.nav.mainNav}>

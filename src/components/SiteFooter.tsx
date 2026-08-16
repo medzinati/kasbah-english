@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 export function SiteFooter({ dict }: { dict: Dictionary }) {
@@ -6,9 +7,10 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
     <footer className="footer">
       <div className="wrap footer-inner">
         <div className="footer-brand">
-          <p>
-            <strong>{dict.brand}</strong> · {dict.footer.tagline}
-          </p>
+          <Link href="/" className="footer-logo" aria-label={dict.brand}>
+            <BrandLogo size="footer" alt={dict.brand} />
+          </Link>
+          <p>{dict.footer.tagline}</p>
           <nav className="footer-links" aria-label={dict.footer.links}>
             <Link href="/about">{dict.nav.about}</Link>
             <Link href="/news">{dict.nav.news}</Link>
