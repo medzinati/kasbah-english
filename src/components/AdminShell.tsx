@@ -7,6 +7,7 @@ const links = [
   { href: "/admin", label: "لوحة التحكم" },
   { href: "/admin/applications", label: "الطلبات" },
   { href: "/admin/members", label: "الأعضاء" },
+  { href: "/admin/news", label: "الأخبار" },
   { href: "/admin/videos", label: "الفيديوهات" },
   { href: "/admin/content", label: "المحتوى المجاني" },
   { href: "/admin/meetings", label: "اللقاءات" },

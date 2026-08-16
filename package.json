@@ -13,12 +13,14 @@
   },
   "dependencies": {
     "@prisma/client": "^6.13.0",
+    "@vercel/blob": "^2.8.0",
     "bcryptjs": "^3.0.2",
     "next": "^15.5.2",
     "next-auth": "^4.24.11",
     "nodemailer": "^7.0.13",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "stripe": "^22.5.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {

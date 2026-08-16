@@ -35,8 +35,9 @@ export async function POST(request: Request) {
   const level = data.level && data.level.length > 0 ? data.level : "Pending";
   const pending = "Pending";
 
+  let applicationId = "";
   try {
-    await prisma.application.create({
+    const created = await prisma.application.create({
       data: {
         name: data.name,
         email,
@@ -46,8 +47,10 @@ export async function POST(request: Request) {
         goal: pending,
         plan,
         motivation: "",
+        paymentStatus: "UNPAID",
       },
     });
+    applicationId = created.id;
   } catch (error) {
     console.error("Apply DB error", error);
     return NextResponse.json(
@@ -76,5 +79,9 @@ export async function POST(request: Request) {
     console.error("Apply notify error", error);
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({
+    ok: true,
+    applicationId,
+    canPay: Boolean(plan && process.env.STRIPE_SECRET_KEY),
+  });
 }

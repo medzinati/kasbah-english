@@ -40,6 +40,7 @@ export default async function AdminApplicationsPage() {
     plan: item.plan ? planLabels[item.plan] || item.plan : null,
     motivation: item.motivation,
     status: item.status,
+    paymentStatus: item.paymentStatus,
     createdAt: item.createdAt.toISOString(),
   }));
 

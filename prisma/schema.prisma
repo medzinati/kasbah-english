@@ -34,24 +34,27 @@ model User {
   meetings      Meeting[]
   videos        Video[]
   freeLessons   FreeLesson[]
+  newsPosts     NewsPost[]
   meetingRegs   MeetingRegistration[]
 }
 
 model Application {
-  id         String            @id @default(cuid())
-  name       String
-  email      String
-  location   String
-  whatsapp   String?
-  level      String
-  goal       String
-  plan       String?
-  motivation String
-  status     ApplicationStatus @default(PENDING)
-  createdAt  DateTime          @default(now())
-  reviewedAt DateTime?
-  userId     String?           @unique
-  user       User?             @relation(fields: [userId], references: [id])
+  id              String            @id @default(cuid())
+  name            String
+  email           String
+  location        String
+  whatsapp        String?
+  level           String
+  goal            String
+  plan            String?
+  motivation      String
+  status          ApplicationStatus @default(PENDING)
+  paymentStatus   String            @default("UNPAID")
+  stripeSessionId String?
+  createdAt       DateTime          @default(now())
+  reviewedAt      DateTime?
+  userId          String?           @unique
+  user            User?             @relation(fields: [userId], references: [id])
 
   @@index([email])
   @@index([status])
@@ -164,4 +167,26 @@ model FreeLesson {
   updatedAt   DateTime @updatedAt
 
   @@index([published, sortOrder])
+}
+
+model NewsPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  date        DateTime @default(now())
+  imageUrl    String
+  imageAltAr  String
+  imageAltEn  String
+  titleAr     String
+  titleEn     String
+  summaryAr   String
+  summaryEn   String
+  bodyAr      String
+  bodyEn      String
+  published   Boolean  @default(true)
+  createdById String
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([published, date])
 }

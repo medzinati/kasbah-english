@@ -44,12 +44,30 @@ export function ApplyForm({
           level: initialLevel || undefined,
         }),
       });
-      const json = (await res.json()) as { ok?: boolean; error?: string };
+      const json = (await res.json()) as {
+        ok?: boolean;
+        error?: string;
+        applicationId?: string;
+        canPay?: boolean;
+      };
 
       if (!res.ok || !json.ok) {
         setStatus("error");
         setMessage(json.error || dict.error);
         return;
+      }
+
+      if (json.canPay && json.applicationId) {
+        const payRes = await fetch("/api/checkout", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ applicationId: json.applicationId }),
+        });
+        const payJson = (await payRes.json()) as { ok?: boolean; url?: string; error?: string };
+        if (payRes.ok && payJson.ok && payJson.url) {
+          window.location.href = payJson.url;
+          return;
+        }
       }
 
       setStatus("success");

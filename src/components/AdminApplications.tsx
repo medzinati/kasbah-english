@@ -14,6 +14,7 @@ type ApplicationRow = {
   plan: string | null;
   motivation: string;
   status: "PENDING" | "ACCEPTED" | "REJECTED";
+  paymentStatus: string;
   createdAt: string;
 };
 
@@ -113,6 +114,9 @@ export function AdminApplications({ initial }: { initial: ApplicationRow[] }) {
                 · <strong>الباقة:</strong> {row.plan}
               </>
             ) : null}
+            {" "}
+            · <strong>الدفع:</strong>{" "}
+            {row.paymentStatus === "PAID" ? "مدفوع" : row.paymentStatus === "WAIVED" ? "معفى" : "غير مدفوع"}
           </p>
           {row.whatsapp ? (
             <p>

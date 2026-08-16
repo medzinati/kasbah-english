@@ -4,21 +4,24 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { getNewsBySlug, newsItems } from "@/data/news";
+import { newsItems as staticNews } from "@/data/news-items";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getPublishedNewsBySlug } from "@/lib/news";
+
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return newsItems.map((item) => ({ slug: item.slug }));
+  return staticNews.map((item) => ({ slug: item.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const item = getNewsBySlug(slug);
+  const item = await getPublishedNewsBySlug(slug);
   const locale = await getLocale();
   if (!item) return {};
   return {
@@ -29,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NewsArticlePage({ params }: Props) {
   const { slug } = await params;
-  const item = getNewsBySlug(slug);
+  const item = await getPublishedNewsBySlug(slug);
   if (!item) notFound();
 
   const locale = await getLocale();

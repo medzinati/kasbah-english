@@ -3,9 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { newsItems } from "@/data/news";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getPublishedNews } from "@/lib/news";
+
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -16,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function NewsPage() {
   const locale = await getLocale();
   const dict = getDictionary(locale);
+  const newsItems = await getPublishedNews();
 
   return (
     <>

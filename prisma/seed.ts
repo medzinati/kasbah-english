@@ -88,8 +88,44 @@ async function main() {
     });
   }
 
+  const { newsItems } = await import("../src/data/news-items");
+  for (const item of newsItems) {
+    await prisma.newsPost.upsert({
+      where: { slug: item.slug },
+      update: {
+        imageUrl: item.image,
+        imageAltAr: item.imageAlt.ar,
+        imageAltEn: item.imageAlt.en,
+        titleAr: item.title.ar,
+        titleEn: item.title.en,
+        summaryAr: item.summary.ar,
+        summaryEn: item.summary.en,
+        bodyAr: JSON.stringify(item.body.ar),
+        bodyEn: JSON.stringify(item.body.en),
+        published: true,
+        date: new Date(item.date),
+      },
+      create: {
+        slug: item.slug,
+        date: new Date(item.date),
+        imageUrl: item.image,
+        imageAltAr: item.imageAlt.ar,
+        imageAltEn: item.imageAlt.en,
+        titleAr: item.title.ar,
+        titleEn: item.title.en,
+        summaryAr: item.summary.ar,
+        summaryEn: item.summary.en,
+        bodyAr: JSON.stringify(item.body.ar),
+        bodyEn: JSON.stringify(item.body.en),
+        published: true,
+        createdById: admin.id,
+      },
+    });
+  }
+
   console.log(`Admin ready: ${email}`);
   console.log("Default discussion groups ready");
+  console.log("News posts ready");
   console.log("Login at /members/login");
 }
 

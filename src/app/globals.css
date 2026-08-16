@@ -1263,10 +1263,35 @@ body.locale-en .brand em {
   max-width: 34ch;
 }
 
-.form-short-note {
-  color: var(--ink-soft);
-  font-size: 0.95rem;
-  margin: 0;
+.image-upload-field {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.image-upload-file {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.65rem 1rem;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  cursor: pointer;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.image-upload-file input {
+  display: none;
+}
+
+.image-upload-preview {
+  width: min(100%, 280px);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--line);
 }
 
 .site-form {

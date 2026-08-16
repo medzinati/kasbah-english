@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { ImageUploadField } from "@/components/ImageUploadField";
 
 type LessonRow = {
   id: string;
@@ -96,13 +97,10 @@ export function AdminContent({ initial }: { initial: LessonRow[] }) {
           </label>
         </div>
         <label>
-          صورة المحتوى (رابط أو مسار مثل /images/courses/everyday.png)
-          <input name="imageUrl" type="text" placeholder="/images/courses/everyday.png" dir="ltr" />
-        </label>
-        <label>
           نقاط الدرس (سطر لكل نقطة)
           <textarea name="lessons" required rows={5} placeholder={"النقطة الأولى\nالنقطة الثانية"} />
         </label>
+        <ImageUploadField name="imageUrl" label="صورة الدرس" />
         <label className="admin-check">
           <input name="published" type="checkbox" defaultChecked />
           منشور في صفحة الدروس المجانية
