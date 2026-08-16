@@ -21,7 +21,7 @@ export default async function AboutPage() {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{a.title}</p>
             <h1>{a.hero}</h1>
@@ -29,7 +29,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        <section className="section about-story">
+        <section className="section about-story" data-reveal>
           <div className="wrap about-story-inner">
             <p className="about-lead">{a.story1}</p>
             <p>{a.story2}</p>
@@ -37,7 +37,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        <section className="section about-values">
+        <section className="section about-values" data-reveal>
           <div className="wrap">
             <header className="section-head">
               <p className="eyebrow">{a.valuesEyebrow}</p>
@@ -45,7 +45,7 @@ export default async function AboutPage() {
             </header>
             <ul className="about-value-list">
               {a.values.map((item) => (
-                <li key={item.title}>
+                <li key={item.title} data-reveal>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </li>
@@ -54,7 +54,7 @@ export default async function AboutPage() {
           </div>
         </section>
 
-        <section className="section final-cta">
+        <section className="section final-cta" data-reveal="fade">
           <div className="wrap">
             <h2>{a.ctaTitle}</h2>
             <p>{a.ctaText}</p>

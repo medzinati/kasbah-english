@@ -27,7 +27,7 @@ export default async function PricingPage() {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{p.title}</p>
             <h1>{p.hero}</h1>
@@ -35,7 +35,7 @@ export default async function PricingPage() {
           </div>
         </section>
 
-        <section className="section pricing-section">
+        <section className="section pricing-section" data-reveal>
           <div className="wrap">
             <ul className="pricing-includes">
               <li className="pricing-includes-title">{p.includesTitle}</li>
@@ -58,6 +58,7 @@ export default async function PricingPage() {
                 return (
                   <article
                     key={plan.id}
+                    data-reveal
                     className={`pricing-plan${isPopular ? " is-featured" : ""}${isValue ? " is-value" : ""}`}
                   >
                     <div className="pricing-plan-top">

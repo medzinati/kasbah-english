@@ -20,7 +20,7 @@ export default async function ContactPage() {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{dict.contact.title}</p>
             <h1>{dict.contact.hero}</h1>
@@ -28,7 +28,7 @@ export default async function ContactPage() {
           </div>
         </section>
 
-        <section className="section">
+        <section className="section" data-reveal>
           <div className="wrap form-layout">
             <div className="form-aside">
               <h2>{dict.contact.preferEmail}</h2>

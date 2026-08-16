@@ -24,7 +24,7 @@ export default async function NewsPage() {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{dict.news.title}</p>
             <h1>{dict.news.hero}</h1>
@@ -35,7 +35,7 @@ export default async function NewsPage() {
         <section className="section">
           <div className="wrap news-list">
             {newsItems.map((item) => (
-              <article className="news-item news-item-preview" key={item.slug}>
+              <article className="news-item news-item-preview" key={item.slug} data-reveal>
                 <Link href={`/news/${item.slug}`} className="news-media">
                   <Image
                     src={item.image}

@@ -43,7 +43,7 @@ export default async function NewsArticlePage({ params }: Props) {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <article className="news-article">
+        <article className="news-article" data-reveal="fade">
           <div className="wrap news-article-inner">
             <p className="eyebrow">
               <Link href="/news">{dict.news.title}</Link>
@@ -58,7 +58,7 @@ export default async function NewsArticlePage({ params }: Props) {
             <h1>{item.title[locale]}</h1>
             <p className="news-article-lede">{item.summary[locale]}</p>
 
-            <div className="news-article-media">
+            <div className="news-article-media" data-reveal>
               <Image
                 src={item.image}
                 alt={item.imageAlt[locale]}
@@ -70,7 +70,7 @@ export default async function NewsArticlePage({ params }: Props) {
               />
             </div>
 
-            <div className="news-article-body">
+            <div className="news-article-body" data-reveal>
               {paragraphs.map((paragraph) => (
                 <p key={paragraph.slice(0, 48)}>{paragraph}</p>
               ))}

@@ -26,7 +26,7 @@ export default async function ApplyPage({ searchParams }: Props) {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{dict.apply.title}</p>
             <h1>{dict.apply.hero}</h1>
@@ -34,7 +34,7 @@ export default async function ApplyPage({ searchParams }: Props) {
           </div>
         </section>
 
-        <section className="section">
+        <section className="section" data-reveal>
           <div className="wrap form-layout">
             <div className="form-aside">
               <h2>{dict.apply.nextTitle}</h2>

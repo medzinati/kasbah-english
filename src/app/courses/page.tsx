@@ -55,7 +55,7 @@ export default async function CoursesPage() {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{dict.courses.title}</p>
             <h1>{dict.courses.hero}</h1>
@@ -67,7 +67,7 @@ export default async function CoursesPage() {
         <section className="section">
           <div className="wrap course-list">
             {courses.map((course) => (
-              <article className="course-item" key={course.slug} id={course.slug}>
+              <article className="course-item" key={course.slug} id={course.slug} data-reveal>
                 <div className="course-media">
                   <Image
                     src={course.image}

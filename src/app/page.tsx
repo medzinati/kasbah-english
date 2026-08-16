@@ -55,7 +55,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section why-us">
+        <section className="section why-us" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">{h.whyEyebrow}</p>
@@ -64,7 +64,7 @@ export default async function Home() {
             </div>
             <ul className="why-list">
               {h.why.map((item) => (
-                <li key={item.title}>
+                <li key={item.title} data-reveal>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </li>
@@ -73,7 +73,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section reviews">
+        <section className="section reviews" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">{h.whatEyebrow}</p>
@@ -83,7 +83,7 @@ export default async function Home() {
 
             <div className="review-list">
               {reviews.map((item) => (
-                <article className="review" key={item.name}>
+                <article className="review" key={item.name} data-reveal>
                   <Image
                     className="review-photo"
                     src={item.photo}
@@ -107,7 +107,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section trust-section">
+        <section className="section trust-section" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">{h.trustEyebrow}</p>
@@ -116,7 +116,7 @@ export default async function Home() {
             </div>
             <ul className="trust-list">
               {h.trust.map((item) => (
-                <li key={item.title}>
+                <li key={item.title} data-reveal>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>
                 </li>
@@ -125,9 +125,9 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section method">
+        <section className="section method" data-reveal>
           <div className="wrap method-grid">
-            <div>
+            <div data-reveal="left">
               <div className="section-head">
                 <p className="eyebrow">{h.howEyebrow}</p>
                 <h2>{h.howTitle}</h2>
@@ -149,7 +149,7 @@ export default async function Home() {
               </div>
             </div>
 
-            <div className="method-visual">
+            <div className="method-visual" data-reveal="right">
               <Image
                 src="/images/saudi-learners-group.png"
                 alt={h.visualAlt}
@@ -160,7 +160,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section audience">
+        <section className="section audience" data-reveal>
           <div className="wrap">
             <div className="section-head">
               <p className="eyebrow">{h.whoEyebrow}</p>
@@ -168,11 +168,11 @@ export default async function Home() {
               <p>{h.whoText}</p>
             </div>
             <div className="audience-split">
-              <article>
+              <article data-reveal="left">
                 <h3>{h.morocco}</h3>
                 <p>{h.moroccoText}</p>
               </article>
-              <article>
+              <article data-reveal="right">
                 <h3>{h.world}</h3>
                 <p>{h.worldText}</p>
               </article>
@@ -180,7 +180,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section faq-section">
+        <section className="section faq-section" data-reveal>
           <div className="wrap faq-inner">
             <div className="section-head">
               <p className="eyebrow">{h.faqEyebrow}</p>
@@ -188,7 +188,7 @@ export default async function Home() {
             </div>
             <div className="faq-list">
               {h.faq.map((item) => (
-                <details key={item.q} className="faq-item">
+                <details key={item.q} className="faq-item" data-reveal>
                   <summary>{item.q}</summary>
                   <p>{item.a}</p>
                 </details>
@@ -197,7 +197,7 @@ export default async function Home() {
           </div>
         </section>
 
-        <section className="section final-cta">
+        <section className="section final-cta" data-reveal="fade">
           <div className="wrap">
             <h2>{h.finalTitle}</h2>
             <p>{h.finalText}</p>

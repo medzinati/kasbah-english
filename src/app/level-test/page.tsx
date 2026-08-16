@@ -20,14 +20,14 @@ export default async function LevelTestPage() {
     <>
       <SiteHeader locale={locale} dict={dict} />
       <main>
-        <section className="page-hero">
+        <section className="page-hero" data-reveal="fade">
           <div className="wrap page-hero-inner">
             <p className="eyebrow">{t.title}</p>
             <h1>{t.hero}</h1>
             <p>{t.lede}</p>
           </div>
         </section>
-        <section className="section">
+        <section className="section" data-reveal>
           <div className="wrap">
             <LevelTestQuiz dict={t} />
           </div>
