@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
@@ -24,6 +24,13 @@ export function SiteHeader({ variant = "solid", locale, dict }: SiteHeaderProps)
     { href: "/contact", label: dict.nav.contact },
     { href: "/members/login", label: dict.nav.members },
   ];
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   function close() {
     setOpen(false);
