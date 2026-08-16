@@ -10,6 +10,7 @@ type LessonRow = {
   level: string;
   duration: string;
   lessons: string;
+  imageUrl: string | null;
   published: boolean;
   sortOrder: number;
 };
@@ -95,6 +96,10 @@ export function AdminContent({ initial }: { initial: LessonRow[] }) {
           </label>
         </div>
         <label>
+          صورة المحتوى (رابط أو مسار مثل /images/courses/everyday.png)
+          <input name="imageUrl" type="text" placeholder="/images/courses/everyday.png" dir="ltr" />
+        </label>
+        <label>
           نقاط الدرس (سطر لكل نقطة)
           <textarea name="lessons" required rows={5} placeholder={"النقطة الأولى\nالنقطة الثانية"} />
         </label>
@@ -109,7 +114,9 @@ export function AdminContent({ initial }: { initial: LessonRow[] }) {
       </form>
 
       <div className="admin-list">
-        {rows.length === 0 ? <p className="members-empty">لا يوجد محتوى بعد — ستظهر الدروس الثابتة للعامة حتى تضيف محتوى هنا.</p> : null}
+        {rows.length === 0 ? (
+          <p className="members-empty">لا يوجد محتوى بعد. ستظهر الدروس الافتراضية للعامة حتى تضيف محتوى هنا.</p>
+        ) : null}
         {rows.map((row) => (
           <article className="admin-item" key={row.id}>
             <div className="admin-item-top">
@@ -118,6 +125,7 @@ export function AdminContent({ initial }: { initial: LessonRow[] }) {
                 <p>
                   {row.level} · {row.duration} · {row.published ? "منشور" : "مسودة"}
                 </p>
+                {row.imageUrl ? <p dir="ltr">{row.imageUrl}</p> : null}
                 <p>{row.summary}</p>
               </div>
               <button

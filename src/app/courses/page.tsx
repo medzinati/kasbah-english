@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -32,6 +33,8 @@ export default async function CoursesPage() {
           level: item.level,
           duration: item.duration,
           summary: item.summary,
+          image: item.imageUrl || "/images/courses/everyday.png",
+          imageAlt: item.title,
           lessons: item.lessons
             .split("\n")
             .map((line) => line.trim())
@@ -43,6 +46,8 @@ export default async function CoursesPage() {
           level: course.level[locale],
           duration: course.duration[locale],
           summary: course.summary[locale],
+          image: course.image,
+          imageAlt: course.imageAlt[locale],
           lessons: course.lessons[locale],
         }));
 
@@ -63,20 +68,32 @@ export default async function CoursesPage() {
           <div className="wrap course-list">
             {courses.map((course) => (
               <article className="course-item" key={course.slug} id={course.slug}>
-                <div className="course-meta">
-                  <span>{course.level}</span>
-                  <span>{course.duration}</span>
+                <div className="course-media">
+                  <Image
+                    src={course.image}
+                    alt={course.imageAlt}
+                    width={1200}
+                    height={675}
+                    sizes="(max-width: 800px) 100vw, 720px"
+                    quality={75}
+                  />
                 </div>
-                <h2>{course.title}</h2>
-                <p>{course.summary}</p>
-                <ol>
-                  {course.lessons.map((lesson) => (
-                    <li key={lesson}>{lesson}</li>
-                  ))}
-                </ol>
-                <Link className="text-link" href="/apply">
-                  {dict.courses.cta}
-                </Link>
+                <div className="course-copy">
+                  <div className="course-meta">
+                    <span>{course.level}</span>
+                    <span>{course.duration}</span>
+                  </div>
+                  <h2>{course.title}</h2>
+                  <p>{course.summary}</p>
+                  <ol>
+                    {course.lessons.map((lesson) => (
+                      <li key={lesson}>{lesson}</li>
+                    ))}
+                  </ol>
+                  <Link className="text-link" href="/apply">
+                    {dict.courses.cta}
+                  </Link>
+                </div>
               </article>
             ))}
           </div>

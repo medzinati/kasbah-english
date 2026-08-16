@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { newsItems } from "@/data/news";
@@ -31,16 +32,28 @@ export default async function NewsPage() {
           <div className="wrap news-list">
             {newsItems.map((item) => (
               <article className="news-item" key={item.slug} id={item.slug}>
-                <time dateTime={item.date}>
-                  {new Intl.DateTimeFormat(locale === "ar" ? "ar" : "en", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  }).format(new Date(item.date))}
-                </time>
-                <h2>{item.title[locale]}</h2>
-                <p className="news-summary">{item.summary[locale]}</p>
-                <p>{item.body[locale]}</p>
+                <div className="news-media">
+                  <Image
+                    src={item.image}
+                    alt={item.imageAlt[locale]}
+                    width={1200}
+                    height={675}
+                    sizes="(max-width: 800px) 100vw, 720px"
+                    quality={75}
+                  />
+                </div>
+                <div className="news-copy">
+                  <time dateTime={item.date}>
+                    {new Intl.DateTimeFormat(locale === "ar" ? "ar" : "en", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }).format(new Date(item.date))}
+                  </time>
+                  <h2>{item.title[locale]}</h2>
+                  <p className="news-summary">{item.summary[locale]}</p>
+                  <p>{item.body[locale]}</p>
+                </div>
               </article>
             ))}
           </div>

@@ -30,6 +30,7 @@ export default async function AdminContentPage() {
           level: item.level,
           duration: item.duration,
           lessons: item.lessons,
+          imageUrl: item.imageUrl,
           published: item.published,
           sortOrder: item.sortOrder,
         }))}

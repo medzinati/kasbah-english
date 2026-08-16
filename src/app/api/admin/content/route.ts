@@ -16,6 +16,7 @@ const schema = z.object({
   level: z.string().trim().min(1),
   duration: z.string().trim().min(1),
   lessons: z.string().trim().min(2),
+  imageUrl: z.string().trim().optional(),
   published: z.boolean().optional(),
   sortOrder: z.number().int().optional(),
 });
@@ -38,6 +39,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: "بيانات غير صحيحة." }, { status: 400 });
   }
 
+  const imageUrl = parsed.data.imageUrl?.trim() || null;
+
   const lesson = await prisma.freeLesson.create({
     data: {
       title: parsed.data.title,
@@ -45,6 +48,7 @@ export async function POST(request: Request) {
       level: parsed.data.level,
       duration: parsed.data.duration,
       lessons: parsed.data.lessons,
+      imageUrl,
       published: parsed.data.published ?? true,
       sortOrder: parsed.data.sortOrder ?? 0,
       createdById: session.user.id!,
@@ -60,6 +64,7 @@ export async function POST(request: Request) {
       level: lesson.level,
       duration: lesson.duration,
       lessons: lesson.lessons,
+      imageUrl: lesson.imageUrl,
       published: lesson.published,
       sortOrder: lesson.sortOrder,
     },

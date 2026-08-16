@@ -155,6 +155,7 @@ model FreeLesson {
   level       String
   duration    String
   lessons     String
+  imageUrl    String?
   published   Boolean  @default(true)
   sortOrder   Int      @default(0)
   createdById String

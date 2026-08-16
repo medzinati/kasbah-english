@@ -2,6 +2,8 @@ import type { Localized } from "@/data/news";
 
 export type FreeCourse = {
   slug: string;
+  image: string;
+  imageAlt: Localized<string>;
   title: Localized<string>;
   level: Localized<string>;
   duration: Localized<string>;
@@ -12,25 +14,30 @@ export type FreeCourse = {
 export const freeCourses: FreeCourse[] = [
   {
     slug: "everyday-english",
+    image: "/images/courses/everyday.png",
+    imageAlt: {
+      ar: "متعلم يتدرّب على الإنجليزية اليومية",
+      en: "A learner practicing everyday English",
+    },
     title: { ar: "الإنجليزية اليومية للمبتدئين", en: "Everyday English Starter" },
     level: { ar: "مبتدئ", en: "Beginner" },
     duration: { ar: "٥ دروس قصيرة", en: "5 short lessons" },
     summary: {
-      ar: "إنجليزية دافئة وعملية للحياة اليومية — تحيات وروتين يومي ومحادثات مهذبة يمكنك استعمالها هذا الأسبوع.",
-      en: "Warm, practical English for real life — greetings, daily routines, and polite conversations you can use this week.",
+      ar: "إنجليزية عملية للحياة اليومية: تحيات، روتين يومي، ومحادثات مهذبة تستعملها هذا الأسبوع.",
+      en: "Practical English for daily life: greetings, routines, and polite conversations you can use this week.",
     },
     lessons: {
       ar: [
         "سلّم وقدّم نفسك بسهولة",
         "تحدّث عن يومك بجمل بسيطة وطبيعية",
-        "اطلب المساعدة بأدب (وافهم الجواب)",
+        "اطلب المساعدة بأدب وافهم الجواب",
         "رتّب مواعيد: الطعام والوقت ولقاء الأصدقاء",
         "تحدٍّ قصير في الكلام لزيادة الثقة",
       ],
       en: [
         "Say hello and introduce yourself with ease",
         "Talk about your day in simple, natural sentences",
-        "Ask for help politely (and understand the answer)",
+        "Ask for help politely and understand the answer",
         "Make plans: food, time, and meeting friends",
         "A short speaking challenge to build confidence",
       ],
@@ -38,12 +45,17 @@ export const freeCourses: FreeCourse[] = [
   },
   {
     slug: "clear-speech",
+    image: "/images/courses/speech.png",
+    imageAlt: {
+      ar: "تدريب على النطق الواضح عبر الإنترنت",
+      en: "Online practice for clear pronunciation",
+    },
     title: { ar: "أساسيات النطق الواضح", en: "Clear Speech Basics" },
     level: { ar: "مبتدئ–متوسط", en: "Beginner–Intermediate" },
     duration: { ar: "٤ دروس قصيرة", en: "4 short lessons" },
     summary: {
-      ar: "عادات نطق صغيرة تساعد الناس على فهمك من المرة الأولى — دون أن تبدو آليًا.",
-      en: "Small pronunciation habits that help people understand you the first time — without sounding robotic.",
+      ar: "عادات نطق صغيرة تساعد الناس على فهمك من المرة الأولى، بصوت طبيعي غير آلي.",
+      en: "Small pronunciation habits that help people understand you the first time, with a natural voice.",
     },
     lessons: {
       ar: [
@@ -62,12 +74,17 @@ export const freeCourses: FreeCourse[] = [
   },
   {
     slug: "work-ready-writing",
+    image: "/images/courses/writing.png",
+    imageAlt: {
+      ar: "كتابة رسائل مهنية واضحة للعمل",
+      en: "Writing clear professional messages for work",
+    },
     title: { ar: "كتابة جاهزة للعمل", en: "Work-Ready Writing" },
     level: { ar: "متوسط", en: "Intermediate" },
     duration: { ar: "٤ دروس قصيرة", en: "4 short lessons" },
     summary: {
-      ar: "اكتب رسائل بريد إلكتروني ورسائل مهنية لطيفة وواضحة — مثالية للعمل والدراسة.",
-      en: "Write emails and messages that sound professional, kind, and clear — perfect for work and study.",
+      ar: "اكتب رسائل بريد ورسائل مهنية لطيفة وواضحة، مناسبة للعمل والدراسة في الخليج.",
+      en: "Write emails and professional messages that sound kind and clear — useful for work and study in the Gulf.",
     },
     lessons: {
       ar: [

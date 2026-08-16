@@ -852,16 +852,36 @@ body.locale-en .brand em {
 /* News */
 .news-list {
   display: grid;
-  gap: 0;
-  border-top: 1px solid var(--line);
+  gap: 2.5rem;
 }
 
 .news-item {
-  padding: 2rem 0;
+  display: grid;
+  gap: 1.15rem;
+  padding-bottom: 2.25rem;
   border-bottom: 1px solid var(--line);
 }
 
-.news-item time {
+.news-item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.news-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-deep);
+}
+
+.news-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-copy time {
   display: block;
   font-size: 0.82rem;
   font-weight: 600;
@@ -874,8 +894,8 @@ body.locale-en .brand em {
 .news-item h2 {
   font-family: var(--font-display), Cairo, sans-serif;
   font-size: clamp(1.45rem, 3vw, 1.9rem);
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  letter-spacing: 0;
+  line-height: 1.25;
   margin-bottom: 0.65rem;
 }
 
@@ -890,14 +910,24 @@ body.locale-en .brand em {
   max-width: 62ch;
 }
 
+@media (min-width: 860px) {
+  .news-item {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 1.75rem;
+    align-items: start;
+  }
+}
+
 /* Courses */
 .course-list {
   display: grid;
-  gap: 2.5rem;
+  gap: 2.75rem;
 }
 
 .course-item {
-  padding-bottom: 2.5rem;
+  display: grid;
+  gap: 1.15rem;
+  padding-bottom: 2.25rem;
   border-bottom: 1px solid var(--line);
 }
 
@@ -906,39 +936,60 @@ body.locale-en .brand em {
   padding-bottom: 0;
 }
 
+.course-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 16 / 9;
+  background: var(--paper-deep);
+}
+
+.course-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .course-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.25rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.82rem;
+  gap: 0.75rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--teal);
+  color: var(--teal-deep);
+  margin-bottom: 0.55rem;
 }
 
 .course-item h2 {
   font-family: var(--font-display), Cairo, sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
   margin-bottom: 0.55rem;
+  letter-spacing: 0;
 }
 
-.course-item > p {
+.course-item > .course-copy > p {
   color: var(--ink-soft);
   max-width: 52ch;
-  margin-bottom: 1.15rem;
+  margin-bottom: 0.85rem;
 }
 
 .course-item ol {
-  margin: 0 0 1.25rem 1.15rem;
+  margin: 0 0 1rem;
+  padding-inline-start: 1.2rem;
   color: var(--ink-soft);
   max-width: 48ch;
 }
 
 .course-item li {
   margin-bottom: 0.35rem;
+}
+
+@media (min-width: 860px) {
+  .course-item {
+    grid-template-columns: 1.05fr 1fr;
+    gap: 1.75rem;
+    align-items: start;
+  }
 }
 
 .text-link {
