@@ -112,8 +112,39 @@ export async function ensureDefaultPricingPlans() {
   });
 }
 
+type SiteDict = {
+  home: {
+    headline: string;
+    lede: string;
+    faq: { q: string; a: string }[];
+    reviews: { name: string; country: string; quote: string }[];
+    [key: string]: unknown;
+  };
+  about: {
+    hero: string;
+    lede: string;
+    story1: string;
+    story2: string;
+    story3: string;
+    values: { title: string; text: string }[];
+    [key: string]: unknown;
+  };
+  pricing: {
+    plans: {
+      id: string;
+      name: string;
+      duration: string;
+      price: string;
+      blurb: string;
+      badge: string;
+    }[];
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+};
+
 export async function getSiteDictionary(locale: Locale): Promise<Dictionary> {
-  const base = JSON.parse(JSON.stringify(dictionaries[locale])) as Record<string, any>;
+  const base = JSON.parse(JSON.stringify(dictionaries[locale])) as SiteDict;
 
   const [heroRaw, faqRaw, reviewsRaw, aboutRaw, plans] = await Promise.all([
     getSettingValue(SITE_KEYS.homeHero),
@@ -172,7 +203,7 @@ export async function getSiteDictionary(locale: Locale): Promise<Dictionary> {
     }));
   }
 
-  return base as Dictionary;
+  return base as unknown as Dictionary;
 }
 
 export async function getReviewPhotos(): Promise<string[]> {
