@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import type { Dictionary } from "@/i18n/dictionaries";
 
 type LevelTestDict = Dictionary["levelTest"];
@@ -12,6 +12,9 @@ export function LevelTestQuiz({ dict }: { dict: LevelTestDict }) {
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const [done, setDone] = useState(false);
+  const [leadSaved, setLeadSaved] = useState(false);
+  const [leadStatus, setLeadStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [leadError, setLeadError] = useState("");
 
   const total = dict.questions.length;
   const question = dict.questions[index];
@@ -36,6 +39,41 @@ export function LevelTestQuiz({ dict }: { dict: LevelTestDict }) {
     setIndex((value) => value + 1);
   }
 
+  async function onLeadSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setLeadStatus("loading");
+    setLeadError("");
+
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    const level = pickLevel(score);
+
+    try {
+      const res = await fetch("/api/level-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          levelCode: level.code,
+          levelName: level.name,
+          track: level.track,
+          score,
+        }),
+      });
+      const json = (await res.json()) as { ok?: boolean; error?: string };
+      if (!res.ok || !json.ok) {
+        setLeadStatus("error");
+        setLeadError(json.error || dict.leadError);
+        return;
+      }
+      setLeadSaved(true);
+      setLeadStatus("idle");
+    } catch {
+      setLeadStatus("error");
+      setLeadError(dict.leadNetwork);
+    }
+  }
+
   if (!started) {
     return (
       <div className="level-panel">
@@ -46,7 +84,39 @@ export function LevelTestQuiz({ dict }: { dict: LevelTestDict }) {
     );
   }
 
-  if (done) {
+  if (done && !leadSaved) {
+    return (
+      <div className="level-panel level-result">
+        <p className="eyebrow">{dict.leadTitle}</p>
+        <h2>{dict.leadHero}</h2>
+        <p>{dict.leadText}</p>
+        <form className="site-form level-lead-form" onSubmit={onLeadSubmit}>
+          <label>
+            {dict.leadName}
+            <input name="name" type="text" required autoComplete="name" placeholder={dict.leadPhName} />
+          </label>
+          <label>
+            {dict.leadEmail}
+            <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
+          </label>
+          <label>
+            {dict.leadWhatsapp}
+            <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+966…" dir="ltr" />
+          </label>
+          <button className="btn btn-primary" type="submit" disabled={leadStatus === "loading"}>
+            {leadStatus === "loading" ? dict.leadSending : dict.leadSubmit}
+          </button>
+          {leadError ? (
+            <p className="form-status is-error" role="status">
+              {leadError}
+            </p>
+          ) : null}
+        </form>
+      </div>
+    );
+  }
+
+  if (done && leadSaved) {
     const level = pickLevel(score);
     return (
       <div className="level-panel level-result">

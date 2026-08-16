@@ -7,7 +7,9 @@ import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return { title: "الفيديوهات" };
+  const locale = await getLocale();
+  const dict = getDictionary(locale);
+  return { title: dict.members.videosHero };
 }
 
 export const dynamic = "force-dynamic";
@@ -20,6 +22,7 @@ export default async function MembersVideosPage() {
 
   const locale = await getLocale();
   const dict = getDictionary(locale);
+  const m = dict.members;
 
   const videos = await prisma.video.findMany({
     where: { published: true },
@@ -30,13 +33,13 @@ export default async function MembersVideosPage() {
     <div className="members-shell">
       <MembersNav name={session.user.name} role={session.user.role} locale={locale} dict={dict} />
       <main className="wrap members-main">
-        <p className="eyebrow">تعلّم</p>
-        <h1>الفيديوهات</h1>
-        <p className="members-lede">محتوى فيديو منشور من الإدارة للأعضاء.</p>
+        <p className="eyebrow">{m.videosEyebrow}</p>
+        <h1>{m.videosHero}</h1>
+        <p className="members-lede">{m.videosLede}</p>
 
         <div className="feed-list">
           {videos.length === 0 ? (
-            <p className="members-empty">لا توجد فيديوهات منشورة بعد.</p>
+            <p className="members-empty">{m.videosEmpty}</p>
           ) : (
             videos.map((video) => (
               <article key={video.id} className="feed-item">
@@ -44,7 +47,7 @@ export default async function MembersVideosPage() {
                 <p>{video.description}</p>
                 <p className="feed-meta">
                   <a href={video.url} target="_blank" rel="noreferrer" dir="ltr">
-                    مشاهدة الفيديو
+                    {m.watchVideo}
                   </a>
                 </p>
               </article>

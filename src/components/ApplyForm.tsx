@@ -93,8 +93,38 @@ export function ApplyForm({
           <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
         </label>
         <label>
+          {dict.location}
+          <input name="city" type="text" required autoComplete="address-level2" placeholder={dict.phLocation} />
+        </label>
+        <label>
+          {dict.selectCountry}
+          <select name="country" required defaultValue="">
+            <option value="" disabled>
+              {dict.selectCountry}
+            </option>
+            {dict.countries.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
           {dict.whatsapp}
           <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+966…" dir="ltr" />
+        </label>
+        <label>
+          {dict.goal}
+          <select name="goal" required defaultValue="">
+            <option value="" disabled>
+              {dict.selectGoal}
+            </option>
+            {dict.goals.map((goal) => (
+              <option key={goal} value={goal}>
+                {goal}
+              </option>
+            ))}
+          </select>
         </label>
         <label>
           {dict.plan}

@@ -48,6 +48,11 @@ export function LoginForm({ dict }: { dict: Dictionary["members"] }) {
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
         {status === "loading" ? dict.signingIn : dict.signIn}
       </button>
+      <p className="form-note">
+        <a className="text-link" href="/members/forgot-password">
+          {dict.forgotPassword}
+        </a>
+      </p>
       {message ? (
         <p className="form-status is-error" role="status">
           {message}

@@ -22,7 +22,7 @@ export function MembersNav({ name, role, locale, dict, title }: MembersNavProps)
     { href: "/members/community", label: dict.members.community },
     { href: "/members/groups", label: dict.members.groups },
     { href: "/members/meetings", label: dict.members.meetings },
-    { href: "/members/videos", label: locale === "ar" ? "الفيديوهات" : "Videos" },
+    { href: "/members/videos", label: dict.members.videos },
     ...(role === "ADMIN" ? [{ href: "/admin", label: dict.members.admin }] : []),
   ];
 

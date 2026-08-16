@@ -2,22 +2,18 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
 
-const planIds = ["1m", "3m", "6m", "12m", "36m"] as const;
-
 const schema = z.object({
   name: z.string().trim().min(2),
   email: z.string().trim().email(),
-  city: z.string().trim().min(2),
-  country: z.string().trim().min(2),
   whatsapp: z.string().trim().optional(),
-  goal: z.string().trim().min(2),
-  plan: z.union([z.enum(planIds), z.literal("")]).optional(),
-  level: z.string().trim().optional(),
+  levelCode: z.string().trim().min(1),
+  levelName: z.string().trim().min(1),
+  track: z.string().trim().min(1),
+  score: z.number().int().min(0).max(20),
 });
 
 export async function POST(request: Request) {
   let json: unknown;
-
   try {
     json = await request.json();
   } catch {
@@ -27,37 +23,34 @@ export async function POST(request: Request) {
   const parsed = schema.safeParse(json);
   if (!parsed.success) {
     return NextResponse.json(
-      { ok: false, error: "Please enter a valid name, email, city, country, and goal." },
+      { ok: false, error: "Please enter a valid name and email." },
       { status: 400 },
     );
   }
 
   const data = parsed.data;
   const email = data.email.toLowerCase();
-  const plan = data.plan && data.plan.length > 0 ? data.plan : null;
-  const level = data.level && data.level.length > 0 ? data.level : "Pending";
-  const location = `${data.city}, ${data.country}`;
+  const level = `${data.levelCode} ${data.levelName}`;
+  const motivation = `Level test lead · score ${data.score} · track ${data.track}`;
 
-  let applicationId = "";
   try {
-    const created = await prisma.application.create({
+    await prisma.application.create({
       data: {
         name: data.name,
         email,
-        location,
+        location: "Pending",
         whatsapp: data.whatsapp || null,
         level,
-        goal: data.goal,
-        plan,
-        motivation: "",
+        goal: "Level test",
+        plan: null,
+        motivation,
         paymentStatus: "UNPAID",
       },
     });
-    applicationId = created.id;
   } catch (error) {
-    console.error("Apply DB error", error);
+    console.error("Level lead DB error", error);
     return NextResponse.json(
-      { ok: false, error: "Could not save application. Please try again shortly." },
+      { ok: false, error: "Could not save. Please try again shortly." },
       { status: 500 },
     );
   }
@@ -67,12 +60,11 @@ export async function POST(request: Request) {
     const form = new FormData();
     form.set("name", data.name);
     form.set("email", email);
-    form.set("location", location);
     form.set("whatsapp", data.whatsapp || "—");
     form.set("level", level);
-    form.set("goal", data.goal);
-    form.set("plan", plan || "—");
-    form.set("_subject", `Kasbah English application — ${data.name}`);
+    form.set("track", data.track);
+    form.set("score", String(data.score));
+    form.set("_subject", `Kasbah English level test lead — ${data.name}`);
     form.set("_template", "table");
     form.set("_captcha", "false");
     await fetch(`https://formsubmit.co/ajax/${inbox}`, {
@@ -81,12 +73,8 @@ export async function POST(request: Request) {
       headers: { Accept: "application/json" },
     });
   } catch (error) {
-    console.error("Apply notify error", error);
+    console.error("Level lead notify error", error);
   }
 
-  return NextResponse.json({
-    ok: true,
-    applicationId,
-    canPay: Boolean(plan && process.env.STRIPE_SECRET_KEY),
-  });
+  return NextResponse.json({ ok: true });
 }

@@ -1152,6 +1152,122 @@ body.locale-ar .headline {
   }
 }
 
+.course-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.course-lesson-stack {
+  display: grid;
+  gap: 2rem;
+  max-width: 46rem;
+}
+
+.course-lesson-media {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.course-lesson-media img {
+  width: 100%;
+  height: auto;
+}
+
+.course-lesson {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.course-lesson-head {
+  margin-bottom: 0.85rem;
+}
+
+.course-lesson h2 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  margin-top: 0.25rem;
+}
+
+.course-lesson > p {
+  color: var(--ink-soft);
+  margin-bottom: 0.75rem;
+  max-width: 48ch;
+}
+
+.course-lesson-box,
+.course-lesson-practice {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  background: var(--paper-deep);
+  border-inline-start: 3px solid var(--teal);
+}
+
+.course-lesson-box h3,
+.course-lesson-practice h3 {
+  font-size: 0.92rem;
+  margin-bottom: 0.55rem;
+  color: var(--teal-deep);
+}
+
+.course-lesson-box ul {
+  margin: 0;
+  padding-inline-start: 1.1rem;
+}
+
+.course-lesson-box li {
+  margin-bottom: 0.3rem;
+}
+
+.course-lesson-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.pricing-trust {
+  margin: 0 0 2rem;
+  padding: 1.25rem 1.35rem;
+  background:
+    radial-gradient(ellipse 70% 80% at 0% 0%, rgba(91, 127, 160, 0.14), transparent 55%),
+    var(--paper-deep);
+  max-width: 40rem;
+}
+
+.pricing-trust-title {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.65rem;
+}
+
+.pricing-trust ul {
+  margin: 0;
+  padding-inline-start: 1.15rem;
+  color: var(--ink-soft);
+}
+
+.pricing-trust li {
+  margin-bottom: 0.35rem;
+}
+
+.level-lead-form {
+  margin-top: 1.25rem;
+  max-width: 28rem;
+}
+
+.pay-next {
+  max-width: 36rem;
+}
+
+.pay-next h2 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  margin-bottom: 1rem;
+}
+
 .text-link {
   color: var(--teal-deep);
   font-weight: 600;

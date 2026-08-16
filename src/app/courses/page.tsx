@@ -25,31 +25,36 @@ export default async function CoursesPage() {
     orderBy: [{ sortOrder: "asc" }, { createdAt: "desc" }],
   });
 
-  const courses =
-    dbLessons.length > 0
-      ? dbLessons.map((item) => ({
-          slug: item.id,
-          title: item.title,
-          level: item.level,
-          duration: item.duration,
-          summary: item.summary,
-          image: item.imageUrl || "/images/courses/everyday.png",
-          imageAlt: item.title,
-          lessons: item.lessons
-            .split("\n")
-            .map((line) => line.trim())
-            .filter(Boolean),
-        }))
-      : freeCourses.map((course) => ({
-          slug: course.slug,
-          title: course.title[locale],
-          level: course.level[locale],
-          duration: course.duration[locale],
-          summary: course.summary[locale],
-          image: course.image,
-          imageAlt: course.imageAlt[locale],
-          lessons: course.lessons[locale],
-        }));
+  const staticCourses = freeCourses.map((course) => ({
+    slug: course.slug,
+    title: course.title[locale],
+    level: course.level[locale],
+    duration: course.duration[locale],
+    summary: course.summary[locale],
+    image: course.image,
+    imageAlt: course.imageAlt[locale],
+    lessons: course.lessons[locale],
+    href: `/courses/${course.slug}`,
+    playable: true,
+  }));
+
+  const adminCourses = dbLessons.map((item) => ({
+    slug: item.id,
+    title: item.title,
+    level: item.level,
+    duration: item.duration,
+    summary: item.summary,
+    image: item.imageUrl || "/images/courses/everyday.png",
+    imageAlt: item.title,
+    lessons: item.lessons
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean),
+    href: "/apply",
+    playable: false,
+  }));
+
+  const courses = [...staticCourses, ...adminCourses];
 
   return (
     <>
@@ -90,9 +95,16 @@ export default async function CoursesPage() {
                       <li key={lesson}>{lesson}</li>
                     ))}
                   </ol>
-                  <Link className="text-link" href="/apply">
-                    {dict.courses.cta}
-                  </Link>
+                  <div className="course-actions">
+                    <Link className="btn btn-primary" href={course.href}>
+                      {course.playable ? dict.courses.openLesson : dict.courses.cta}
+                    </Link>
+                    {course.playable ? (
+                      <Link className="text-link" href="/apply">
+                        {dict.courses.cta}
+                      </Link>
+                    ) : null}
+                  </div>
                 </div>
               </article>
             ))}

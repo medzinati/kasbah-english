@@ -202,11 +202,11 @@ export default async function Home() {
             <h2>{h.finalTitle}</h2>
             <p>{h.finalText}</p>
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/courses">
-                {h.ctaCourses}
+              <Link className="btn btn-primary" href="/apply">
+                {h.ctaApply}
               </Link>
-              <Link className="btn btn-ghost dark" href="/level-test">
-                {h.ctaLevel}
+              <Link className="btn btn-ghost dark" href="/pricing">
+                {h.ctaPricing}
               </Link>
             </div>
           </div>

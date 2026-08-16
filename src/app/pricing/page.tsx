@@ -44,6 +44,15 @@ export default async function PricingPage() {
               ))}
             </ul>
 
+            <div className="pricing-trust" data-reveal>
+              <h2 className="pricing-trust-title">{p.trustTitle}</h2>
+              <ul>
+                {p.trustItems.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
             <div className="pricing-list">
               {p.plans.map((plan) => {
                 const months = monthsByPlan[plan.id] || 1;
