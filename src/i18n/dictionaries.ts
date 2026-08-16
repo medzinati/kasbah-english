@@ -26,12 +26,12 @@ const dictionaries = {
     },
     home: {
       headline: "تحدّث بثقة. وتقدّم مع مجتمع يساندك.",
-      lede: "بيت إنجليزي عبر الإنترنت للمتعلمين في المغرب، ولأي شخص في العالم يرغب في تدريب إنساني وواضح ومفيد في الحياة الواقعية.",
+      lede: "بيت إنجليزي عبر الإنترنت للمتعلمين في الخليج، ولأي شخص في العالم يرغب في تدريب إنساني وواضح ومفيد في الحياة الواقعية.",
       ctaApply: "سجّل للانضمام",
       ctaCourses: "جرّب درسًا مجانيًا",
       whatEyebrow: "آراء المتعلمين",
       whatTitle: "صوت من داخل القصبة.",
-      whatText: "متعلمون من المغرب يشاركون تجربتهم مع التدريب والمجتمع.",
+      whatText: "متعلمون من الخليج يشاركون تجربتهم مع التدريب والمجتمع.",
       h1: "ابدأ مجانًا بلا ضغط",
       h1text: "تصفّح الأخبار، وجرّب دروسًا قصيرة مجانية، وافهم كيف تعمل قصبة إنجليش قبل أن تسجّل.",
       h2: "مجتمع حقيقي في الداخل",
@@ -40,18 +40,18 @@ const dictionaries = {
       h3text: "نركّز على التحدّث بوضوح، والصوت الطبيعي، وبناء الثقة للدراسة والعمل والحياة اليومية.",
       reviews: [
         {
-          name: "سارة الإدريسي",
-          country: "الدار البيضاء",
+          name: "خالد المنصوري",
+          country: "الإمارات",
           quote: "صرت أتحدّث في الاجتماعات بثقة أكبر. الجوّ محترم والتدريب عملي جدًا.",
         },
         {
-          name: "يوسف بنجلون",
-          country: "الرباط",
+          name: "مريم العجمي",
+          country: "الكويت",
           quote: "أحسست بالأمان وأنا أتمرّن. المدرّسون واضحون والمجموعة تشجّعني كل أسبوع.",
         },
         {
-          name: "أمين بنعلي",
-          country: "طنجة",
+          name: "يوسف الكواري",
+          country: "قطر",
           quote: "بعد أسابيع من التدريب صرت أشارك أكثر في النقاشات. الجو مرتّب والناس يشجّعونك.",
         },
       ],
@@ -65,25 +65,25 @@ const dictionaries = {
       step3: "٣. ادخل إلى المجتمع",
       step3text: "إذا قُبلت، ستدخل إلى النقاشات والمجموعات واللقاءات المباشرة عبر زوم.",
       whoEyebrow: "لمن هذا؟",
-      whoTitle: "جذورنا في المغرب. وأبوابنا للعالم.",
+      whoTitle: "جذورنا في الخليج. وأبوابنا للعالم.",
       whoText:
-        "سواء فكرت أولًا بالدارجة أو الفرنسية أو أي لغة أخرى، نساعدك على بناء إنجليزية عملية في المحادثات الحقيقية.",
-      morocco: "للمتعلمين في المغرب",
+        "سواء فكرت أولًا بالعربية أو بلهجة خليجية أو أي لغة أخرى، نساعدك على بناء إنجليزية عملية في المحادثات الحقيقية.",
+      morocco: "للمتعلمين في الخليج",
       moroccoText:
-        "حصص مرنة عبر الإنترنت، وشروحات واضحة، ومدرّسون يفهمون الرحلة من الدارجة والفرنسية إلى إنجليزية واثقة.",
+        "حصص مرنة عبر الإنترنت، وشروحات واضحة، ومدرّسون يفهمون احتياجات المتعلمين في دول الخليج للعمل والدراسة والحياة اليومية.",
       world: "للمتعلمين في كل مكان",
-      worldText: "انضم إلى فصل عالمي مرحّب بنفس العناية والتنظيم والمستوى العالي، أينما كنت.",
+      worldText: "انضم إلى فصل مرحّب بنفس العناية والتنظيم والمستوى العالي، أينما كنت.",
       finalTitle: "نحن مستعدون عندما تكون مستعدًا.",
       finalText: "سجّل اليوم. سنراجع طلبك ونوجّه الأعضاء المقبولين لدخول المجتمع.",
       askQuestion: "اطرح سؤالًا",
-      visualAlt: "متعلمون يتدرّبون على الإنجليزية معًا",
+      visualAlt: "متعلمون من الخليج يتدرّبون على الإنجليزية معًا",
     },
     about: {
       title: "نبذة عنا",
       hero: "قصبة وُلدت من فكرة بسيطة",
-      lede: "مساحة إنجليزية عبر الإنترنت، بجذور مغربية، مفتوحة لكل من يريد التدرّب بثقة واحترام.",
+      lede: "مساحة إنجليزية عبر الإنترنت، بجذور خليجية، مفتوحة لكل من يريد التدرّب بثقة واحترام.",
       story1:
-        "قصبة إنجليش بدأت من حاجة واضحة: كثير من المتعلمين في المغرب يفهمون الإنجليزية جيدًا على الورق، لكن التحدّث يبقى صعبًا حين يغيب المكان الآمن والانتظام.",
+        "قصبة إنجليش بدأت من حاجة واضحة: كثير من المتعلمين في الخليج يفهمون الإنجليزية جيدًا على الورق، لكن التحدّث يبقى صعبًا حين يغيب المكان الآمن والانتظام.",
       story2:
         "لذلك بنينا مجتمعًا صغيرًا ومركّزًا: دروس مجانية للجميع من الخارج، ومجموعات ونقاشات ولقاءات زوم للأعضاء المقبولين من الداخل.",
       story3:
@@ -96,8 +96,8 @@ const dictionaries = {
           text: "نتحدّث بوضوح، بلا إحراج، وبإيقاع يناسب حياتك اليومية والدراسة والعمل.",
         },
         {
-          title: "جذور مغربية",
-          text: "نفهم الانتقال من الدارجة والفرنسية إلى إنجليزية واثقة، ونبني عليه بخطوات عملية.",
+          title: "جذور خليجية",
+          text: "نفهم واقع المتعلمين في الخليج، ونبني إنجليزية عملية للاجتماعات والدراسة والحياة اليومية.",
         },
         {
           title: "مجتمع مختار",
@@ -107,7 +107,7 @@ const dictionaries = {
       ctaTitle: "هل تريد أن تكون جزءًا من القصبة؟",
       ctaText: "سجّل طلبك، أو راسلنا على واتساب إن كان لديك سؤال سريع.",
       emailLabel: "أو راسلنا على البريد:",
-      meta: "تعرّف على قصبة إنجليش: مجتمع إنجليزي عبر الإنترنت بجذور مغربية ودروس مجانية ومجتمع للأعضاء.",
+      meta: "تعرّف على قصبة إنجليش: مجتمع إنجليزي عبر الإنترنت بجذور خليجية ودروس مجانية ومجتمع للأعضاء.",
     },
     news: {
       title: "الأخبار",
@@ -212,7 +212,7 @@ const dictionaries = {
       levels: ["مبتدئ", "أساسي", "متوسط", "فوق المتوسط", "متقدم"],
       goals: ["المحادثة", "الامتحانات (IELTS / أكاديمي)", "إنجليزية العمل", "تحسين عام"],
       phName: "اسمك الكامل",
-      phLocation: "الدار البيضاء، المغرب",
+      phLocation: "الرياض، السعودية",
       phMotivation: "أخبرنا عن أهدافك وجدولك وما تريد التمرّن عليه في المجتمع…",
     },
     contact: {
@@ -237,7 +237,7 @@ const dictionaries = {
       phMessage: "اكتب رسالتك…",
     },
     footer: {
-      tagline: "مجتمع ودود لتعلّم الإنجليزية عبر الإنترنت في المغرب والعالم.",
+      tagline: "مجتمع ودود لتعلّم الإنجليزية عبر الإنترنت في الخليج والعالم.",
       links: "روابط التذييل",
     },
     members: {
@@ -322,12 +322,12 @@ const dictionaries = {
     },
     home: {
       headline: "Speak with confidence. Grow with a community.",
-      lede: "An online English home for Moroccan learners, and friends around the world who want practice that feels human, clear, and useful.",
+      lede: "An online English home for learners across the Gulf, and friends around the world who want practice that feels human, clear, and useful.",
       ctaApply: "Apply to join",
       ctaCourses: "Try a free course",
       whatEyebrow: "Learner reviews",
       whatTitle: "Voices from inside the Kasbah.",
-      whatText: "Learners from Morocco share how practice and community helped them grow.",
+      whatText: "Learners from the Gulf share how practice and community helped them grow.",
       h1: "Start free, no pressure",
       h1text: "Browse news, try short free lessons, and learn how Kasbah English works before you apply.",
       h2: "A real community inside",
@@ -336,18 +336,18 @@ const dictionaries = {
       h3text: "We focus on speaking clearly, sounding natural, and building confidence for study, work, and everyday life.",
       reviews: [
         {
-          name: "Sara El Idrissi",
-          country: "Casablanca",
+          name: "Khalid Al-Mansoori",
+          country: "UAE",
           quote: "I speak in meetings with more confidence now. The vibe is respectful and the practice is truly practical.",
         },
         {
-          name: "Youssef Benjelloun",
-          country: "Rabat",
+          name: "Maryam Al-Ajmi",
+          country: "Kuwait",
           quote: "I felt safe while practicing. The teachers are clear and the group encourages me every week.",
         },
         {
-          name: "Amine Benali",
-          country: "Tangier",
+          name: "Yousef Al-Kuwari",
+          country: "Qatar",
           quote: "After a few weeks of practice I speak up more in discussions. The atmosphere is organized and people encourage you.",
         },
       ],
@@ -361,25 +361,25 @@ const dictionaries = {
       step3: "3. Get invited inside",
       step3text: "If accepted, you’ll join discussions, groups, and live meetings with Zoom links.",
       whoEyebrow: "Who it’s for",
-      whoTitle: "Rooted in Morocco. Open to the world.",
+      whoTitle: "Rooted in the Gulf. Open to the world.",
       whoText:
-        "Whether you think in Darija, French, or another language first, we help you build English that works in real conversations.",
-      morocco: "For learners in Morocco",
+        "Whether you think in Arabic, a Gulf dialect, or another language first, we help you build English that works in real conversations.",
+      morocco: "For learners in the Gulf",
       moroccoText:
-        "Flexible online sessions, clear explanations, and teachers who understand the journey from Darija and French to confident English.",
+        "Flexible online sessions, clear explanations, and teachers who understand Gulf learners’ needs for work, study, and daily life.",
       world: "For learners everywhere",
-      worldText: "Join a welcoming international classroom with the same care, structure, and high standard, wherever you are.",
+      worldText: "Join a welcoming classroom with the same care, structure, and high standard, wherever you are.",
       finalTitle: "Ready when you are.",
       finalText: "Apply today. We’ll review your story and guide accepted members into the community.",
       askQuestion: "Ask a question",
-      visualAlt: "Learners practicing English together",
+      visualAlt: "Gulf learners practicing English together",
     },
     about: {
       title: "About",
       hero: "A Kasbah born from a simple idea",
-      lede: "An online English space with Moroccan roots, open to anyone who wants respectful, confident practice.",
+      lede: "An online English space with Gulf roots, open to anyone who wants respectful, confident practice.",
       story1:
-        "Kasbah English started from a clear need: many learners in Morocco understand English on paper, yet speaking stays hard without a safe place and steady rhythm.",
+        "Kasbah English started from a clear need: many learners across the Gulf understand English on paper, yet speaking stays hard without a safe place and steady rhythm.",
       story2:
         "So we built a focused community: free lessons for everyone outside, and groups, discussions, and Zoom meetings for accepted members inside.",
       story3:
@@ -392,8 +392,8 @@ const dictionaries = {
           text: "We speak clearly, without shame, at a pace that fits study, work, and everyday life.",
         },
         {
-          title: "Moroccan roots",
-          text: "We understand the path from Darija and French to confident English, and we build on it with practical steps.",
+          title: "Gulf roots",
+          text: "We understand learners across the Gulf, and we build practical English for meetings, study, and daily life.",
         },
         {
           title: "A chosen community",
@@ -403,7 +403,7 @@ const dictionaries = {
       ctaTitle: "Want to be part of the Kasbah?",
       ctaText: "Send your application, or message us on WhatsApp if you have a quick question.",
       emailLabel: "Or email us at:",
-      meta: "Learn about Kasbah English: an online English community with Moroccan roots, free lessons, and a members space.",
+      meta: "Learn about Kasbah English: an online English community with Gulf roots, free lessons, and a members space.",
     },
     news: {
       title: "News",
@@ -508,7 +508,7 @@ const dictionaries = {
       levels: ["Beginner", "Elementary", "Intermediate", "Upper-Intermediate", "Advanced"],
       goals: ["Conversation", "Exams (IELTS / academic)", "Career English", "General improvement"],
       phName: "Your full name",
-      phLocation: "Casablanca, Morocco",
+      phLocation: "Riyadh, Saudi Arabia",
       phMotivation: "Tell us about your goals, schedule, and what you hope to practice…",
     },
     contact: {
@@ -533,7 +533,7 @@ const dictionaries = {
       phMessage: "Write your message…",
     },
     footer: {
-      tagline: "a friendly online English community for Morocco and the world.",
+      tagline: "a friendly online English community for the Gulf and the world.",
       links: "Footer",
     },
     members: {
