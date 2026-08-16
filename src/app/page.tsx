@@ -49,6 +49,27 @@ export default async function Home() {
                 {h.ctaCourses}
               </Link>
             </div>
+            <p className="hero-level-link">
+              <Link href="/level-test">{h.ctaLevel}</Link>
+            </p>
+          </div>
+        </section>
+
+        <section className="section why-us">
+          <div className="wrap">
+            <div className="section-head">
+              <p className="eyebrow">{h.whyEyebrow}</p>
+              <h2>{h.whyTitle}</h2>
+              <p>{h.whyText}</p>
+            </div>
+            <ul className="why-list">
+              {h.why.map((item) => (
+                <li key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -83,6 +104,24 @@ export default async function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="section trust-section">
+          <div className="wrap">
+            <div className="section-head">
+              <p className="eyebrow">{h.trustEyebrow}</p>
+              <h2>{h.trustTitle}</h2>
+              <p>{h.trustText}</p>
+            </div>
+            <ul className="trust-list">
+              {h.trust.map((item) => (
+                <li key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
@@ -141,16 +180,33 @@ export default async function Home() {
           </div>
         </section>
 
+        <section className="section faq-section">
+          <div className="wrap faq-inner">
+            <div className="section-head">
+              <p className="eyebrow">{h.faqEyebrow}</p>
+              <h2>{h.faqTitle}</h2>
+            </div>
+            <div className="faq-list">
+              {h.faq.map((item) => (
+                <details key={item.q} className="faq-item">
+                  <summary>{item.q}</summary>
+                  <p>{item.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="section final-cta">
           <div className="wrap">
             <h2>{h.finalTitle}</h2>
             <p>{h.finalText}</p>
             <div className="cta-row">
-              <Link className="btn btn-primary" href="/apply">
-                {dict.nav.applyNow}
+              <Link className="btn btn-primary" href="/courses">
+                {h.ctaCourses}
               </Link>
-              <Link className="btn btn-ghost dark" href="/contact">
-                {h.askQuestion}
+              <Link className="btn btn-ghost dark" href="/level-test">
+                {h.ctaLevel}
               </Link>
             </div>
           </div>

@@ -55,6 +55,7 @@ export default async function CoursesPage() {
             <p className="eyebrow">{dict.courses.title}</p>
             <h1>{dict.courses.hero}</h1>
             <p>{dict.courses.lede}</p>
+            <p className="courses-free-note">{dict.courses.freeNote}</p>
           </div>
         </section>
 

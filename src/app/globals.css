@@ -418,7 +418,7 @@ body.locale-en .brand em {
   font-style: normal;
   line-height: 1.4;
   letter-spacing: 0;
-  max-width: 18ch;
+  max-width: 22ch;
   margin-bottom: 0.9rem;
   opacity: 0;
   animation: rise 1.05s var(--ease) 0.28s forwards;
@@ -427,11 +427,28 @@ body.locale-en .brand em {
 .lede {
   font-size: clamp(0.95rem, 2.6vw, 1.05rem);
   color: rgba(255, 255, 255, 0.86);
-  max-width: 32ch;
+  max-width: 38ch;
   margin-bottom: 1.65rem;
   line-height: 1.65;
   opacity: 0;
   animation: rise 1.05s var(--ease) 0.42s forwards;
+}
+
+.hero-level-link {
+  margin-top: 1rem;
+  opacity: 0;
+  animation: rise 1.05s var(--ease) 0.68s forwards;
+}
+
+.hero-level-link a {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.hero-level-link a:hover {
+  color: var(--gold);
 }
 
 .cta-row {
@@ -978,6 +995,13 @@ body.locale-en .brand em {
     var(--white);
 }
 
+.pricing-plan.is-value {
+  border-color: rgba(224, 168, 26, 0.55);
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(15, 107, 92, 0.08), transparent 55%),
+    var(--white);
+}
+
 .pricing-plan-top {
   display: flex;
   justify-content: space-between;
@@ -991,6 +1015,10 @@ body.locale-en .brand em {
   font-weight: 700;
   color: var(--teal-deep);
   margin-bottom: 0.35rem;
+}
+
+.pricing-badge-value {
+  color: #8a6a10;
 }
 
 .pricing-plan h2 {
@@ -1238,20 +1266,20 @@ body.locale-en .brand em {
 .whatsapp-float {
   position: fixed;
   z-index: 60;
-  inset-inline-end: 1rem;
-  bottom: 1rem;
+  inset-inline-end: 0.85rem;
+  bottom: 5.25rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  min-height: 3.15rem;
-  padding: 0.65rem 1rem 0.65rem 0.75rem;
+  gap: 0.4rem;
+  min-height: 2.65rem;
+  padding: 0.5rem 0.85rem 0.5rem 0.65rem;
   border-radius: 999px;
   background: #1fad5c;
   color: #fff;
   text-decoration: none;
   font-weight: 700;
-  font-size: 0.95rem;
-  box-shadow: 0 10px 28px rgba(15, 80, 40, 0.28);
+  font-size: 0.82rem;
+  box-shadow: 0 8px 22px rgba(15, 80, 40, 0.24);
   transition: transform 0.2s var(--ease), background 0.2s var(--ease);
 }
 
@@ -1260,11 +1288,22 @@ body.locale-en .brand em {
   transform: translateY(-2px);
 }
 
-.whatsapp-float-label {
-  padding-inline-end: 0.15rem;
+.whatsapp-float svg {
+  width: 22px;
+  height: 22px;
 }
 
-@media (max-width: 520px) {
+.whatsapp-float-label {
+  padding-inline-end: 0.1rem;
+}
+
+@media (min-width: 721px) {
+  .whatsapp-float {
+    bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 720px) {
   .whatsapp-float-label {
     position: absolute;
     width: 1px;
@@ -1274,16 +1313,154 @@ body.locale-en .brand em {
   }
 
   .whatsapp-float {
-    width: 3.35rem;
-    height: 3.35rem;
+    width: 2.75rem;
+    height: 2.75rem;
     padding: 0;
     justify-content: center;
     border-radius: 50%;
+    inset-inline-end: 0.75rem;
+    bottom: 5.5rem;
   }
 }
 
 body.locale-ar .whatsapp-float {
-  inset-inline-end: 1rem;
+  inset-inline-end: 0.85rem;
+}
+
+/* Why / Trust / FAQ */
+.why-list,
+.trust-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 800px) {
+  .why-list,
+  .trust-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 2rem;
+  }
+}
+
+.why-list h3,
+.trust-list h3 {
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 0.35rem;
+}
+
+.why-list p,
+.trust-list p {
+  color: var(--ink-soft);
+  max-width: 36ch;
+}
+
+.trust-section {
+  background:
+    radial-gradient(ellipse 70% 60% at 0% 0%, rgba(15, 107, 92, 0.1), transparent 55%),
+    var(--paper-deep);
+}
+
+.faq-section {
+  background: var(--paper);
+}
+
+.faq-inner {
+  max-width: 42rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+  padding: 0.35rem 0 0.85rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+  list-style: none;
+  padding: 0.55rem 0;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item p {
+  color: var(--ink-soft);
+  max-width: 48ch;
+  padding-bottom: 0.35rem;
+}
+
+.courses-free-note {
+  margin-top: 0.85rem;
+  font-weight: 700;
+  color: var(--teal-deep);
+}
+
+.level-panel {
+  max-width: 36rem;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.level-progress {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.level-prompt {
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  line-height: 1.35;
+}
+
+.level-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.level-option {
+  width: 100%;
+  text-align: start;
+  min-height: 52px;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--white);
+  border-radius: 4px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.level-option:hover,
+.level-option.is-selected {
+  border-color: var(--teal);
+  background: rgba(15, 107, 92, 0.06);
+}
+
+.level-result h2 {
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  margin-bottom: 0.5rem;
+}
+
+.level-panel .btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
 }
 
 /* Footer */

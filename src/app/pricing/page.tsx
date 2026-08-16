@@ -16,7 +16,6 @@ const monthsByPlan: Record<string, number> = {
   "3m": 3,
   "6m": 6,
   "12m": 12,
-  "36m": 36,
 };
 
 export default async function PricingPage() {
@@ -53,13 +52,18 @@ export default async function PricingPage() {
                   Math.abs(monthlyRaw - Math.round(monthlyRaw)) < 0.05
                     ? String(Math.round(monthlyRaw))
                     : monthlyRaw.toFixed(1);
-                const featured = plan.featured;
+                const isPopular = plan.badge === "popular";
+                const isValue = plan.badge === "value";
 
                 return (
-                  <article key={plan.id} className={`pricing-plan${featured ? " is-featured" : ""}`}>
+                  <article
+                    key={plan.id}
+                    className={`pricing-plan${isPopular ? " is-featured" : ""}${isValue ? " is-value" : ""}`}
+                  >
                     <div className="pricing-plan-top">
                       <div>
-                        {featured ? <p className="pricing-badge">{p.popular}</p> : null}
+                        {isPopular ? <p className="pricing-badge">{p.popular}</p> : null}
+                        {isValue ? <p className="pricing-badge pricing-badge-value">{p.bestValue}</p> : null}
                         <h2>{plan.name}</h2>
                         <p className="pricing-duration">{plan.duration}</p>
                       </div>

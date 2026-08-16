@@ -18,6 +18,7 @@ export function SiteHeader({ variant = "solid", locale, dict }: SiteHeaderProps)
     { href: "/about", label: dict.nav.about },
     { href: "/news", label: dict.nav.news },
     { href: "/courses", label: dict.nav.courses },
+    { href: "/level-test", label: dict.nav.levelTest },
     { href: "/pricing", label: dict.nav.pricing },
     { href: "/apply", label: dict.nav.apply },
     { href: "/contact", label: dict.nav.contact },

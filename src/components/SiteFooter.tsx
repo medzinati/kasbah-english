@@ -13,6 +13,7 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
             <Link href="/about">{dict.nav.about}</Link>
             <Link href="/news">{dict.nav.news}</Link>
             <Link href="/courses">{dict.nav.courses}</Link>
+            <Link href="/level-test">{dict.nav.levelTest}</Link>
             <Link href="/pricing">{dict.nav.pricing}</Link>
             <Link href="/apply">{dict.nav.apply}</Link>
             <Link href="/contact">{dict.nav.contact}</Link>
