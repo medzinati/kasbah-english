@@ -1,8 +1,8 @@
 /** Public contact details. Override WhatsApp via NEXT_PUBLIC_WHATSAPP_NUMBER (digits with country code). */
 export const SITE_EMAIL = "mohamed.ketrani.zinati@gmail.com";
 
-/** Digits only, e.g. 2126XXXXXXXX — update when you have the real number. */
-const FALLBACK_WHATSAPP = "212600000000";
+/** Digits only with country code (no +). */
+const FALLBACK_WHATSAPP = "212633288868";
 
 export function getWhatsAppNumber(): string {
   const fromEnv = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") ?? "";
