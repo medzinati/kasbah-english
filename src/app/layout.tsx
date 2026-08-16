@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Arabic, Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans, Tajawal } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import { SiteWhatsApp } from "@/components/SiteWhatsApp";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import "./globals.css";
 
-const outfit = Outfit({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-en",
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
 });
 
-const plexArabic = IBM_Plex_Sans_Arabic({
+const tajawal = Tajawal({
   subsets: ["arabic", "latin"],
   variable: "--font-ar",
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "700", "800"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -48,7 +48,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir}>
-      <body className={`locale-${locale} ${outfit.variable} ${plexArabic.variable}`}>
+      <body className={`locale-${locale} ${jakarta.variable} ${tajawal.variable}`}>
         <Providers>{children}</Providers>
         <SiteWhatsApp />
       </body>

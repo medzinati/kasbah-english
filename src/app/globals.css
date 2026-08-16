@@ -80,14 +80,14 @@ body {
 body.locale-ar {
   font-family: var(--font-ar), "Segoe UI", Tahoma, sans-serif;
   letter-spacing: 0;
-  line-height: 1.75;
+  line-height: 1.8;
   --font-display: var(--font-ar);
   --font-body: var(--font-ar);
 }
 
 body.locale-en {
   font-family: var(--font-en), "Segoe UI", sans-serif;
-  letter-spacing: -0.016em;
+  letter-spacing: -0.022em;
   line-height: 1.65;
   --font-display: var(--font-en);
   --font-body: var(--font-en);
@@ -411,14 +411,14 @@ body.locale-en .logo span {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(21, 32, 43, 0.52) 0%, rgba(21, 32, 43, 0.18) 38%, rgba(21, 32, 43, 0.82) 100%),
-    linear-gradient(to left, rgba(63, 98, 130, 0.18) 0%, rgba(21, 32, 43, 0.5) 70%);
+    linear-gradient(180deg, rgba(16, 36, 58, 0.62) 0%, rgba(18, 42, 68, 0.32) 40%, rgba(12, 28, 46, 0.9) 100%),
+    linear-gradient(to left, rgba(90, 140, 185, 0.28) 0%, rgba(16, 36, 58, 0.58) 72%);
 }
 
 body.locale-en .hero-shade {
   background:
-    linear-gradient(180deg, rgba(21, 32, 43, 0.52) 0%, rgba(21, 32, 43, 0.18) 38%, rgba(21, 32, 43, 0.82) 100%),
-    linear-gradient(to right, rgba(21, 32, 43, 0.5) 0%, rgba(63, 98, 130, 0.18) 70%);
+    linear-gradient(180deg, rgba(16, 36, 58, 0.62) 0%, rgba(18, 42, 68, 0.32) 40%, rgba(12, 28, 46, 0.9) 100%),
+    linear-gradient(to right, rgba(16, 36, 58, 0.58) 0%, rgba(90, 140, 185, 0.28) 72%);
 }
 
 .hero-grain {
@@ -436,6 +436,7 @@ body.locale-en .hero-shade {
   padding: 5.5rem 0 2.5rem;
   max-width: 38rem;
   text-align: start;
+  color: #eef5fb;
 }
 
 @media (min-width: 800px) {
@@ -449,17 +450,23 @@ body.locale-en .hero-shade {
   font-size: clamp(3rem, 13vw, 5.8rem);
   font-weight: 800;
   line-height: 1.05;
-  letter-spacing: 0;
+  letter-spacing: -0.03em;
   margin-bottom: 1.15rem;
+  color: #f4f8fc;
   opacity: 0;
   animation: rise 1.05s var(--ease) 0.12s forwards;
-  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.35);
+  text-shadow: 0 2px 22px rgba(12, 32, 54, 0.55);
+}
+
+body.locale-ar .brand {
+  letter-spacing: 0;
 }
 
 .brand em {
   font-style: normal;
   font-weight: 700;
-  color: var(--gold);
+  color: #9ec8eb;
+  text-shadow: 0 2px 18px rgba(12, 40, 70, 0.45);
 }
 
 body.locale-en .brand em {
@@ -473,16 +480,22 @@ body.locale-en .brand em {
   font-weight: 700;
   font-style: normal;
   line-height: 1.4;
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
   max-width: 22ch;
   margin-bottom: 0.9rem;
+  color: #e4eef8;
   opacity: 0;
   animation: rise 1.05s var(--ease) 0.28s forwards;
+  text-shadow: 0 1px 14px rgba(12, 32, 54, 0.4);
+}
+
+body.locale-ar .headline {
+  letter-spacing: 0;
 }
 
 .lede {
   font-size: clamp(0.95rem, 2.6vw, 1.05rem);
-  color: rgba(255, 255, 255, 0.86);
+  color: rgba(198, 220, 240, 0.95);
   max-width: 38ch;
   margin-bottom: 1.65rem;
   line-height: 1.65;
@@ -497,14 +510,14 @@ body.locale-en .brand em {
 }
 
 .hero-level-link a {
-  color: rgba(255, 255, 255, 0.92);
+  color: #c5daf0;
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
 
 .hero-level-link a:hover {
-  color: var(--gold);
+  color: #9ec8eb;
 }
 
 .cta-row {
@@ -554,24 +567,36 @@ body.locale-en .brand em {
 }
 
 .btn-primary {
-  background: var(--gold);
-  color: var(--night);
-  box-shadow: 0 10px 28px rgba(127, 157, 184, 0.28);
+  background: #6f97bb;
+  color: #ffffff;
+  box-shadow: 0 10px 28px rgba(70, 110, 150, 0.35);
 }
 
 .btn-primary:hover {
-  background: #8aa8c4;
+  background: #5d86ab;
+}
+
+.hero .btn-primary {
+  background: #7eabcf;
+  color: #102438;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(40, 80, 120, 0.35);
+}
+
+.hero .btn-primary:hover {
+  background: #93bdd9;
 }
 
 .btn-ghost {
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  color: var(--white);
+  border: 1px solid rgba(180, 210, 235, 0.55);
+  color: #e8f2fa;
   backdrop-filter: blur(6px);
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(40, 70, 100, 0.22);
 }
 
 .btn-ghost:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(90, 130, 170, 0.35);
+  border-color: rgba(180, 210, 235, 0.8);
 }
 
 /* ——— Sections ——— */
