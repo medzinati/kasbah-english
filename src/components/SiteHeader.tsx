@@ -15,6 +15,7 @@ type SiteHeaderProps = {
 export function SiteHeader({ variant = "solid", locale, dict }: SiteHeaderProps) {
   const [open, setOpen] = useState(false);
   const links = [
+    { href: "/about", label: dict.nav.about },
     { href: "/news", label: dict.nav.news },
     { href: "/courses", label: dict.nav.courses },
     { href: "/pricing", label: dict.nav.pricing },

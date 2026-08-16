@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getWhatsAppHref, SITE_EMAIL } from "@/lib/site-contact";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
@@ -33,8 +34,19 @@ export default async function ContactPage() {
               <h2>{dict.contact.preferEmail}</h2>
               <p>
                 {dict.contact.writeTo}{" "}
-                <a className="text-link" href="mailto:mohamed.ketrani.zinati@gmail.com">
-                  mohamed.ketrani.zinati@gmail.com
+                <a className="text-link" href={`mailto:${SITE_EMAIL}`}>
+                  {SITE_EMAIL}
+                </a>
+              </p>
+              <p>
+                {dict.whatsapp.label}:{" "}
+                <a
+                  className="text-link"
+                  href={getWhatsAppHref(dict.whatsapp.prefill)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {dict.whatsapp.chat}
                 </a>
               </p>
               <p className="form-note">{dict.contact.note}</p>

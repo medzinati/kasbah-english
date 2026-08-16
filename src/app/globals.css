@@ -1172,6 +1172,120 @@ body.locale-en .brand em {
   color: #8a2f2f;
 }
 
+/* About */
+.about-story {
+  padding-top: 0.5rem;
+}
+
+.about-story-inner {
+  max-width: 40rem;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.about-lead {
+  font-size: clamp(1.15rem, 2.4vw, 1.35rem);
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.about-story-inner p {
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 48ch;
+}
+
+.about-values {
+  background:
+    radial-gradient(ellipse 70% 60% at 100% 0%, rgba(15, 107, 92, 0.1), transparent 55%),
+    var(--paper);
+}
+
+.about-value-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+
+@media (min-width: 800px) {
+  .about-value-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+.about-value-list h3 {
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0;
+}
+
+.about-value-list p {
+  color: var(--ink-soft);
+  max-width: 32ch;
+}
+
+.about-email {
+  margin-top: 1.25rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* WhatsApp float */
+.whatsapp-float {
+  position: fixed;
+  z-index: 60;
+  inset-inline-end: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 3.15rem;
+  padding: 0.65rem 1rem 0.65rem 0.75rem;
+  border-radius: 999px;
+  background: #1fad5c;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 10px 28px rgba(15, 80, 40, 0.28);
+  transition: transform 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.whatsapp-float:hover {
+  background: #18964e;
+  transform: translateY(-2px);
+}
+
+.whatsapp-float-label {
+  padding-inline-end: 0.15rem;
+}
+
+@media (max-width: 520px) {
+  .whatsapp-float-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .whatsapp-float {
+    width: 3.35rem;
+    height: 3.35rem;
+    padding: 0;
+    justify-content: center;
+    border-radius: 50%;
+  }
+}
+
+body.locale-ar .whatsapp-float {
+  inset-inline-end: 1rem;
+}
+
 /* Footer */
 .footer {
   padding: 2rem 0 2.5rem;

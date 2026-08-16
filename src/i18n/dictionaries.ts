@@ -6,6 +6,7 @@ const dictionaries = {
     brandShort: "قصبة",
     brandAccent: "إنجليش",
     nav: {
+      about: "نبذة عنا",
       news: "الأخبار",
       courses: "دروس مجانية",
       pricing: "الأسعار",
@@ -18,6 +19,11 @@ const dictionaries = {
       closeMenu: "إغلاق القائمة",
       mainNav: "القائمة الرئيسية",
     },
+    whatsapp: {
+      label: "واتساب",
+      chat: "راسلنا على واتساب",
+      prefill: "السلام عليكم، أود الاستفسار عن قصبة إنجليش.",
+    },
     home: {
       headline: "تحدّث بثقة. وتقدّم مع مجتمع يساندك.",
       lede: "بيت إنجليزي عبر الإنترنت للمتعلمين في المغرب، ولأي شخص في العالم يرغب في تدريب إنساني وواضح ومفيد في الحياة الواقعية.",
@@ -25,7 +31,7 @@ const dictionaries = {
       ctaCourses: "جرّب درسًا مجانيًا",
       whatEyebrow: "آراء المتعلمين",
       whatTitle: "صوت من داخل القصبة.",
-      whatText: "متعلمون يشاركون تجربتهم مع التدريب والمجتمع.",
+      whatText: "متعلمون من المغرب يشاركون تجربتهم مع التدريب والمجتمع.",
       h1: "ابدأ مجانًا بلا ضغط",
       h1text: "تصفّح الأخبار، وجرّب دروسًا قصيرة مجانية، وافهم كيف تعمل قصبة إنجليش قبل أن تسجّل.",
       h2: "مجتمع حقيقي في الداخل",
@@ -34,18 +40,18 @@ const dictionaries = {
       h3text: "نركّز على التحدّث بوضوح، والصوت الطبيعي، وبناء الثقة للدراسة والعمل والحياة اليومية.",
       reviews: [
         {
-          name: "خالد المنصوري",
-          country: "الإمارات",
+          name: "سارة الإدريسي",
+          country: "الدار البيضاء",
           quote: "صرت أتحدّث في الاجتماعات بثقة أكبر. الجوّ محترم والتدريب عملي جدًا.",
         },
         {
-          name: "مريم العجمي",
-          country: "الكويت",
+          name: "يوسف بنجلون",
+          country: "الرباط",
           quote: "أحسست بالأمان وأنا أتمرّن. المدرّسون واضحون والمجموعة تشجّعني كل أسبوع.",
         },
         {
           name: "أمين بنعلي",
-          country: "المغرب",
+          country: "طنجة",
           quote: "بعد أسابيع من التدريب صرت أشارك أكثر في النقاشات. الجو مرتّب والناس يشجّعونك.",
         },
       ],
@@ -71,6 +77,37 @@ const dictionaries = {
       finalText: "سجّل اليوم. سنراجع طلبك ونوجّه الأعضاء المقبولين لدخول المجتمع.",
       askQuestion: "اطرح سؤالًا",
       visualAlt: "متعلمون يتدرّبون على الإنجليزية معًا",
+    },
+    about: {
+      title: "نبذة عنا",
+      hero: "قصبة وُلدت من فكرة بسيطة",
+      lede: "مساحة إنجليزية عبر الإنترنت، بجذور مغربية، مفتوحة لكل من يريد التدرّب بثقة واحترام.",
+      story1:
+        "قصبة إنجليش بدأت من حاجة واضحة: كثير من المتعلمين في المغرب يفهمون الإنجليزية جيدًا على الورق، لكن التحدّث يبقى صعبًا حين يغيب المكان الآمن والانتظام.",
+      story2:
+        "لذلك بنينا مجتمعًا صغيرًا ومركّزًا: دروس مجانية للجميع من الخارج، ومجموعات ونقاشات ولقاءات زوم للأعضاء المقبولين من الداخل.",
+      story3:
+        "نؤمن أن التقدّم يأتي من التدريب المنتظم، والشروحات الواضحة، والأشخاص الذين يشجّعونك وأنت ما زلت تتعلّم.",
+      valuesEyebrow: "ما نؤمن به",
+      valuesTitle: "ثلاثة مبادئ توجّه عملنا.",
+      values: [
+        {
+          title: "تدريب إنساني",
+          text: "نتحدّث بوضوح، بلا إحراج، وبإيقاع يناسب حياتك اليومية والدراسة والعمل.",
+        },
+        {
+          title: "جذور مغربية",
+          text: "نفهم الانتقال من الدارجة والفرنسية إلى إنجليزية واثقة، ونبني عليه بخطوات عملية.",
+        },
+        {
+          title: "مجتمع مختار",
+          text: "نراجع طلبات الانضمام حتى يبقى الجو محترمًا ومفيدًا لكل من يتدرّب معنا.",
+        },
+      ],
+      ctaTitle: "هل تريد أن تكون جزءًا من القصبة؟",
+      ctaText: "سجّل طلبك، أو راسلنا على واتساب إن كان لديك سؤال سريع.",
+      emailLabel: "أو راسلنا على البريد:",
+      meta: "تعرّف على قصبة إنجليش: مجتمع إنجليزي عبر الإنترنت بجذور مغربية ودروس مجانية ومجتمع للأعضاء.",
     },
     news: {
       title: "الأخبار",
@@ -265,6 +302,7 @@ const dictionaries = {
     brandShort: "Kasbah",
     brandAccent: "English",
     nav: {
+      about: "About",
       news: "News",
       courses: "Free courses",
       pricing: "Pricing",
@@ -277,6 +315,11 @@ const dictionaries = {
       closeMenu: "Close menu",
       mainNav: "Main",
     },
+    whatsapp: {
+      label: "WhatsApp",
+      chat: "Message us on WhatsApp",
+      prefill: "Hello, I’d like to ask about Kasbah English.",
+    },
     home: {
       headline: "Speak with confidence. Grow with a community.",
       lede: "An online English home for Moroccan learners, and friends around the world who want practice that feels human, clear, and useful.",
@@ -284,7 +327,7 @@ const dictionaries = {
       ctaCourses: "Try a free course",
       whatEyebrow: "Learner reviews",
       whatTitle: "Voices from inside the Kasbah.",
-      whatText: "Learners share how practice and community helped them grow.",
+      whatText: "Learners from Morocco share how practice and community helped them grow.",
       h1: "Start free, no pressure",
       h1text: "Browse news, try short free lessons, and learn how Kasbah English works before you apply.",
       h2: "A real community inside",
@@ -293,18 +336,18 @@ const dictionaries = {
       h3text: "We focus on speaking clearly, sounding natural, and building confidence for study, work, and everyday life.",
       reviews: [
         {
-          name: "Khalid Al-Mansoori",
-          country: "UAE",
+          name: "Sara El Idrissi",
+          country: "Casablanca",
           quote: "I speak in meetings with more confidence now. The vibe is respectful and the practice is truly practical.",
         },
         {
-          name: "Maryam Al-Ajmi",
-          country: "Kuwait",
+          name: "Youssef Benjelloun",
+          country: "Rabat",
           quote: "I felt safe while practicing. The teachers are clear and the group encourages me every week.",
         },
         {
           name: "Amine Benali",
-          country: "Morocco",
+          country: "Tangier",
           quote: "After a few weeks of practice I speak up more in discussions. The atmosphere is organized and people encourage you.",
         },
       ],
@@ -330,6 +373,37 @@ const dictionaries = {
       finalText: "Apply today. We’ll review your story and guide accepted members into the community.",
       askQuestion: "Ask a question",
       visualAlt: "Learners practicing English together",
+    },
+    about: {
+      title: "About",
+      hero: "A Kasbah born from a simple idea",
+      lede: "An online English space with Moroccan roots, open to anyone who wants respectful, confident practice.",
+      story1:
+        "Kasbah English started from a clear need: many learners in Morocco understand English on paper, yet speaking stays hard without a safe place and steady rhythm.",
+      story2:
+        "So we built a focused community: free lessons for everyone outside, and groups, discussions, and Zoom meetings for accepted members inside.",
+      story3:
+        "We believe progress comes from regular practice, clear teaching, and people who encourage you while you’re still learning.",
+      valuesEyebrow: "What we believe",
+      valuesTitle: "Three principles guide our work.",
+      values: [
+        {
+          title: "Human practice",
+          text: "We speak clearly, without shame, at a pace that fits study, work, and everyday life.",
+        },
+        {
+          title: "Moroccan roots",
+          text: "We understand the path from Darija and French to confident English, and we build on it with practical steps.",
+        },
+        {
+          title: "A chosen community",
+          text: "We review applications so the atmosphere stays respectful and useful for everyone practicing with us.",
+        },
+      ],
+      ctaTitle: "Want to be part of the Kasbah?",
+      ctaText: "Send your application, or message us on WhatsApp if you have a quick question.",
+      emailLabel: "Or email us at:",
+      meta: "Learn about Kasbah English: an online English community with Moroccan roots, free lessons, and a members space.",
     },
     news: {
       title: "News",

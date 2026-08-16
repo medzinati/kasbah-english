@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { SiteWhatsApp } from "@/components/SiteWhatsApp";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import "./globals.css";
@@ -42,6 +43,7 @@ export default async function RootLayout({
     <html lang={locale} dir={dir}>
       <body className={`locale-${locale} ${cairo.variable}`}>
         <Providers>{children}</Providers>
+        <SiteWhatsApp />
       </body>
     </html>
   );

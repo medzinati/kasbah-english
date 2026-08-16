@@ -10,6 +10,7 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
             <strong>{dict.brand}</strong> · {dict.footer.tagline}
           </p>
           <nav className="footer-links" aria-label={dict.footer.links}>
+            <Link href="/about">{dict.nav.about}</Link>
             <Link href="/news">{dict.nav.news}</Link>
             <Link href="/courses">{dict.nav.courses}</Link>
             <Link href="/pricing">{dict.nav.pricing}</Link>
