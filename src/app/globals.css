@@ -869,6 +869,7 @@ body.locale-en .brand em {
 
 .news-media {
   position: relative;
+  display: block;
   overflow: hidden;
   border-radius: 2px;
   aspect-ratio: 16 / 9;
@@ -902,7 +903,92 @@ body.locale-en .brand em {
 .news-summary {
   font-size: 1.05rem;
   color: var(--ink);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.news-summary-clamp {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  max-width: 42ch;
+}
+
+.news-item h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-item h2 a:hover {
+  color: var(--teal-deep);
+}
+
+.news-article {
+  padding: clamp(4.5rem, 10vw, 7rem) 0 3.5rem;
+}
+
+.news-article-inner {
+  max-width: 44rem;
+}
+
+.news-article .eyebrow a {
+  color: var(--teal-deep);
+}
+
+.news-article time {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--teal);
+  margin: 0.85rem 0 0.75rem;
+}
+
+.news-article h1 {
+  font-family: var(--font-display), Cairo, sans-serif;
+  font-size: clamp(1.85rem, 5vw, 2.75rem);
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.news-article-lede {
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  max-width: 42ch;
+  margin-bottom: 1.5rem;
+}
+
+.news-article-media {
+  overflow: hidden;
+  border-radius: 2px;
+  aspect-ratio: 16 / 9;
+  margin-bottom: 1.75rem;
+  background: var(--paper-deep);
+}
+
+.news-article-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.news-article-body {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.news-article-body p {
+  color: var(--ink-soft);
+  line-height: 1.8;
+  font-size: 1.05rem;
+  max-width: 62ch;
+}
+
+.news-article-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
 .news-item p {

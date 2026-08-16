@@ -186,6 +186,8 @@ const dictionaries = {
       hero: "حكايات من القصبة",
       lede: "تحديثات ودّية حول الدروس وحياة المجتمع وكيفية الانضمام إلينا.",
       meta: "أخبار وتحديثات قصبة إنجليش — المجتمع والدروس ودعوات الانضمام.",
+      readMore: "اقرأ المقال كاملًا",
+      backToList: "العودة إلى الأخبار",
     },
     courses: {
       title: "دروس مجانية",
@@ -618,6 +620,8 @@ const dictionaries = {
       hero: "Stories from the Kasbah",
       lede: "Friendly updates on courses, community life, and how to join us.",
       meta: "Updates from Kasbah English — community, courses, and member invitations.",
+      readMore: "Read the full article",
+      backToList: "Back to news",
     },
     courses: {
       title: "Free courses",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { newsItems } from "@/data/news";
@@ -31,8 +32,8 @@ export default async function NewsPage() {
         <section className="section">
           <div className="wrap news-list">
             {newsItems.map((item) => (
-              <article className="news-item" key={item.slug} id={item.slug}>
-                <div className="news-media">
+              <article className="news-item news-item-preview" key={item.slug}>
+                <Link href={`/news/${item.slug}`} className="news-media">
                   <Image
                     src={item.image}
                     alt={item.imageAlt[locale]}
@@ -41,7 +42,7 @@ export default async function NewsPage() {
                     sizes="(max-width: 800px) 100vw, 720px"
                     quality={75}
                   />
-                </div>
+                </Link>
                 <div className="news-copy">
                   <time dateTime={item.date}>
                     {new Intl.DateTimeFormat(locale === "ar" ? "ar" : "en", {
@@ -50,9 +51,13 @@ export default async function NewsPage() {
                       day: "numeric",
                     }).format(new Date(item.date))}
                   </time>
-                  <h2>{item.title[locale]}</h2>
-                  <p className="news-summary">{item.summary[locale]}</p>
-                  <p>{item.body[locale]}</p>
+                  <h2>
+                    <Link href={`/news/${item.slug}`}>{item.title[locale]}</Link>
+                  </h2>
+                  <p className="news-summary news-summary-clamp">{item.summary[locale]}</p>
+                  <Link className="text-link" href={`/news/${item.slug}`}>
+                    {dict.news.readMore}
+                  </Link>
                 </div>
               </article>
             ))}
