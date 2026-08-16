@@ -15,11 +15,13 @@ export function ApplyForm({
   plans,
   currency,
   initialPlan = "",
+  initialLevel = "",
 }: {
   dict: Dictionary["apply"];
   plans: readonly PlanOption[];
   currency: string;
   initialPlan?: string;
+  initialLevel?: string;
 }) {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -37,7 +39,10 @@ export function ApplyForm({
       const res = await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          level: initialLevel || undefined,
+        }),
       });
       const json = (await res.json()) as { ok?: boolean; error?: string };
 
@@ -58,7 +63,9 @@ export function ApplyForm({
 
   return (
     <form className="site-form" onSubmit={onSubmit} noValidate>
-      <div className="form-grid">
+      <p className="form-short-note">{dict.shortNote}</p>
+
+      <div className="form-grid form-grid-simple">
         <label>
           {dict.name}
           <input name="name" type="text" required autoComplete="name" placeholder={dict.phName} />
@@ -68,45 +75,13 @@ export function ApplyForm({
           <input name="email" type="email" required autoComplete="email" placeholder="you@email.com" dir="ltr" />
         </label>
         <label>
-          {dict.location}
-          <input name="location" type="text" required placeholder={dict.phLocation} />
-        </label>
-        <label>
           {dict.whatsapp}
-          <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+212…" dir="ltr" />
+          <input name="whatsapp" type="tel" autoComplete="tel" placeholder="+966…" dir="ltr" />
         </label>
         <label>
-          {dict.level}
-          <select name="level" required defaultValue="">
-            <option value="" disabled>
-              {dict.selectLevel}
-            </option>
-            {dict.levels.map((level) => (
-              <option key={level} value={level}>
-                {level}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label>
-          {dict.goal}
-          <select name="goal" required defaultValue="">
-            <option value="" disabled>
-              {dict.selectGoal}
-            </option>
-            {dict.goals.map((goal) => (
-              <option key={goal} value={goal}>
-                {goal}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="form-span-2">
           {dict.plan}
-          <select name="plan" required defaultValue={validInitial}>
-            <option value="" disabled>
-              {dict.selectPlan}
-            </option>
+          <select name="plan" defaultValue={validInitial}>
+            <option value="">{dict.selectPlanOptional}</option>
             {plans.map((plan) => (
               <option key={plan.id} value={plan.id}>
                 {plan.name} — {plan.price} {currency} ({plan.duration})
@@ -115,11 +90,6 @@ export function ApplyForm({
           </select>
         </label>
       </div>
-
-      <label>
-        {dict.motivation}
-        <textarea name="motivation" required rows={5} placeholder={dict.phMotivation} />
-      </label>
 
       <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
         {status === "loading" ? dict.sending : dict.submit}

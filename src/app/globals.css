@@ -1126,6 +1126,12 @@ body.locale-en .brand em {
   max-width: 34ch;
 }
 
+.form-short-note {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
 .site-form {
   display: grid;
   gap: 1.1rem;

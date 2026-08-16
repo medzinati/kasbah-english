@@ -7,12 +7,9 @@ const planIds = ["1m", "3m", "6m", "12m", "36m"] as const;
 const schema = z.object({
   name: z.string().trim().min(2),
   email: z.string().trim().email(),
-  location: z.string().trim().min(2),
   whatsapp: z.string().trim().optional(),
-  level: z.string().trim().min(2),
-  goal: z.string().trim().min(2),
-  plan: z.enum(planIds),
-  motivation: z.string().trim().min(10),
+  plan: z.union([z.enum(planIds), z.literal("")]).optional(),
+  level: z.string().trim().optional(),
 });
 
 export async function POST(request: Request) {
@@ -26,23 +23,29 @@ export async function POST(request: Request) {
 
   const parsed = schema.safeParse(json);
   if (!parsed.success) {
-    return NextResponse.json({ ok: false, error: "Please fill in all required fields correctly." }, { status: 400 });
+    return NextResponse.json(
+      { ok: false, error: "Please enter a valid name and email." },
+      { status: 400 },
+    );
   }
 
   const data = parsed.data;
   const email = data.email.toLowerCase();
+  const plan = data.plan && data.plan.length > 0 ? data.plan : null;
+  const level = data.level && data.level.length > 0 ? data.level : "Pending";
+  const pending = "Pending";
 
   try {
     await prisma.application.create({
       data: {
         name: data.name,
         email,
-        location: data.location,
+        location: pending,
         whatsapp: data.whatsapp || null,
-        level: data.level,
-        goal: data.goal,
-        plan: data.plan,
-        motivation: data.motivation,
+        level,
+        goal: pending,
+        plan,
+        motivation: "",
       },
     });
   } catch (error) {
@@ -58,12 +61,9 @@ export async function POST(request: Request) {
     const form = new FormData();
     form.set("name", data.name);
     form.set("email", email);
-    form.set("location", data.location);
     form.set("whatsapp", data.whatsapp || "—");
-    form.set("level", data.level);
-    form.set("goal", data.goal);
-    form.set("plan", data.plan);
-    form.set("motivation", data.motivation);
+    form.set("level", level);
+    form.set("plan", plan || "—");
     form.set("_subject", `Kasbah English application — ${data.name}`);
     form.set("_template", "table");
     form.set("_captcha", "false");

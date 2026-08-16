@@ -6,7 +6,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 
 type Props = {
-  searchParams: Promise<{ plan?: string }>;
+  searchParams: Promise<{ plan?: string; level?: string }>;
 };
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -20,6 +20,7 @@ export default async function ApplyPage({ searchParams }: Props) {
   const dict = getDictionary(locale);
   const params = await searchParams;
   const initialPlan = params.plan?.trim() || "";
+  const initialLevel = params.level?.trim() || "";
 
   return (
     <>
@@ -49,6 +50,7 @@ export default async function ApplyPage({ searchParams }: Props) {
               plans={dict.pricing.plans}
               currency={dict.pricing.currency}
               initialPlan={initialPlan}
+              initialLevel={initialLevel}
             />
           </div>
         </section>
