@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
 const STORAGE_KEY = "kasbah-level-popup-dismissed";
-const SHOW_DELAY_MS = 2800;
+const SHOW_DELAY_MS = 10000;
 
 type LevelTestPopupProps = {
   brand: string;
