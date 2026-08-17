@@ -121,7 +121,7 @@ export function LevelTestPopup({
           <Link className="btn btn-primary" href="/level-test" onClick={markSeen}>
             {cta}
           </Link>
-          <button type="button" className="btn btn-ghost" onClick={closePopup}>
+          <button type="button" className="btn btn-ghost dark" onClick={closePopup}>
             {dismiss}
           </button>
         </div>
