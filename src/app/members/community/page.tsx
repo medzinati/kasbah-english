@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { AnnouncementForm } from "@/components/AnnouncementForm";
 import { MembersNav } from "@/components/MembersNav";
@@ -36,6 +37,11 @@ export default async function CommunityPage() {
         <p className="eyebrow">{dict.members.community}</p>
         <h1>{dict.members.announcements}</h1>
         <p className="members-lede">{dict.members.announcementsLede}</p>
+        <p>
+          <Link className="text-link" href="/members">
+            ← {dict.members.hubWelcome}
+          </Link>
+        </p>
 
         {session.user.role === "ADMIN" ? <AnnouncementForm /> : null}
 
