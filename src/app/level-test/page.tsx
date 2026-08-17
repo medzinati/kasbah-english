@@ -8,7 +8,16 @@ import { getLocale } from "@/i18n/get-locale";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
-  return { title: dict.levelTest.title, description: dict.levelTest.meta };
+  return {
+    title: dict.levelTest.title,
+    description: dict.levelTest.meta,
+    alternates: { canonical: "/level-test" },
+    openGraph: {
+      title: dict.levelTest.title,
+      description: dict.levelTest.meta,
+      url: "/level-test",
+    },
+  };
 }
 
 export default async function LevelTestPage() {

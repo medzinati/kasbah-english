@@ -8,7 +8,16 @@ import { getSiteDictionary } from "@/lib/site-content";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = await getSiteDictionary(locale);
-  return { title: dict.pricing.title, description: dict.pricing.meta };
+  return {
+    title: dict.pricing.title,
+    description: dict.pricing.meta,
+    alternates: { canonical: "/pricing" },
+    openGraph: {
+      title: dict.pricing.title,
+      description: dict.pricing.meta,
+      url: "/pricing",
+    },
+  };
 }
 
 const monthsByPlan: Record<string, number> = {

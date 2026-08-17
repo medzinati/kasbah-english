@@ -11,7 +11,16 @@ import { prisma } from "@/lib/prisma";
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
-  return { title: dict.courses.title, description: dict.courses.meta };
+  return {
+    title: dict.courses.title,
+    description: dict.courses.meta,
+    alternates: { canonical: "/courses" },
+    openGraph: {
+      title: dict.courses.title,
+      description: dict.courses.meta,
+      url: "/courses",
+    },
+  };
 }
 
 export const dynamic = "force-dynamic";
