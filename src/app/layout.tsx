@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Tajawal } from "next/font/google";
 import { Providers } from "@/components/Providers";
+import { SiteLevelPopup } from "@/components/SiteLevelPopup";
 import { SiteWhatsApp } from "@/components/SiteWhatsApp";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
@@ -50,6 +51,7 @@ export default async function RootLayout({
     <html lang={locale} dir={dir}>
       <body className={`locale-${locale} ${jakarta.variable} ${tajawal.variable}`}>
         <Providers>{children}</Providers>
+        <SiteLevelPopup />
         <SiteWhatsApp />
       </body>
     </html>

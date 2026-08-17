@@ -25,6 +25,13 @@ const dictionaries = {
       chat: "راسلنا على واتساب",
       prefill: "السلام عليكم، أود الاستفسار عن قصبة إنجليش.",
     },
+    levelPopup: {
+      title: "اختبر مستواك في الإنجليزية",
+      text: "اختبار قصير ومجاني — اعرف مستواك الحقيقي في دقائق، وابدأ من المكان المناسب لك.",
+      cta: "ابدأ الاختبار الآن",
+      dismiss: "لاحقًا",
+      close: "إغلاق",
+    },
     home: {
       headline: "طوّر لغتك الإنجليزية وتحدّث بثقة",
       lede: "تعلّم الإنجليزية بطريقة عملية مع مجتمع، تدريب مباشر، ومحتوى يساعدك على التحدّث بوضوح في العمل والدراسة والحياة اليومية.",
@@ -508,6 +515,13 @@ const dictionaries = {
       label: "WhatsApp",
       chat: "Message us on WhatsApp",
       prefill: "Hello, I’d like to ask about Kasbah English.",
+    },
+    levelPopup: {
+      title: "Test your English level",
+      text: "A short free quiz — find your real level in a few minutes and start where you belong.",
+      cta: "Start the test now",
+      dismiss: "Maybe later",
+      close: "Close",
     },
     home: {
       headline: "Improve your English and speak with confidence",
