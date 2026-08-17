@@ -4,7 +4,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 
-const STORAGE_KEY = "kasbah-level-popup-dismissed";
+/** Session-only: popup can show again on a new browser visit */
+const SESSION_KEY = "kasbah-level-popup-seen-v2";
+/** Legacy key that hid the popup forever after one dismiss */
+const LEGACY_KEY = "kasbah-level-popup-dismissed";
 const SHOW_DELAY_MS = 10000;
 
 type LevelTestPopupProps = {
@@ -16,11 +19,21 @@ type LevelTestPopupProps = {
   close: string;
 };
 
-function rememberDismiss() {
+function markSeen() {
   try {
-    window.localStorage.setItem(STORAGE_KEY, "1");
+    window.sessionStorage.setItem(SESSION_KEY, "1");
+    window.localStorage.removeItem(LEGACY_KEY);
   } catch {
     /* ignore */
+  }
+}
+
+function wasSeenThisVisit() {
+  try {
+    window.localStorage.removeItem(LEGACY_KEY);
+    return window.sessionStorage.getItem(SESSION_KEY) === "1";
+  } catch {
+    return false;
   }
 }
 
@@ -49,11 +62,7 @@ export function LevelTestPopup({
       return;
     }
 
-    try {
-      if (window.localStorage.getItem(STORAGE_KEY) === "1") return;
-    } catch {
-      /* ignore */
-    }
+    if (wasSeenThisVisit()) return;
 
     const timer = window.setTimeout(() => setOpen(true), SHOW_DELAY_MS);
     return () => window.clearTimeout(timer);
@@ -68,7 +77,7 @@ export function LevelTestPopup({
 
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        rememberDismiss();
+        markSeen();
         setOpen(false);
       }
     }
@@ -81,7 +90,7 @@ export function LevelTestPopup({
   }, [open]);
 
   function closePopup() {
-    rememberDismiss();
+    markSeen();
     setOpen(false);
   }
 
@@ -109,7 +118,7 @@ export function LevelTestPopup({
         <h2 id={titleId}>{title}</h2>
         <p>{text}</p>
         <div className="level-popup-actions">
-          <Link className="btn btn-primary" href="/level-test" onClick={rememberDismiss}>
+          <Link className="btn btn-primary" href="/level-test" onClick={markSeen}>
             {cta}
           </Link>
           <button type="button" className="btn btn-ghost" onClick={closePopup}>
