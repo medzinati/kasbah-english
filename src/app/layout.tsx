@@ -5,6 +5,7 @@ import { SiteLevelPopup } from "@/components/SiteLevelPopup";
 import { SiteWhatsApp } from "@/components/SiteWhatsApp";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const jakarta = Plus_Jakarta_Sans({
@@ -24,18 +25,51 @@ const tajawal = Tajawal({
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
+  const siteUrl = getSiteUrl();
+  const title =
+    locale === "ar"
+      ? "قصبة إنجليش | تعلّم الإنجليزية بثقة ومع مجتمع داعم"
+      : "Kasbah English | Speak with confidence. Grow with a community.";
+  const description =
+    locale === "ar"
+      ? "قصبة إنجليش مجتمع إنجليزي عبر الإنترنت للمتعلمين في الخليج والعالم. دروس مجانية للجميع، ومجتمع للأعضاء المقبولين مع نقاشات ولقاءات عبر زوم."
+      : "Kasbah English is a friendly online English community for Gulf and international learners. Free courses publicly, discussions and live Zoom meetings for accepted members.";
+
   return {
+    metadataBase: new URL(siteUrl),
     title: {
-      default:
-        locale === "ar"
-          ? "قصبة إنجليش | تعلّم الإنجليزية بثقة ومع مجتمع داعم"
-          : "Kasbah English | Speak with confidence. Grow with a community.",
+      default: title,
       template: `%s | ${dict.brand}`,
     },
-    description:
-      locale === "ar"
-        ? "قصبة إنجليش مجتمع إنجليزي عبر الإنترنت للمتعلمين في الخليج والعالم. دروس مجانية للجميع، ومجتمع للأعضاء المقبولين مع نقاشات ولقاءات عبر زوم."
-        : "Kasbah English is a friendly online English community for Gulf and international learners. Free courses publicly, discussions and live Zoom meetings for accepted members.",
+    description,
+    applicationName: dict.brand,
+    authors: [{ name: dict.brand }],
+    creator: dict.brand,
+    publisher: dict.brand,
+    alternates: {
+      canonical: "/",
+    },
+    openGraph: {
+      type: "website",
+      url: siteUrl,
+      siteName: dict.brand,
+      title,
+      description,
+      locale: locale === "ar" ? "ar_SA" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
   };
 }
 
