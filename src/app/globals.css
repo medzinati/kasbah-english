@@ -1614,6 +1614,34 @@ body.locale-ar .headline {
 }
 
 /* About */
+.about-visual {
+  position: relative;
+  width: 100%;
+  margin: 0 0 0.5rem;
+}
+
+.about-visual-media {
+  position: relative;
+  width: 100%;
+  height: clamp(14rem, 42vw, 26rem);
+  overflow: hidden;
+  background: var(--paper-deep);
+}
+
+.about-visual-media img {
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.about-visual-shade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(244, 247, 251, 0.55) 0%, transparent 28%),
+    linear-gradient(0deg, rgba(244, 247, 251, 0.35) 0%, transparent 22%);
+}
+
 .about-story {
   padding-top: 0.5rem;
 }

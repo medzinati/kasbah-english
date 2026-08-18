@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -17,6 +18,10 @@ export default async function AboutPage() {
   const dict = await getSiteDictionary(locale);
   const a = dict.about;
   const contact = await getSiteContact();
+  const photoAlt =
+    locale === "ar"
+      ? "متعلمون في الخليج يتدرّبون على الإنجليزية معًا"
+      : "Gulf learners practicing English together";
 
   return (
     <>
@@ -27,6 +32,20 @@ export default async function AboutPage() {
             <p className="eyebrow">{a.title}</p>
             <h1>{a.hero}</h1>
             <p>{a.lede}</p>
+          </div>
+        </section>
+
+        <section className="about-visual" data-reveal="fade" aria-label={photoAlt}>
+          <div className="about-visual-media">
+            <Image
+              src="/images/saudi-learners-group.png"
+              alt={photoAlt}
+              fill
+              priority
+              sizes="100vw"
+              quality={75}
+            />
+            <div className="about-visual-shade" aria-hidden="true" />
           </div>
         </section>
 
