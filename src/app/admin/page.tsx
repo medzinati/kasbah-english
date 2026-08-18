@@ -40,6 +40,35 @@ export default async function AdminDashboardPage() {
     <AdminShell name={session.user.name} locale={locale} dict={dict} title="لوحة التحكم">
       <p className="members-lede">تحكم كامل: محتوى الموقع العام، الأعضاء، الأخبار، الفيديوهات، واللقاءات.</p>
 
+      <section className="members-section admin-checklist">
+        <h2>خطة التشغيل هذا الأسبوع</h2>
+        <ol className="admin-checklist-list">
+          <li>
+            <strong>Analytics:</strong> أنشئ Property في{" "}
+            <a href="https://analytics.google.com" target="_blank" rel="noreferrer">
+              Google Analytics
+            </a>{" "}
+            ثم ضع <code>NEXT_PUBLIC_GA_MEASUREMENT_ID</code> في Vercel (مثل G-XXXX).
+          </li>
+          <li>
+            <strong>محتوى:</strong> انشر أو عدّل خبرًا من{" "}
+            <Link href="/admin/news">الأخبار</Link> وشارك رابط{" "}
+            <a href="https://www.kasbahenglish.com/level-test" target="_blank" rel="noreferrer">
+              اختبار المستوى
+            </a>
+            .
+          </li>
+          <li>
+            <strong>لقاءات:</strong> افتح{" "}
+            <Link href="/admin/meetings">اللقاءات</Link> واستبدل رابط Zoom الحقيقي لـ Speaking Café.
+          </li>
+          <li>
+            <strong>طلبات:</strong> راجع{" "}
+            <Link href="/admin/applications">الطلبات المعلّقة</Link> ({pendingApps}).
+          </li>
+        </ol>
+      </section>
+
       <div className="admin-stats">
         {cards.map((card) => (
           <Link key={card.href} href={card.href} className="admin-stat">
@@ -54,6 +83,9 @@ export default async function AdminDashboardPage() {
         <div className="admin-quick">
           <Link className="btn btn-primary" href="/admin/site">
             تعديل محتوى الموقع
+          </Link>
+          <Link className="btn btn-ghost dark" href="/admin/news">
+            الأخبار
           </Link>
           <Link className="btn btn-ghost dark" href="/admin/videos">
             إضافة فيديو

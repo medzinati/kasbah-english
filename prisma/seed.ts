@@ -10,6 +10,16 @@ const defaultGroups = [
     description: "تمرين كلام ودّي للحياة اليومية — الطلاقة والوضوح والمواقف الحقيقية.",
   },
   {
+    slug: "speaking-cafe",
+    title: "Speaking Café",
+    description: "غرفة speaking أسبوعية: مواضيع خفيفة، تصحيح لطيف، وكل شخص يتكلّم.",
+  },
+  {
+    slug: "pronunciation",
+    title: "مختبر النطق",
+    description: "وضوح الصوت، الإيقاع، والكلمات الصعبة — تدريب قصير ومركّز.",
+  },
+  {
     slug: "exam-track",
     title: "مسار الامتحانات",
     description: "دعم IELTS والإنجليزية الأكاديمية: استراتيجيات وأسئلة وتقدّم ثابت.",
@@ -25,6 +35,46 @@ const defaultGroups = [
     description: "تعارف وإنجازات وأسئلة ومحادثة دافئة مع متعلمي قصبة.",
   },
 ];
+
+const starterPosts: Array<{
+  groupSlug: string;
+  title: string;
+  body: string;
+}> = [
+  {
+    groupSlug: "speaking-cafe",
+    title: "قدّم نفسك بالإنجليزية (دقيقتان)",
+    body: "اكتب 4–6 جمل: اسمك، مدينتك، لماذا تتعلّم الإنجليزية، وهدف هذا الشهر. سنعلّق ونشجّع بعضنا.",
+  },
+  {
+    groupSlug: "conversation",
+    title: "موضوع الأسبوع: يوم عمل عادي",
+    body: "صف يومك بالإنجليزية. ركّز على الماضي البسيط والحاضر. لا بأس بالأخطاء — المهم أن تتدرّب.",
+  },
+  {
+    groupSlug: "pronunciation",
+    title: "كلمة هذا الأسبوع: comfortable",
+    body: "سجّل أو اكتب كيف تنطقها، وشارك جملة تستخدمها فيها. سنصحّح بلطف.",
+  },
+  {
+    groupSlug: "general",
+    title: "مرحبًا في مجتمع القصبة",
+    body: "إذا كنت عضوًا جديدًا: قل مرحبًا، اذكر مستواك التقريبي، والمجموعة التي تريد البدء بها.",
+  },
+];
+
+function nextThursdayAt19Gulf(): Date {
+  const now = new Date();
+  const gulfOffsetMs = 3 * 60 * 60 * 1000;
+  const gulfNow = new Date(now.getTime() + gulfOffsetMs);
+  const day = gulfNow.getUTCDay(); // 0 Sun .. 4 Thu
+  let addDays = (4 - day + 7) % 7;
+  if (addDays === 0 && gulfNow.getUTCHours() >= 19) addDays = 7;
+  const targetGulf = new Date(
+    Date.UTC(gulfNow.getUTCFullYear(), gulfNow.getUTCMonth(), gulfNow.getUTCDate() + addDays, 19, 0, 0),
+  );
+  return new Date(targetGulf.getTime() - gulfOffsetMs);
+}
 
 async function main() {
   const email = (process.env.ADMIN_EMAIL || "mohamed.ketrani.zinati@gmail.com").trim().toLowerCase();
@@ -62,6 +112,29 @@ async function main() {
     });
   }
 
+  for (const post of starterPosts) {
+    const group = await prisma.discussionGroup.findUnique({ where: { slug: post.groupSlug } });
+    if (!group) continue;
+    const exists = await prisma.discussionPost.findFirst({
+      where: { groupId: group.id, title: post.title },
+    });
+    if (exists) {
+      await prisma.discussionPost.update({
+        where: { id: exists.id },
+        data: { body: post.body, authorId: admin.id },
+      });
+    } else {
+      await prisma.discussionPost.create({
+        data: {
+          groupId: group.id,
+          authorId: admin.id,
+          title: post.title,
+          body: post.body,
+        },
+      });
+    }
+  }
+
   const welcomeTitle = "مرحبًا بك في قصبة إنجليش";
   const welcomeBody =
     "أنت الآن داخل المجتمع. اقرأ الإعلانات، وانضم إلى مجموعة نقاش، وقدّم نفسك، وتعال إلى لقاءات زوم مستعدًا للتحدّث. يسعدنا وجودك — التقدّم يحتاج إلى انتظام ولطف.";
@@ -85,6 +158,60 @@ async function main() {
   } else {
     await prisma.announcement.create({
       data: { title: welcomeTitle, body: welcomeBody, authorId: admin.id },
+    });
+  }
+
+  const meetingAnnounceTitle = "لقاء Speaking مباشر هذا الأسبوع";
+  const meetingAnnounceBody =
+    "انضم إلى لقاء Zoom للمحادثة. افتح جدول اللقاءات، سجّل حضورك، وادخل قبل الموعد بدقائق. جهّز جملتين تتحدّث بهما عن يومك.";
+  const existingMeetingAnnounce = await prisma.announcement.findFirst({
+    where: { title: meetingAnnounceTitle },
+  });
+  if (existingMeetingAnnounce) {
+    await prisma.announcement.update({
+      where: { id: existingMeetingAnnounce.id },
+      data: { body: meetingAnnounceBody, authorId: admin.id },
+    });
+  } else {
+    await prisma.announcement.create({
+      data: {
+        title: meetingAnnounceTitle,
+        body: meetingAnnounceBody,
+        authorId: admin.id,
+      },
+    });
+  }
+
+  const meetingTitle = "Speaking Café — Live Zoom";
+  const meetingStartsAt = nextThursdayAt19Gulf();
+  const zoomUrl =
+    process.env.DEFAULT_ZOOM_URL?.trim() || "https://zoom.us/j/00000000000";
+  const existingMeeting = await prisma.meeting.findFirst({
+    where: { title: meetingTitle, startsAt: { gte: new Date() } },
+  });
+  if (existingMeeting) {
+    await prisma.meeting.update({
+      where: { id: existingMeeting.id },
+      data: {
+        description:
+          "لقاء محادثة مفتوح لكل الأعضاء. موضوع خفيف + تصحيح لطيف. حدّث رابط Zoom من لوحة الإدارة إن لزم.",
+        startsAt: meetingStartsAt,
+        durationMinutes: 60,
+        zoomUrl,
+        createdById: admin.id,
+      },
+    });
+  } else {
+    await prisma.meeting.create({
+      data: {
+        title: meetingTitle,
+        description:
+          "لقاء محادثة مفتوح لكل الأعضاء. موضوع خفيف + تصحيح لطيف. حدّث رابط Zoom من لوحة الإدارة إن لزم.",
+        startsAt: meetingStartsAt,
+        durationMinutes: 60,
+        zoomUrl,
+        createdById: admin.id,
+      },
     });
   }
 
@@ -124,7 +251,8 @@ async function main() {
   }
 
   console.log(`Admin ready: ${email}`);
-  console.log("Default discussion groups ready");
+  console.log("Discussion groups + starter posts ready");
+  console.log("Announcements + upcoming Zoom meeting ready");
   console.log("News posts ready");
   console.log("Login at /members/login");
 }

@@ -153,4 +153,37 @@ export const newsItems: NewsItem[] = [
       ],
     },
   },
+  {
+    slug: "start-with-level-test",
+    date: "2026-08-17",
+    image: "/images/news/founding.png",
+    imageAlt: {
+      ar: "متعلم يبدأ اختبار المستوى على قصبة إنجليش",
+      en: "A learner starting the Kasbah English level test",
+    },
+    title: {
+      ar: "ابدأ باختبار المستوى المجاني",
+      en: "Start with the free level test",
+    },
+    summary: {
+      ar: "في دقائق تعرف مستواك، ثم تنتقل إلى درس مجاني أو التسجيل في المجتمع.",
+      en: "In a few minutes you’ll know your level, then move to a free lesson or apply to the community.",
+    },
+    body: {
+      ar: [
+        "كثير من المتعلمين يضيعون وقتًا في محتوى لا يناسب مستواهم. لذلك وضعنا اختبار مستوى مجانيًا وقصيرًا في قصبة إنجليش.",
+        "بعد النتيجة ستحصل على توجيه واضح: جرّب درسًا مجانيًا، أو سجّل للانضمام إلى المجتمع واللقاءات المباشرة.",
+        "الخطوة بسيطة: افتح اختبار المستوى، أجب بصدق، واحفظ نتيجتك. ثم اختر مسارك بدون تخمين.",
+        "إذا كنت في الخليج وتحتاج إنجليزية للعمل أو الدراسة أو السفر، هذا الاختبار نقطة بداية عملية لا تحتاج بطاقة بنكية.",
+        "شاركنا رابط الاختبار مع صديق يتعلّم الإنجليزية — البداية معًا أسهل من البداية وحدك.",
+      ],
+      en: [
+        "Many learners waste time on content that does not match their level. That is why Kasbah English has a short free level test.",
+        "After the result you get a clear next step: try a free lesson, or apply to join the community and live meetings.",
+        "It is simple: open the level test, answer honestly, and save your result. Then choose your path without guessing.",
+        "If you are in the Gulf and need English for work, study, or travel, this test is a practical starting point with no card required.",
+        "Share the test link with a friend who is learning English — starting together is easier than starting alone.",
+      ],
+    },
+  },
 ];
