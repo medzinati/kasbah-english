@@ -1920,6 +1920,37 @@ body.locale-ar .whatsapp-float {
     var(--paper-deep);
 }
 
+.trust-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .trust-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.75rem;
+  }
+
+  .trust-list {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+}
+
+.trust-visual {
+  position: relative;
+  min-height: clamp(16rem, 38vw, 24rem);
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--paper);
+}
+
+.trust-visual img {
+  object-fit: cover;
+  object-position: center 30%;
+}
+
 .faq-section {
   background:
     radial-gradient(ellipse 60% 50% at 100% 100%, rgba(91, 127, 160, 0.1), transparent 55%),

@@ -108,20 +108,30 @@ export default async function Home() {
         </section>
 
         <section className="section trust-section" data-reveal>
-          <div className="wrap">
-            <div className="section-head">
-              <p className="eyebrow">{h.trustEyebrow}</p>
-              <h2>{h.trustTitle}</h2>
-              <p>{h.trustText}</p>
+          <div className="wrap trust-grid">
+            <div data-reveal="left">
+              <div className="section-head">
+                <p className="eyebrow">{h.trustEyebrow}</p>
+                <h2>{h.trustTitle}</h2>
+                <p>{h.trustText}</p>
+              </div>
+              <ul className="trust-list">
+                {h.trust.map((item) => (
+                  <li key={item.title} data-reveal>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="trust-list">
-              {h.trust.map((item) => (
-                <li key={item.title} data-reveal>
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                </li>
-              ))}
-            </ul>
+            <div className="trust-visual" data-reveal="right">
+              <Image
+                src="/images/news/community.png"
+                alt={h.visualAlt}
+                fill
+                sizes="(max-width: 800px) 100vw, 45vw"
+              />
+            </div>
           </div>
         </section>
 
