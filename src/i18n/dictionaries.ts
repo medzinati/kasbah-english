@@ -107,6 +107,28 @@ const dictionaries = {
           text: "نراجع الطلبات حتى يبقى المجتمع مفيدًا ومحترمًا للجميع.",
         },
       ],
+      examsEyebrow: "تحضير الامتحانات",
+      examsTitle: "استعد لامتحانات الإنجليزية بثقة.",
+      examsText: "تدريب موجّه لـ IELTS وTOEFL وTOEIC وPTE — مهارات الامتحان مع محادثة عملية.",
+      examsCta: "سجّل لمسار الامتحانات",
+      exams: [
+        {
+          name: "IELTS",
+          text: "تدريب على التحدّث والكتابة والاستماع والقراءة بأسلوب الامتحان الحقيقي.",
+        },
+        {
+          name: "TOEFL",
+          text: "بناء الطلاقة الأكاديمية والإجابات المنظمة للمهام الرسمية.",
+        },
+        {
+          name: "TOEIC",
+          text: "إنجليزية العمل للاختبار: مواقف مهنية ومفردات واضحة وثقة في التواصل.",
+        },
+        {
+          name: "PTE",
+          text: "تمرين عملي على مهام PTE مع تركيز على السرعة والدقة والنطق.",
+        },
+      ],
       howEyebrow: "كيف يعمل الموقع",
       howTitle: "ثلاث خطوات بسيطة للانضمام إلينا.",
       howText: "لا تحتاج إلى إتقان اللغة لتبدأ. تحتاج إلى فضول وانتظام ومكان تشعر فيه بالأمان وأنت تتحدّث.",
@@ -616,6 +638,28 @@ const dictionaries = {
         {
           title: "Reviewed membership",
           text: "We review applications so the community stays useful and respectful for everyone.",
+        },
+      ],
+      examsEyebrow: "Exam prep",
+      examsTitle: "Prepare for English exams with confidence.",
+      examsText: "Focused practice for IELTS, TOEFL, TOEIC, and PTE — exam skills plus real conversation.",
+      examsCta: "Apply for the exam track",
+      exams: [
+        {
+          name: "IELTS",
+          text: "Practice speaking, writing, listening, and reading in a real exam style.",
+        },
+        {
+          name: "TOEFL",
+          text: "Build academic fluency and structured answers for official tasks.",
+        },
+        {
+          name: "TOEIC",
+          text: "Workplace English for the test: professional situations, clear vocabulary, confident communication.",
+        },
+        {
+          name: "PTE",
+          text: "Practical PTE task practice with focus on speed, accuracy, and pronunciation.",
         },
       ],
       howEyebrow: "How it works",

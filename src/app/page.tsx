@@ -135,6 +135,42 @@ export default async function Home() {
           </div>
         </section>
 
+        <section className="section exams-section" data-reveal>
+          <div className="wrap exams-grid">
+            <div data-reveal="left">
+              <div className="section-head">
+                <p className="eyebrow">{h.examsEyebrow}</p>
+                <h2>{h.examsTitle}</h2>
+                <p>{h.examsText}</p>
+              </div>
+              <ul className="exams-list">
+                {h.exams.map((exam) => (
+                  <li key={exam.name} data-reveal>
+                    <h3>{exam.name}</h3>
+                    <p>{exam.text}</p>
+                  </li>
+                ))}
+              </ul>
+              <div className="cta-row exams-cta">
+                <Link className="btn btn-primary" href="/apply">
+                  {h.examsCta}
+                </Link>
+                <Link className="btn btn-ghost dark" href="/level-test">
+                  {h.ctaLevel}
+                </Link>
+              </div>
+            </div>
+            <div className="exams-visual" data-reveal="right">
+              <Image
+                src="/images/news/free-lessons.png"
+                alt={h.examsTitle}
+                fill
+                sizes="(max-width: 800px) 100vw, 42vw"
+              />
+            </div>
+          </div>
+        </section>
+
         <section className="section method" data-reveal>
           <div className="wrap method-grid">
             <div data-reveal="left">

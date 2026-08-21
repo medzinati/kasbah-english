@@ -786,6 +786,71 @@ body.locale-ar .headline {
 }
 
 /* Method */
+.exams-section {
+  background:
+    radial-gradient(ellipse 65% 55% at 100% 0%, rgba(91, 127, 160, 0.12), transparent 55%),
+    var(--white);
+}
+
+.exams-grid {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 800px) {
+  .exams-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 2.75rem;
+  }
+}
+
+.exams-list {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .exams-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1.75rem;
+  }
+}
+
+.exams-list h3 {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.35rem;
+  color: var(--teal-deep);
+}
+
+.exams-list p {
+  color: var(--ink-soft);
+  max-width: 34ch;
+  line-height: 1.65;
+}
+
+.exams-cta {
+  margin-top: 0.25rem;
+}
+
+.exams-visual {
+  position: relative;
+  min-height: clamp(16rem, 38vw, 24rem);
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--paper-deep);
+}
+
+.exams-visual img {
+  object-fit: cover;
+  object-position: center 40%;
+}
+
 .method {
   background:
     radial-gradient(ellipse 80% 60% at 100% 0%, rgba(91, 127, 160, 0.1), transparent 55%),
