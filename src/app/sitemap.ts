@@ -14,6 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/news",
     "/courses",
+    "/exams",
     "/level-test",
     "/pricing",
     "/apply",
@@ -21,8 +22,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ].map((path) => ({
     url: `${base}${path || "/"}`,
     lastModified: now,
-    changeFrequency: path === "" || path === "/courses" || path === "/level-test" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : path === "/pricing" || path === "/apply" || path === "/level-test" ? 0.9 : 0.7,
+    changeFrequency: path === "" || path === "/courses" || path === "/exams" || path === "/level-test" ? "weekly" : "monthly",
+    priority: path === "" ? 1 : path === "/pricing" || path === "/apply" || path === "/level-test" || path === "/exams" ? 0.9 : 0.7,
   }));
 
   const courseRoutes: MetadataRoute.Sitemap = freeCourses.map((course) => ({

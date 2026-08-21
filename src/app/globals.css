@@ -851,6 +851,73 @@ body.locale-ar .headline {
   object-position: center 40%;
 }
 
+.exams-page-section .section-head {
+  margin-bottom: 1.75rem;
+}
+
+.exams-page-list {
+  margin-bottom: 0;
+}
+
+@media (min-width: 800px) {
+  .exams-page-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem 2.25rem;
+  }
+}
+
+.exams-path-section {
+  background:
+    radial-gradient(ellipse 60% 50% at 0% 100%, rgba(91, 127, 160, 0.1), transparent 55%),
+    var(--paper);
+}
+
+.exams-path-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.35rem;
+}
+
+@media (min-width: 800px) {
+  .exams-path-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+.exams-path-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.85rem;
+  align-items: start;
+}
+
+.exams-path-num {
+  display: inline-grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: rgba(91, 127, 160, 0.14);
+  color: var(--teal-deep);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.exams-path-list h3 {
+  margin: 0 0 0.35rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.1rem;
+}
+
+.exams-path-list p {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
 .method {
   background:
     radial-gradient(ellipse 80% 60% at 100% 0%, rgba(91, 127, 160, 0.1), transparent 55%),

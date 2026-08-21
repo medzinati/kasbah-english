@@ -152,11 +152,11 @@ export default async function Home() {
                 ))}
               </ul>
               <div className="cta-row exams-cta">
-                <Link className="btn btn-primary" href="/apply">
-                  {h.examsCta}
+                <Link className="btn btn-primary" href="/exams">
+                  {h.examsEyebrow}
                 </Link>
-                <Link className="btn btn-ghost dark" href="/level-test">
-                  {h.ctaLevel}
+                <Link className="btn btn-ghost dark" href="/apply">
+                  {h.examsCta}
                 </Link>
               </div>
             </div>

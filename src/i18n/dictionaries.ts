@@ -10,6 +10,7 @@ const dictionaries = {
       news: "الأخبار",
       courses: "دروس مجانية",
       levelTest: "اختبار المستوى",
+      exams: "الامتحانات",
       pricing: "الأسعار",
       apply: "التسجيل",
       contact: "تواصل معنا",
@@ -231,6 +232,31 @@ const dictionaries = {
       phrases: "عبارات جاهزة",
       practice: "تمرين الآن",
       minutes: "المدة",
+    },
+    examsPage: {
+      title: "تحضير الامتحانات",
+      hero: "IELTS وTOEFL وTOEIC وPTE في مسار واضح",
+      lede: "تدرّب على مهارات الامتحان مع محادثة عملية، داخل مجتمع داعم يفهم أهدافك في الخليج والعالم.",
+      meta: "تحضير امتحانات الإنجليزية أونلاين: IELTS وTOEFL وTOEIC وPTE مع قصبة إنجليش.",
+      listTitle: "الامتحانات التي نغطّيها",
+      pathEyebrow: "المسار",
+      pathTitle: "كيف تستعد معنا؟",
+      path: [
+        {
+          title: "اعرف مستواك",
+          text: "ابدأ باختبار المستوى المجاني لتعرف نقطة البداية المناسبة.",
+        },
+        {
+          title: "تدرّب على مهارات الامتحان",
+          text: "speaking وwriting وlistening وreading بأسلوب قريب من الامتحان الحقيقي.",
+        },
+        {
+          title: "مارس في المجتمع",
+          text: "انضم إلى مجموعات ولقاءات زوم لتثبت ما تتعلّمه تحت ضغط خفيف ودعم.",
+        },
+      ],
+      ctaTitle: "جاهز تبدأ مسار الامتحان؟",
+      ctaText: "سجّل طلبك واذكر أن هدفك IELTS أو TOEFL أو TOEIC أو PTE — نوجّهك للخطوة التالية.",
     },
     pricing: {
       title: "الأسعار",
@@ -543,6 +569,7 @@ const dictionaries = {
       news: "News",
       courses: "Free courses",
       levelTest: "Level test",
+      exams: "Exams",
       pricing: "Pricing",
       apply: "Apply",
       contact: "Contact",
@@ -764,6 +791,31 @@ const dictionaries = {
       phrases: "Ready phrases",
       practice: "Practice now",
       minutes: "Time",
+    },
+    examsPage: {
+      title: "Exam prep",
+      hero: "IELTS, TOEFL, TOEIC & PTE on a clear path",
+      lede: "Train exam skills with practical speaking, inside a supportive community that understands Gulf and international goals.",
+      meta: "Online English exam prep: IELTS, TOEFL, TOEIC, and PTE with Kasbah English.",
+      listTitle: "Exams we cover",
+      pathEyebrow: "The path",
+      pathTitle: "How do you prepare with us?",
+      path: [
+        {
+          title: "Know your level",
+          text: "Start with the free level test so you begin in the right place.",
+        },
+        {
+          title: "Train exam skills",
+          text: "Speaking, writing, listening, and reading in a style close to the real exam.",
+        },
+        {
+          title: "Practice in the community",
+          text: "Join groups and Zoom meetings to lock in what you learn with light pressure and support.",
+        },
+      ],
+      ctaTitle: "Ready to start your exam track?",
+      ctaText: "Apply and mention IELTS, TOEFL, TOEIC, or PTE as your goal — we’ll guide the next step.",
     },
     pricing: {
       title: "Pricing",
