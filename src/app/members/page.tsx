@@ -4,6 +4,7 @@ import { MembersHub } from "@/components/MembersHub";
 import { MembersNav } from "@/components/MembersNav";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { canTeach } from "@/lib/roles";
 import { prisma } from "@/lib/prisma";
 import { getSession } from "@/lib/session";
 
@@ -105,7 +106,7 @@ export default async function MembersHomePage() {
           locale={locale}
           dict={dict}
           firstName={firstName}
-          isAdmin={session.user.role === "ADMIN"}
+          isStaff={canTeach(session.user.role)}
           groups={groups.map((g) => ({
             id: g.id,
             slug: g.slug,

@@ -2852,6 +2852,24 @@ body.locale-ar .whatsapp-float {
   color: var(--ink-soft);
 }
 
+.members-role-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(91, 127, 160, 0.16);
+  color: var(--teal-deep);
+}
+
+.members-teacher-hint {
+  margin: 0 auto;
+  padding: 0.45rem 0 0.75rem;
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+}
+
 @media (min-width: 720px) {
   .members-user {
     display: inline;

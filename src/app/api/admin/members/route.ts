@@ -18,6 +18,7 @@ async function requireAdminApi() {
 const createSchema = z.object({
   name: z.string().trim().min(2),
   email: z.string().trim().email(),
+  role: z.enum(["MEMBER", "TEACHER"]).optional().default("MEMBER"),
 });
 
 export async function POST(request: Request) {
@@ -51,7 +52,7 @@ export async function POST(request: Request) {
       name: parsed.data.name,
       email,
       passwordHash,
-      role: "MEMBER",
+      role: parsed.data.role,
     },
   });
 

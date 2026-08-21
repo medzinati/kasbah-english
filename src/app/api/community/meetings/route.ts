@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSession } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
+import { canTeach, isAdmin } from "@/lib/roles";
 
 const createSchema = z.object({
   title: z.string().trim().min(3).max(120),
@@ -16,8 +17,8 @@ export async function POST(request: Request) {
   if (!session?.user) {
     return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   }
-  if (session.user.role !== "ADMIN") {
-    return NextResponse.json({ ok: false, error: "Only admins can create meetings." }, { status: 403 });
+  if (!canTeach(session.user.role)) {
+    return NextResponse.json({ ok: false, error: "Only teachers and admins can create meetings." }, { status: 403 });
   }
 
   let json: unknown;
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   const session = await getSession();
-  if (!session?.user || session.user.role !== "ADMIN") {
+  if (!session?.user || !canTeach(session.user.role)) {
     return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   }
 
@@ -64,6 +65,15 @@ export async function DELETE(request: Request) {
   const id = searchParams.get("id")?.trim();
   if (!id) {
     return NextResponse.json({ ok: false, error: "Missing meeting id." }, { status: 400 });
+  }
+
+  const meeting = await prisma.meeting.findUnique({ where: { id } });
+  if (!meeting) {
+    return NextResponse.json({ ok: false, error: "Meeting not found." }, { status: 404 });
+  }
+
+  if (!isAdmin(session.user.role) && meeting.createdById !== session.user.id) {
+    return NextResponse.json({ ok: false, error: "You can only delete your own meetings." }, { status: 403 });
   }
 
   await prisma.meeting.delete({ where: { id } });

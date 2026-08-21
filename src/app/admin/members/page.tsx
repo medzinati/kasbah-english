@@ -32,13 +32,13 @@ export default async function AdminMembersPage() {
     id: m.id,
     name: m.name,
     email: m.email,
-    role: m.role as "ADMIN" | "MEMBER",
+    role: m.role,
     createdAt: m.createdAt.toISOString(),
   }));
 
   return (
     <AdminShell name={session.user.name} locale={locale} dict={dict} title="إدارة الأعضاء">
-      <p className="members-lede">أضف أعضاءً يدويًا، أو احذف من لم يعد في المجتمع.</p>
+      <p className="members-lede">أضف أعضاءً أو أساتذة، أو احذف من لم يعد في المجتمع.</p>
       <AdminMembers initial={initial} currentUserId={session.user.id!} />
     </AdminShell>
   );

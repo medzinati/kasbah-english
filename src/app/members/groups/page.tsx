@@ -6,6 +6,7 @@ import { MembersNav } from "@/components/MembersNav";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
+import { canTeach } from "@/lib/roles";
 import { getSession } from "@/lib/session";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -38,7 +39,7 @@ export default async function GroupsPage() {
         <h1>{dict.members.groups}</h1>
         <p className="members-lede">{dict.members.groupsHero}</p>
 
-        {session.user.role === "ADMIN" ? <GroupCreateForm /> : null}
+        {canTeach(session.user.role) ? <GroupCreateForm /> : null}
 
         <div className="group-list">
           {groups.map((group) => (

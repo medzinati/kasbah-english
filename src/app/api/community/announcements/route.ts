@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSession } from "@/lib/session";
 import { prisma } from "@/lib/prisma";
+import { canTeach } from "@/lib/roles";
 
 const schema = z.object({
   title: z.string().trim().min(3).max(120),
@@ -13,8 +14,8 @@ export async function POST(request: Request) {
   if (!session?.user) {
     return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   }
-  if (session.user.role !== "ADMIN") {
-    return NextResponse.json({ ok: false, error: "Only admins can post announcements." }, { status: 403 });
+  if (!canTeach(session.user.role)) {
+    return NextResponse.json({ ok: false, error: "Only teachers and admins can post announcements." }, { status: 403 });
   }
 
   let json: unknown;

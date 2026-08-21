@@ -6,6 +6,7 @@ import { MembersNav } from "@/components/MembersNav";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
+import { canTeach } from "@/lib/roles";
 import { getSession } from "@/lib/session";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,7 +44,7 @@ export default async function CommunityPage() {
           </Link>
         </p>
 
-        {session.user.role === "ADMIN" ? <AnnouncementForm /> : null}
+        {canTeach(session.user.role) ? <AnnouncementForm /> : null}
 
         <div className="feed-list">
           {announcements.length === 0 ? (

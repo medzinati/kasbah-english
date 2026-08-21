@@ -54,7 +54,7 @@ type MembersHubProps = {
   locale: Locale;
   dict: Dictionary;
   firstName: string;
-  isAdmin: boolean;
+  isStaff: boolean;
   groups: HubGroup[];
   meetings: HubMeeting[];
   pinnedAnnouncements: HubAnnouncement[];
@@ -82,7 +82,7 @@ export function MembersHub({
   locale,
   dict,
   firstName,
-  isAdmin,
+  isStaff,
   groups,
   meetings,
   pinnedAnnouncements,
@@ -143,7 +143,7 @@ export function MembersHub({
             <h2>{m.hubFeed}</h2>
           </div>
 
-          {isAdmin ? <AnnouncementForm /> : null}
+          {isStaff ? <AnnouncementForm /> : null}
 
           {feed.length === 0 ? (
             <p className="members-empty">{m.hubFeedEmpty}</p>

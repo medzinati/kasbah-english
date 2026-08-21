@@ -6,6 +6,7 @@ import { MembersNav } from "@/components/MembersNav";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
+import { canTeach } from "@/lib/roles";
 import { getSession } from "@/lib/session";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -66,13 +67,13 @@ export default async function MeetingsPage() {
         <h1>{dict.members.meetings}</h1>
         <p className="members-lede">{dict.members.meetingsLede}</p>
 
-        {session.user.role === "ADMIN" ? <MeetingForm /> : null}
+        {canTeach(session.user.role) ? <MeetingForm /> : null}
 
         <section className="members-section">
           <h2>{dict.members.upcoming}</h2>
           <MeetingList
             meetings={upcoming}
-            isAdmin={session.user.role === "ADMIN"}
+            isAdmin={canTeach(session.user.role)}
             emptyText={dict.members.noUpcoming}
           />
         </section>
@@ -80,7 +81,7 @@ export default async function MeetingsPage() {
         {past.length ? (
           <section className="members-section">
             <h2>{dict.members.past}</h2>
-            <MeetingList meetings={past} isAdmin={session.user.role === "ADMIN"} />
+            <MeetingList meetings={past} isAdmin={canTeach(session.user.role)} />
           </section>
         ) : null}
       </main>

@@ -3,10 +3,11 @@ import { getServerSession } from "next-auth";
 import { z } from "zod";
 import { authOptions } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { canTeach, isAdmin } from "@/lib/roles";
 
-async function requireAdminApi() {
+async function requireTeacherApi() {
   const session = await getServerSession(authOptions);
-  if (!session?.user || session.user.role !== "ADMIN") return null;
+  if (!session?.user || !canTeach(session.user.role)) return null;
   return session;
 }
 
@@ -18,7 +19,7 @@ const schema = z.object({
 });
 
 export async function POST(request: Request) {
-  const session = await requireAdminApi();
+  const session = await requireTeacherApi();
   if (!session) {
     return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   }
@@ -58,7 +59,7 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  const session = await requireAdminApi();
+  const session = await requireTeacherApi();
   if (!session) {
     return NextResponse.json({ ok: false, error: "Unauthorized." }, { status: 401 });
   }
@@ -66,6 +67,15 @@ export async function DELETE(request: Request) {
   if (!id) {
     return NextResponse.json({ ok: false, error: "Missing id." }, { status: 400 });
   }
+
+  const video = await prisma.video.findUnique({ where: { id } });
+  if (!video) {
+    return NextResponse.json({ ok: false, error: "Not found." }, { status: 404 });
+  }
+  if (!isAdmin(session.user.role) && video.createdById !== session.user.id) {
+    return NextResponse.json({ ok: false, error: "You can only delete your own videos." }, { status: 403 });
+  }
+
   await prisma.video.delete({ where: { id } });
   return NextResponse.json({ ok: true });
 }

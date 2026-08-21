@@ -2,12 +2,14 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { roleLabelAr } from "@/lib/roles";
+import type { AppRole } from "@/lib/roles";
 
 type MemberRow = {
   id: string;
   name: string;
   email: string;
-  role: "ADMIN" | "MEMBER";
+  role: AppRole;
   createdAt: string;
 };
 
@@ -68,7 +70,7 @@ export function AdminMembers({
       setNotice("لا يمكنك حذف حسابك.");
       return;
     }
-    if (!confirm("هل تريد حذف هذا العضو نهائيًا؟")) return;
+    if (!confirm("هل تريد حذف هذا الحساب نهائيًا؟")) return;
     setBusyId(id);
     try {
       const res = await fetch(`/api/admin/members?id=${encodeURIComponent(id)}`, {
@@ -89,7 +91,7 @@ export function AdminMembers({
   return (
     <div className="admin-stack">
       <form className="site-form community-form" onSubmit={onCreate}>
-        <h2>إضافة عضو</h2>
+        <h2>إضافة عضو أو أستاذ</h2>
         <div className="form-grid">
           <label>
             الاسم
@@ -99,13 +101,20 @@ export function AdminMembers({
             البريد الإلكتروني
             <input name="email" type="email" required dir="ltr" />
           </label>
+          <label>
+            الدور
+            <select name="role" defaultValue="MEMBER">
+              <option value="MEMBER">عضو</option>
+              <option value="TEACHER">أستاذ</option>
+            </select>
+          </label>
         </div>
         <button className="btn btn-primary" type="submit" disabled={status === "loading"}>
-          {status === "loading" ? "جاري الإضافة…" : "إضافة عضو"}
+          {status === "loading" ? "جاري الإضافة…" : "إضافة"}
         </button>
       </form>
 
-      {notice ? <p className="form-status is-success">{notice}</p> : null}
+      {notice ? <p className={`form-status ${status === "error" ? "is-error" : "is-success"}`}>{notice}</p> : null}
 
       <div className="admin-list">
         {rows.map((row) => (
@@ -114,7 +123,7 @@ export function AdminMembers({
               <div>
                 <h2>{row.name}</h2>
                 <p>
-                  {row.email} · {row.role === "ADMIN" ? "مدير" : "عضو"}
+                  {row.email} · {roleLabelAr(row.role)}
                 </p>
               </div>
               {row.id !== currentUserId && row.role !== "ADMIN" ? (

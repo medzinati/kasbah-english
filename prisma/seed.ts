@@ -98,6 +98,24 @@ async function main() {
     },
   });
 
+  const teacherEmail = (process.env.TEACHER_EMAIL || "teacher@kasbahenglish.com").trim().toLowerCase();
+  const teacherPassword = process.env.TEACHER_PASSWORD || "TeacherKasbah2026!";
+  const teacherHash = await hash(teacherPassword, 10);
+  await prisma.user.upsert({
+    where: { email: teacherEmail },
+    update: {
+      name: process.env.TEACHER_NAME || "Kasbah Teacher",
+      passwordHash: teacherHash,
+      role: Role.TEACHER,
+    },
+    create: {
+      email: teacherEmail,
+      name: process.env.TEACHER_NAME || "Kasbah Teacher",
+      passwordHash: teacherHash,
+      role: Role.TEACHER,
+    },
+  });
+
   for (const group of defaultGroups) {
     await prisma.discussionGroup.upsert({
       where: { slug: group.slug },
@@ -251,6 +269,7 @@ async function main() {
   }
 
   console.log(`Admin ready: ${email}`);
+  console.log(`Teacher ready: ${teacherEmail} / ${teacherPassword}`);
   console.log("Discussion groups + starter posts ready");
   console.log("Announcements + upcoming Zoom meeting ready");
   console.log("News posts ready");

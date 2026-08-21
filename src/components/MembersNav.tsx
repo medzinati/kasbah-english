@@ -5,10 +5,12 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { SignOutButton } from "@/components/SignOutButton";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
+import type { AppRole } from "@/lib/roles";
+import { canTeach, isAdmin } from "@/lib/roles";
 
 type MembersNavProps = {
   name?: string | null;
-  role?: "ADMIN" | "MEMBER";
+  role?: AppRole;
   locale: Locale;
   dict: Dictionary;
   title?: string;
@@ -23,8 +25,11 @@ export function MembersNav({ name, role, locale, dict, title }: MembersNavProps)
     { href: "/members/groups", label: dict.members.groups },
     { href: "/members/meetings", label: dict.members.meetings },
     { href: "/members/videos", label: dict.members.videos },
-    ...(role === "ADMIN" ? [{ href: "/admin", label: dict.members.admin }] : []),
+    ...(isAdmin(role) ? [{ href: "/admin", label: dict.members.admin }] : []),
   ];
+
+  const roleBadge =
+    role === "TEACHER" ? dict.members.teacherBadge : role === "ADMIN" ? dict.members.admin : null;
 
   return (
     <header className="members-top">
@@ -40,6 +45,7 @@ export function MembersNav({ name, role, locale, dict, title }: MembersNavProps)
         </Link>
         <div className="members-top-actions">
           <LanguageSwitcher locale={locale} labelAr={dict.lang.ar} labelEn={dict.lang.en} />
+          {roleBadge ? <span className="members-role-badge">{roleBadge}</span> : null}
           {name ? <span className="members-user">{name.split(" ")[0]}</span> : null}
           <SignOutButton label={dict.members.signOut} />
         </div>
@@ -51,6 +57,9 @@ export function MembersNav({ name, role, locale, dict, title }: MembersNavProps)
           </Link>
         ))}
       </nav>
+      {canTeach(role) && !isAdmin(role) ? (
+        <p className="members-teacher-hint wrap">{dict.members.teacherToolsHint}</p>
+      ) : null}
     </header>
   );
 }

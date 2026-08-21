@@ -477,6 +477,9 @@ const dictionaries = {
       groups: "المجموعات",
       meetings: "اللقاءات",
       admin: "الإدارة",
+      teacherBadge: "أستاذ",
+      teacherToolsHint:
+        "أدوات الأستاذ: يمكنك نشر إعلانات، إنشاء مجموعات، جدولة لقاءات زوم، وإضافة فيديوهات من صفحات المجتمع.",
       area: "مساحة الأعضاء",
       welcome: "أهلًا",
       welcomeLede: "اقرأ الإعلانات، وانضم إلى مجموعات النقاش، واحضر لقاءات زوم المباشرة مع المجتمع.",
@@ -1036,6 +1039,9 @@ const dictionaries = {
       groups: "Groups",
       meetings: "Meetings",
       admin: "Admin",
+      teacherBadge: "Teacher",
+      teacherToolsHint:
+        "Teacher tools: you can post announcements, create groups, schedule Zoom meetings, and add videos from the community pages.",
       area: "Members area",
       welcome: "Welcome",
       welcomeLede: "Read announcements, join discussion groups, and attend live Zoom meetings with the community.",
