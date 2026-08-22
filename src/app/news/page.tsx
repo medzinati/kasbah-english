@@ -6,13 +6,18 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { getPublishedNews } from "@/lib/news";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
-  return { title: dict.news.title, description: dict.news.meta };
+  return buildPageMetadata({
+    title: dict.news.title,
+    description: dict.news.meta,
+    path: "/news",
+  });
 }
 
 export default async function NewsPage() {

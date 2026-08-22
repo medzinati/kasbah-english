@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getLocale } from "@/i18n/get-locale";
 import { getSiteDictionary } from "@/lib/site-content";
+import { buildPageMetadata } from "@/lib/seo";
 
 type Props = {
   searchParams: Promise<{ plan?: string; level?: string }>;
@@ -12,7 +13,11 @@ type Props = {
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = await getSiteDictionary(locale);
-  return { title: dict.apply.title, description: dict.apply.meta };
+  return buildPageMetadata({
+    title: dict.apply.title,
+    description: dict.apply.meta,
+    path: "/apply",
+  });
 }
 
 export default async function ApplyPage({ searchParams }: Props) {

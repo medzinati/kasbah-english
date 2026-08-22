@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { FaqJsonLd } from "@/components/SiteJsonLd";
 import { getLocale } from "@/i18n/get-locale";
 import { getReviewPhotos, getSiteDictionary } from "@/lib/site-content";
 
@@ -18,6 +19,7 @@ export default async function Home() {
 
   return (
     <>
+      <FaqJsonLd items={h.faq} />
       <SiteHeader variant="hero" locale={locale} dict={dict} />
 
       <main id="top">

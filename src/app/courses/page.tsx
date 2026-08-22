@@ -8,19 +8,16 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { prisma } from "@/lib/prisma";
 
+import { buildPageMetadata } from "@/lib/seo";
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
-  return {
+  return buildPageMetadata({
     title: dict.courses.title,
     description: dict.courses.meta,
-    alternates: { canonical: "/courses" },
-    openGraph: {
-      title: dict.courses.title,
-      description: dict.courses.meta,
-      url: "/courses",
-    },
-  };
+    path: "/courses",
+  });
 }
 
 export const dynamic = "force-dynamic";

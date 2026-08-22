@@ -78,6 +78,11 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: dict.brand,
     alternates: {
       canonical: "/",
+      languages: {
+        ar: siteUrl,
+        en: siteUrl,
+        "x-default": siteUrl,
+      },
     },
     openGraph: {
       type: "website",

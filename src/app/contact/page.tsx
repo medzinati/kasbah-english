@@ -5,11 +5,16 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getLocale } from "@/i18n/get-locale";
 import { getWhatsAppHref, getSiteContact } from "@/lib/site-contact";
 import { getSiteDictionary } from "@/lib/site-content";
+import { buildPageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = await getSiteDictionary(locale);
-  return { title: dict.contact.title, description: dict.contact.meta };
+  return buildPageMetadata({
+    title: dict.contact.title,
+    description: dict.contact.meta,
+    path: "/contact",
+  });
 }
 
 export default async function ContactPage() {

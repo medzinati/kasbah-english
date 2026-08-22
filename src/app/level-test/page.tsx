@@ -5,19 +5,16 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 
+import { buildPageMetadata } from "@/lib/seo";
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = getDictionary(locale);
-  return {
+  return buildPageMetadata({
     title: dict.levelTest.title,
     description: dict.levelTest.meta,
-    alternates: { canonical: "/level-test" },
-    openGraph: {
-      title: dict.levelTest.title,
-      description: dict.levelTest.meta,
-      url: "/level-test",
-    },
-  };
+    path: "/level-test",
+  });
 }
 
 export default async function LevelTestPage() {

@@ -5,19 +5,16 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getLocale } from "@/i18n/get-locale";
 import { getSiteDictionary } from "@/lib/site-content";
 
+import { buildPageMetadata } from "@/lib/seo";
+
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = await getSiteDictionary(locale);
-  return {
+  return buildPageMetadata({
     title: dict.pricing.title,
     description: dict.pricing.meta,
-    alternates: { canonical: "/pricing" },
-    openGraph: {
-      title: dict.pricing.title,
-      description: dict.pricing.meta,
-      url: "/pricing",
-    },
-  };
+    path: "/pricing",
+  });
 }
 
 const monthsByPlan: Record<string, number> = {

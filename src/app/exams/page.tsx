@@ -5,21 +5,19 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getLocale } from "@/i18n/get-locale";
 import { getSiteDictionary } from "@/lib/site-content";
+import { buildPageMetadata } from "@/lib/seo";
+import { ExamsJsonLd } from "@/components/SiteJsonLd";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = await getSiteDictionary(locale);
   const e = dict.examsPage;
-  return {
+  return buildPageMetadata({
     title: e.title,
     description: e.meta,
-    alternates: { canonical: "/exams" },
-    openGraph: {
-      title: e.title,
-      description: e.meta,
-      url: "/exams",
-    },
-  };
+    path: "/exams",
+    image: "/images/news/free-lessons.png",
+  });
 }
 
 export default async function ExamsPage() {
@@ -34,6 +32,12 @@ export default async function ExamsPage() {
 
   return (
     <>
+      <ExamsJsonLd
+        brand={dict.brand}
+        title={e.title}
+        description={e.meta}
+        exams={h.exams}
+      />
       <SiteHeader locale={locale} dict={dict} />
       <main>
         <section className="page-hero" data-reveal="fade">

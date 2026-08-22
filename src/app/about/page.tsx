@@ -6,11 +6,17 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { getLocale } from "@/i18n/get-locale";
 import { getWhatsAppHref, getSiteContact } from "@/lib/site-contact";
 import { getSiteDictionary } from "@/lib/site-content";
+import { buildPageMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const locale = await getLocale();
   const dict = await getSiteDictionary(locale);
-  return { title: dict.about.title, description: dict.about.meta };
+  return buildPageMetadata({
+    title: dict.about.title,
+    description: dict.about.meta,
+    path: "/about",
+    image: "/images/saudi-learners-group.png",
+  });
 }
 
 export default async function AboutPage() {

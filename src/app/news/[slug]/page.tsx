@@ -8,6 +8,8 @@ import { newsItems as staticNews } from "@/data/news-items";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
 import { getPublishedNewsBySlug } from "@/lib/news";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/SiteJsonLd";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
@@ -24,10 +26,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const item = await getPublishedNewsBySlug(slug);
   const locale = await getLocale();
   if (!item) return {};
-  return {
+  return buildPageMetadata({
     title: item.title[locale],
     description: item.summary[locale],
-  };
+    path: `/news/${slug}`,
+    image: item.image,
+    imageAlt: item.imageAlt[locale],
+  });
 }
 
 export default async function NewsArticlePage({ params }: Props) {
@@ -41,6 +46,22 @@ export default async function NewsArticlePage({ params }: Props) {
 
   return (
     <>
+      <ArticleJsonLd
+        title={item.title[locale]}
+        description={item.summary[locale]}
+        path={`/news/${slug}`}
+        image={item.image}
+        datePublished={item.date}
+        locale={locale}
+        brand={dict.brand}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: dict.brand, path: "/" },
+          { name: dict.news.title, path: "/news" },
+          { name: item.title[locale], path: `/news/${slug}` },
+        ]}
+      />
       <SiteHeader locale={locale} dict={dict} />
       <main>
         <article className="news-article" data-reveal="fade">

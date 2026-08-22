@@ -7,6 +7,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { freeCourses, getFreeCourseBySlug } from "@/data/courses";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { buildPageMetadata } from "@/lib/seo";
+import { BreadcrumbJsonLd, CourseJsonLd } from "@/components/SiteJsonLd";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -21,10 +23,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const course = getFreeCourseBySlug(slug);
   const locale = await getLocale();
   if (!course) return {};
-  return {
+  return buildPageMetadata({
     title: course.title[locale],
     description: course.summary[locale],
-  };
+    path: `/courses/${slug}`,
+    image: course.image,
+    imageAlt: course.imageAlt[locale],
+  });
 }
 
 export default async function FreeCoursePage({ params }: Props) {
@@ -37,6 +42,21 @@ export default async function FreeCoursePage({ params }: Props) {
 
   return (
     <>
+      <CourseJsonLd
+        name={course.title[locale]}
+        description={course.summary[locale]}
+        url={`/courses/${slug}`}
+        image={course.image}
+        locale={locale}
+        brand={dict.brand}
+      />
+      <BreadcrumbJsonLd
+        items={[
+          { name: dict.brand, path: "/" },
+          { name: dict.courses.title, path: "/courses" },
+          { name: course.title[locale], path: `/courses/${slug}` },
+        ]}
+      />
       <SiteHeader locale={locale} dict={dict} />
       <main>
         <section className="page-hero" data-reveal="fade">
