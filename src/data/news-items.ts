@@ -186,4 +186,37 @@ export const newsItems: NewsItem[] = [
       ],
     },
   },
+  {
+    slug: "weekly-speaking-habit",
+    date: "2026-08-22",
+    image: "/images/news/community.png",
+    imageAlt: {
+      ar: "متعلمون يتدرّبون على المحادثة في لقاء أسبوعي",
+      en: "Learners practicing conversation in a weekly session",
+    },
+    title: {
+      ar: "عادة التحدّث الأسبوعية: ١٥ دقيقة تكفي للبداية",
+      en: "A weekly speaking habit: 15 minutes is enough to start",
+    },
+    summary: {
+      ar: "لا تنتظر الوقت المثالي. خصّص ربع ساعة كل أسبوع للتحدّث، ثم زد تدريجيًا مع مجتمع القصبة ولقاءات Zoom.",
+      en: "Don’t wait for the perfect week. Block 15 minutes to speak, then grow with the Kasbah community and Zoom meetings.",
+    },
+    body: {
+      ar: [
+        "أكبر عائق أمام كثير من متعلمي الإنجليزية في الخليج ليس نقص التطبيقات، بل غياب عادة صغيرة ثابتة. الناس ينتظرون «أسبوعًا هادئًا» ثم يمرّ الشهر بلا تدريب صوتي حقيقي.",
+        "ابدأ بخمس عشرة دقيقة فقط: قدّم نفسك، صف يومك، أو أجب عن سؤال واحد بصوت مسموع. المهم أن تخرج الكلمات من فمك، لا أن تقرأ بصمت فقط.",
+        "في قصبة إنجليش صمّمنا المجتمع واللقاءات لهذا السبب: مساحة آمنة تخطئ فيها وتتقدّم. بعد اختبار المستوى أو درس مجاني، انضم للأعضاء إن رغبت في تدريب منتظم مع آخرين.",
+        "إن كنت تستعد لـ IELTS أو TOEFL أو مقابلات عمل، فالعادة الأسبوعية أهم من الحماس ليوم واحد. الطلاقة تُبنى بالتكرار الهادئ.",
+        "خطوتك اليوم: افتح اختبار المستوى أو صفحة الامتحانات، ثم احجز في تقويمك ربع ساعة للتحدّث هذا الأسبوع. القصبة هنا لتساندك بعد ذلك.",
+      ],
+      en: [
+        "The biggest barrier for many English learners in the Gulf is not a lack of apps. It is the absence of a small, steady habit. People wait for a “quiet week,” then a month passes with no real spoken practice.",
+        "Start with only fifteen minutes: introduce yourself, describe your day, or answer one question out loud. What matters is that words leave your mouth, not that you only read in silence.",
+        "At Kasbah English we designed the community and meetings for this reason: a safe space to make mistakes and improve. After the level test or a free lesson, join as a member if you want regular practice with others.",
+        "If you are preparing for IELTS, TOEFL, or job interviews, a weekly habit matters more than one day of excitement. Fluency is built by calm repetition.",
+        "Your step today: open the level test or the exams page, then block fifteen minutes to speak this week. The Kasbah is here to support you after that.",
+      ],
+    },
+  },
 ];

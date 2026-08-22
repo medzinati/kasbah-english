@@ -12,19 +12,39 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const dynamic = "force-dynamic";
 
+function isPlaceholderZoom(url: string) {
+  const u = url.toLowerCase();
+  return (
+    !u ||
+    u.includes("00000000000") ||
+    u.includes("your-meeting") ||
+    u.includes("example")
+  );
+}
+
 export default async function AdminDashboardPage() {
   const session = await requireAdmin();
   const locale = await getLocale();
   const dict = getDictionary(locale);
 
-  const [pendingApps, members, videos, lessons, upcomingMeetings, announcements] = await Promise.all([
-    prisma.application.count({ where: { status: "PENDING" } }),
-    prisma.user.count({ where: { role: "MEMBER" } }),
-    prisma.video.count(),
-    prisma.freeLesson.count(),
-    prisma.meeting.count({ where: { startsAt: { gte: new Date() } } }),
-    prisma.announcement.count(),
-  ]);
+  const [pendingApps, members, videos, lessons, upcomingMeetings, announcements, nextMeeting] =
+    await Promise.all([
+      prisma.application.count({ where: { status: "PENDING" } }),
+      prisma.user.count({ where: { role: "MEMBER" } }),
+      prisma.video.count(),
+      prisma.freeLesson.count(),
+      prisma.meeting.count({ where: { startsAt: { gte: new Date() } } }),
+      prisma.announcement.count(),
+      prisma.meeting.findFirst({
+        where: { startsAt: { gte: new Date() } },
+        orderBy: { startsAt: "asc" },
+        select: { id: true, title: true, zoomUrl: true, startsAt: true },
+      }),
+    ]);
+
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "";
+  const gaReady = Boolean(gaId && /^G-[A-Z0-9]+$/i.test(gaId));
+  const zoomReady = Boolean(nextMeeting && !isPlaceholderZoom(nextMeeting.zoomUrl));
 
   const cards = [
     { href: "/admin/site", label: "محتوى الموقع", value: "CMS" },
@@ -36,37 +56,81 @@ export default async function AdminDashboardPage() {
     { href: "/admin/community", label: "إعلانات", value: announcements },
   ];
 
+  const sharePosts = [
+    {
+      label: "واتساب / ستوري",
+      text: `اختبر مستواك مجانًا في قصبة إنجليش 👇\nhttps://www.kasbahenglish.com/level-test`,
+    },
+    {
+      label: "إنستغرام / تويتر",
+      text: `تعلّم الإنجليزية أونلاين مع مجتمع منظم ودروس مجانية ولقاءات Zoom.\nابدأ من هنا: https://www.kasbahenglish.com`,
+    },
+    {
+      label: "الامتحانات",
+      text: `تحضير IELTS / TOEFL / TOEIC / PTE مع قصبة إنجليش:\nhttps://www.kasbahenglish.com/exams`,
+    },
+  ];
+
   return (
     <AdminShell name={session.user.name} locale={locale} dict={dict} title="لوحة التحكم">
       <p className="members-lede">تحكم كامل: محتوى الموقع العام، الأعضاء، الأخبار، الفيديوهات، واللقاءات.</p>
 
       <section className="members-section admin-checklist">
-        <h2>خطة التشغيل هذا الأسبوع</h2>
-        <ol className="admin-checklist-list">
-          <li>
-            <strong>Analytics:</strong> أنشئ Property في{" "}
-            <a href="https://analytics.google.com" target="_blank" rel="noreferrer">
-              Google Analytics
-            </a>{" "}
-            ثم ضع <code>NEXT_PUBLIC_GA_MEASUREMENT_ID</code> في Vercel (مثل G-XXXX).
+        <h2>حالة التشغيل</h2>
+        <ul className="admin-status-list">
+          <li className={gaReady ? "is-ready" : "is-pending"}>
+            <strong>Google Analytics:</strong>{" "}
+            {gaReady ? (
+              <>مفعّل ({gaId})</>
+            ) : (
+              <>
+                غير مفعّل — أنشئ Measurement ID من{" "}
+                <a href="https://analytics.google.com" target="_blank" rel="noreferrer">
+                  analytics.google.com
+                </a>{" "}
+                ثم ضع <code>NEXT_PUBLIC_GA_MEASUREMENT_ID</code> في Vercel.
+              </>
+            )}
           </li>
-          <li>
-            <strong>محتوى:</strong> انشر أو عدّل خبرًا من{" "}
-            <Link href="/admin/news">الأخبار</Link> وشارك رابط{" "}
-            <a href="https://www.kasbahenglish.com/level-test" target="_blank" rel="noreferrer">
-              اختبار المستوى
-            </a>
-            .
+          <li className={zoomReady ? "is-ready" : "is-pending"}>
+            <strong>Zoom:</strong>{" "}
+            {zoomReady && nextMeeting ? (
+              <>
+                جاهز — {nextMeeting.title} (
+                <Link href="/admin/meetings">تعديل</Link>)
+              </>
+            ) : (
+              <>
+                يحتاج رابط حقيقي — افتح{" "}
+                <Link href="/admin/meetings">اللقاءات</Link> واستبدل الرابط التجريبي.
+              </>
+            )}
           </li>
-          <li>
-            <strong>لقاءات:</strong> افتح{" "}
-            <Link href="/admin/meetings">اللقاءات</Link> واستبدل رابط Zoom الحقيقي لـ Speaking Café.
+          <li className={pendingApps === 0 ? "is-ready" : "is-pending"}>
+            <strong>الطلبات:</strong>{" "}
+            {pendingApps === 0 ? (
+              "لا طلبات معلّقة"
+            ) : (
+              <>
+                {pendingApps} بانتظار المراجعة —{" "}
+                <Link href="/admin/applications">افتح الطلبات</Link>
+              </>
+            )}
           </li>
-          <li>
-            <strong>طلبات:</strong> راجع{" "}
-            <Link href="/admin/applications">الطلبات المعلّقة</Link> ({pendingApps}).
-          </li>
-        </ol>
+        </ul>
+      </section>
+
+      <section className="members-section admin-checklist">
+        <h2>نصوص جاهزة للنشر (SEO / وصول)</h2>
+        <p className="members-lede">انسخ والصق على واتساب أو إنستغرام أو تويتر — روابط مباشرة لموقعك.</p>
+        <div className="admin-share-kit">
+          {sharePosts.map((post) => (
+            <div key={post.label} className="admin-share-card">
+              <strong>{post.label}</strong>
+              <pre dir="auto">{post.text}</pre>
+            </div>
+          ))}
+        </div>
       </section>
 
       <div className="admin-stats">

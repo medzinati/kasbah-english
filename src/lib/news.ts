@@ -50,7 +50,11 @@ export async function getPublishedNews(): Promise<NewsItem[]> {
     orderBy: { date: "desc" },
   });
   if (rows.length === 0) return staticNews;
-  return rows.map(mapDbPost);
+
+  const fromDb = rows.map(mapDbPost);
+  const dbSlugs = new Set(fromDb.map((item) => item.slug));
+  const extras = staticNews.filter((item) => !dbSlugs.has(item.slug));
+  return [...fromDb, ...extras].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 }
 
 export async function getPublishedNewsBySlug(slug: string): Promise<NewsItem | undefined> {
