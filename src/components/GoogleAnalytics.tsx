@@ -1,9 +1,11 @@
 import Script from "next/script";
+import { getOpsSettings } from "@/lib/site-content";
 
-/** Loads only when NEXT_PUBLIC_GA_MEASUREMENT_ID is set (e.g. G-XXXXXXXX). */
-export function GoogleAnalytics() {
-  const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
-  if (!id) return null;
+/** Loads when GA ID is set via env or Admin → Site → تشغيل. */
+export async function GoogleAnalytics() {
+  const ops = await getOpsSettings();
+  const id = (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || ops.gaMeasurementId || "").trim();
+  if (!id || !/^G-[A-Z0-9]+$/i.test(id)) return null;
 
   return (
     <>

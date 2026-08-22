@@ -10,7 +10,9 @@ import {
   type ContactSettings,
   type FaqItem,
   type HomeHeroSettings,
+  type OpsSettings,
   type ReviewItem,
+  isPlaceholderZoomUrl,
 } from "@/lib/site-content";
 import { dictionaries } from "@/i18n/dictionaries";
 
@@ -46,12 +48,13 @@ export async function GET() {
 
   await ensureDefaultPricingPlans();
 
-  const [contactRow, heroRow, faqRow, reviewsRow, aboutRow, plans] = await Promise.all([
+  const [contactRow, heroRow, faqRow, reviewsRow, aboutRow, opsRow, plans] = await Promise.all([
     prisma.siteSetting.findUnique({ where: { key: SITE_KEYS.contact } }),
     prisma.siteSetting.findUnique({ where: { key: SITE_KEYS.homeHero } }),
     prisma.siteSetting.findUnique({ where: { key: SITE_KEYS.homeFaq } }),
     prisma.siteSetting.findUnique({ where: { key: SITE_KEYS.homeReviews } }),
     prisma.siteSetting.findUnique({ where: { key: SITE_KEYS.about } }),
+    prisma.siteSetting.findUnique({ where: { key: SITE_KEYS.ops } }),
     prisma.pricingPlan.findMany({ orderBy: { sortOrder: "asc" } }),
   ]);
 
@@ -112,6 +115,11 @@ export async function GET() {
     })),
   });
 
+  const ops = parseJson<OpsSettings>(opsRow?.value, {
+    gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "",
+    defaultZoomUrl: process.env.DEFAULT_ZOOM_URL?.trim() || "",
+  });
+
   return NextResponse.json({
     ok: true,
     contact,
@@ -119,6 +127,7 @@ export async function GET() {
     faq,
     reviews,
     about,
+    ops,
     plans,
   });
 }
@@ -193,6 +202,11 @@ const plansSchema = z.array(
   }),
 );
 
+const opsSchema = z.object({
+  gaMeasurementId: z.string().trim(),
+  defaultZoomUrl: z.string().trim(),
+});
+
 const putSchema = z.object({
   contact: contactSchema.optional(),
   homeHero: heroSchema.optional(),
@@ -200,6 +214,7 @@ const putSchema = z.object({
   reviews: reviewsSchema.optional(),
   about: aboutSchema.optional(),
   plans: plansSchema.optional(),
+  ops: opsSchema.optional(),
 });
 
 export async function PUT(request: Request) {
@@ -228,6 +243,42 @@ export async function PUT(request: Request) {
     if (data.faq) await upsertSetting(SITE_KEYS.homeFaq, data.faq);
     if (data.reviews) await upsertSetting(SITE_KEYS.homeReviews, data.reviews);
     if (data.about) await upsertSetting(SITE_KEYS.about, data.about);
+    if (data.ops) {
+      const ga = data.ops.gaMeasurementId.trim();
+      if (ga && !/^G-[A-Z0-9]+$/i.test(ga)) {
+        return NextResponse.json(
+          { ok: false, error: "معرّف Analytics يجب أن يكون مثل G-XXXXXXXX." },
+          { status: 400 },
+        );
+      }
+      const zoom = data.ops.defaultZoomUrl.trim();
+      if (zoom) {
+        try {
+          new URL(zoom);
+        } catch {
+          return NextResponse.json({ ok: false, error: "رابط Zoom غير صالح." }, { status: 400 });
+        }
+      }
+      await upsertSetting(SITE_KEYS.ops, {
+        gaMeasurementId: ga,
+        defaultZoomUrl: zoom,
+      });
+
+      if (zoom && !isPlaceholderZoomUrl(zoom)) {
+        const upcoming = await prisma.meeting.findMany({
+          where: { startsAt: { gte: new Date() } },
+          select: { id: true, zoomUrl: true },
+        });
+        for (const meeting of upcoming) {
+          if (isPlaceholderZoomUrl(meeting.zoomUrl)) {
+            await prisma.meeting.update({
+              where: { id: meeting.id },
+              data: { zoomUrl: zoom },
+            });
+          }
+        }
+      }
+    }
 
     if (data.plans) {
       for (const plan of data.plans) {

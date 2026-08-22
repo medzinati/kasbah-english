@@ -1,9 +1,15 @@
 import nodemailer from "nodemailer";
+import { getSiteUrl } from "@/lib/site-url";
 
 type WelcomeMailInput = {
   to: string;
   name: string;
   tempPassword: string;
+};
+
+type ExistingMemberMailInput = {
+  to: string;
+  name: string;
 };
 
 type ResetMailInput = {
@@ -12,16 +18,18 @@ type ResetMailInput = {
   resetUrl: string;
 };
 
-function siteUrl() {
-  return (process.env.NEXTAUTH_URL || "https://kasbahenglish.com").replace(/\/$/, "");
-}
-
 function escapeHtml(value: string) {
   return value
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+export function isMailConfigured() {
+  const user = process.env.SMTP_USER || process.env.GMAIL_USER || process.env.CONTACT_EMAIL;
+  const pass = process.env.SMTP_PASS || process.env.GMAIL_APP_PASSWORD;
+  return Boolean(user?.trim() && pass?.trim());
 }
 
 async function sendMail(input: {
@@ -66,10 +74,33 @@ async function sendMail(input: {
   }
 }
 
+function nextStepsBlock(base: string) {
+  return {
+    text: [
+      "خطوات مفيدة بعد الدخول:",
+      `- مساحة الأعضاء: ${base}/members`,
+      `- اختبار المستوى: ${base}/level-test`,
+      `- الدروس المجانية: ${base}/courses`,
+      `- الامتحانات: ${base}/exams`,
+    ].join("\n"),
+    html: `
+      <p style="margin:16px 0 8px"><strong>خطوات مفيدة بعد الدخول:</strong></p>
+      <ul style="padding-inline-start:18px;margin:0 0 16px">
+        <li><a href="${base}/members">مساحة الأعضاء</a></li>
+        <li><a href="${base}/level-test">اختبار المستوى</a></li>
+        <li><a href="${base}/courses">الدروس المجانية</a></li>
+        <li><a href="${base}/exams">الامتحانات</a></li>
+      </ul>
+    `,
+  };
+}
+
 export async function sendMemberWelcomeEmail(
   input: WelcomeMailInput,
 ): Promise<{ sent: boolean; error?: string }> {
-  const loginUrl = `${siteUrl()}/members/login`;
+  const base = getSiteUrl();
+  const loginUrl = `${base}/members/login`;
+  const steps = nextStepsBlock(base);
   const subject = "قصبة إنجليش — تم قبولك في المجتمع | Kasbah English — You’re accepted";
 
   const text = [
@@ -79,9 +110,12 @@ export async function sendMemberWelcomeEmail(
     "يمكنك الآن الدخول إلى مساحة الأعضاء:",
     loginUrl,
     "",
+    `البريد: ${input.to}`,
     `كلمة المرور المؤقتة: ${input.tempPassword}`,
     "",
-    "يمكنك تغيير كلمة المرور من رابط نسيت كلمة المرور بعد الدخول إن احتجت.",
+    "غيّر كلمة المرور من «نسيت كلمة المرور» بعد أول دخول إن احتجت.",
+    "",
+    steps.text,
     "",
     "—",
     "",
@@ -91,6 +125,7 @@ export async function sendMemberWelcomeEmail(
     "Sign in here:",
     loginUrl,
     "",
+    `Email: ${input.to}`,
     `Temporary password: ${input.tempPassword}`,
     "",
     "Kasbah English / قصبة إنجليش",
@@ -102,11 +137,48 @@ export async function sendMemberWelcomeEmail(
       <p>مرحبًا <strong>${escapeHtml(input.name)}</strong>،</p>
       <p>تم قبول طلبك. يمكنك الدخول إلى مساحة الأعضاء من هنا:</p>
       <p><a href="${loginUrl}">${loginUrl}</a></p>
-      <p><strong>كلمة المرور المؤقتة:</strong> <code style="background:#e7eef6;padding:4px 8px;border-radius:4px">${escapeHtml(input.tempPassword)}</code></p>
+      <p><strong>البريد:</strong> ${escapeHtml(input.to)}<br/>
+      <strong>كلمة المرور المؤقتة:</strong> <code style="background:#e7eef6;padding:4px 8px;border-radius:4px">${escapeHtml(input.tempPassword)}</code></p>
+      ${steps.html}
       <hr style="border:none;border-top:1px solid #ddd;margin:24px 0" />
       <p>Hello <strong>${escapeHtml(input.name)}</strong>,</p>
-      <p>Your application was accepted. Sign in at the link above.</p>
-      <p><strong>Temporary password:</strong> <code style="background:#e7eef6;padding:4px 8px;border-radius:4px">${escapeHtml(input.tempPassword)}</code></p>
+      <p>Your application was accepted. Sign in at the link above with your temporary password.</p>
+      <p style="color:#5a6b7d;font-size:14px">Kasbah English / قصبة إنجليش</p>
+    </div>
+  `;
+
+  return sendMail({ to: input.to, subject, text, html });
+}
+
+export async function sendExistingMemberAcceptedEmail(
+  input: ExistingMemberMailInput,
+): Promise<{ sent: boolean; error?: string }> {
+  const base = getSiteUrl();
+  const loginUrl = `${base}/members/login`;
+  const steps = nextStepsBlock(base);
+  const subject = "قصبة إنجليش — تم تفعيل طلبك | Kasbah English — Application activated";
+
+  const text = [
+    `مرحبًا ${input.name},`,
+    "",
+    "تم قبول طلبك. حسابك موجود مسبقًا — سجّل الدخول بنفس بياناتك:",
+    loginUrl,
+    "",
+    "إذا نسيت كلمة المرور، استخدم رابط نسيت كلمة المرور في صفحة الدخول.",
+    "",
+    steps.text,
+    "",
+    "Kasbah English / قصبة إنجليش",
+  ].join("\n");
+
+  const html = `
+    <div style="font-family:Arial,sans-serif;line-height:1.6;color:#1a2433;max-width:560px">
+      <h2 style="margin:0 0 12px">قصبة إنجليش</h2>
+      <p>مرحبًا <strong>${escapeHtml(input.name)}</strong>،</p>
+      <p>تم قبول طلبك. حسابك موجود مسبقًا — سجّل الدخول من هنا:</p>
+      <p><a href="${loginUrl}">${loginUrl}</a></p>
+      <p>إذا نسيت كلمة المرور، استخدم «نسيت كلمة المرور» في صفحة الدخول.</p>
+      ${steps.html}
       <p style="color:#5a6b7d;font-size:14px">Kasbah English / قصبة إنجليش</p>
     </div>
   `;

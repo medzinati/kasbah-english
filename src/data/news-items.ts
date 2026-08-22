@@ -219,4 +219,37 @@ export const newsItems: NewsItem[] = [
       ],
     },
   },
+  {
+    slug: "phrase-of-the-week-looking-forward",
+    date: "2026-08-22",
+    image: "/images/news/free-lessons.png",
+    imageAlt: {
+      ar: "درس قصير عن عبارة إنجليزية للأسبوع",
+      en: "A short lesson on this week’s English phrase",
+    },
+    title: {
+      ar: "عبارة الأسبوع: I’m looking forward to…",
+      en: "Phrase of the week: I’m looking forward to…",
+    },
+    summary: {
+      ar: "عبارة طبيعية للخطط والاجتماعات. تعلّمها في دقيقتين واستعملها اليوم في جملة واحدة.",
+      en: "A natural phrase for plans and meetings. Learn it in two minutes and use it in one sentence today.",
+    },
+    body: {
+      ar: [
+        "هذه العبارة تعني أنك تنتظر شيئًا بإيجابية: لقاء، سفر، نتيجة، أو حتى درس إنجليزي.",
+        "القاعدة المهمة: بعد to يأتي اسم أو فعل ينتهي بـ -ing. مثال: I’m looking forward to the meeting. / I’m looking forward to speaking with you.",
+        "تجنّب الخطأ الشائع: لا تقل I’m looking forward to meet you. قل: I’m looking forward to meeting you.",
+        "تمرين سريع (دقيقتان): اكتب جملتين عن شيء تنتظره هذا الأسبوع — اجتماع، سفر، أو لقاء Speaking Café.",
+        "جاهز للمزيد؟ افتح الدروس المجانية أو اختبر مستواك، ثم انضم للمجتمع إن أردت تدريبًا أسبوعيًا مع الآخرين.",
+      ],
+      en: [
+        "This phrase means you are waiting for something positively: a meeting, a trip, a result, or even an English lesson.",
+        "Important rule: after to, use a noun or an -ing verb. Example: I’m looking forward to the meeting. / I’m looking forward to speaking with you.",
+        "Avoid the common mistake: don’t say I’m looking forward to meet you. Say: I’m looking forward to meeting you.",
+        "Quick practice (two minutes): write two sentences about something you are waiting for this week — a meeting, a trip, or Speaking Café.",
+        "Ready for more? Open the free lessons or take the level test, then join the community if you want weekly practice with others.",
+      ],
+    },
+  },
 ];

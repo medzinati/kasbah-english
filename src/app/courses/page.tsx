@@ -60,7 +60,26 @@ export default async function CoursesPage() {
     playable: false,
   }));
 
-  const courses = [...staticCourses, ...adminCourses];
+  const weeklyTip = {
+    slug: "weekly-tip",
+    title: locale === "ar" ? "عبارة الأسبوع: I’m looking forward to…" : "Phrase of the week: I’m looking forward to…",
+    level: locale === "ar" ? "متوسط" : "Intermediate",
+    duration: locale === "ar" ? "٢ دقيقة" : "2 minutes",
+    summary:
+      locale === "ar"
+        ? "درس قصير مجاني لهذا الأسبوع — افتح المقالة، اقرأ المثال، واكتب جملتين اليوم."
+        : "This week’s free micro-lesson — open the article, read the example, and write two sentences today.",
+    image: "/images/news/free-lessons.png",
+    imageAlt: locale === "ar" ? "عبارة الأسبوع" : "Phrase of the week",
+    lessons:
+      locale === "ar"
+        ? ["قاعدة to + -ing", "مثال للاجتماعات", "تمرين جملتين"]
+        : ["to + -ing rule", "Meeting example", "Two-sentence practice"],
+    href: "/news/phrase-of-the-week-looking-forward",
+    playable: true,
+  };
+
+  const courses = [weeklyTip, ...staticCourses, ...adminCourses];
 
   return (
     <>

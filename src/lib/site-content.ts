@@ -8,11 +8,17 @@ export const SITE_KEYS = {
   homeFaq: "home.faq",
   homeReviews: "home.reviews",
   about: "about",
+  ops: "ops",
 } as const;
 
 export type ContactSettings = {
   email: string;
   whatsapp: string;
+};
+
+export type OpsSettings = {
+  gaMeasurementId: string;
+  defaultZoomUrl: string;
 };
 
 export type HomeHeroSettings = {
@@ -72,6 +78,24 @@ export async function getContactSettings(): Promise<ContactSettings> {
     whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "") || "212633288868",
   };
   return parseJson(await getSettingValue(SITE_KEYS.contact), fallback);
+}
+
+export async function getOpsSettings(): Promise<OpsSettings> {
+  const fallback: OpsSettings = {
+    gaMeasurementId: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "",
+    defaultZoomUrl: process.env.DEFAULT_ZOOM_URL?.trim() || "",
+  };
+  return parseJson(await getSettingValue(SITE_KEYS.ops), fallback);
+}
+
+export function isPlaceholderZoomUrl(url: string) {
+  const u = url.trim().toLowerCase();
+  return (
+    !u ||
+    u.includes("00000000000") ||
+    u.includes("your-meeting") ||
+    u.includes("example")
+  );
 }
 
 export async function getPricingPlansFromDb() {

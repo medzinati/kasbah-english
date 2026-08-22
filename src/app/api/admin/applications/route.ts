@@ -2,7 +2,7 @@ import { hash } from "bcryptjs";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { sendMemberWelcomeEmail } from "@/lib/mail";
+import { sendExistingMemberAcceptedEmail, sendMemberWelcomeEmail } from "@/lib/mail";
 import { generateTempPassword } from "@/lib/password";
 import { prisma } from "@/lib/prisma";
 
@@ -55,11 +55,18 @@ export async function POST(request: Request) {
       where: { id: applicationId },
       data: { status: "ACCEPTED", reviewedAt: new Date(), userId: existing.id },
     });
+    const mail = await sendExistingMemberAcceptedEmail({
+      to: existing.email,
+      name: existing.name,
+    });
     return NextResponse.json({
       ok: true,
-      message: "تم ربط الطلب بحساب عضو موجود مسبقًا.",
+      message: mail.sent
+        ? "تم ربط الطلب بحساب موجود وإرسال تذكير الدخول بالإيميل."
+        : "تم ربط الطلب بحساب موجود. الإيميل لم يُرسل — أخبر العضو بالدخول من /members/login.",
       email: existing.email,
-      emailSent: false,
+      emailSent: mail.sent,
+      mailError: mail.sent ? undefined : mail.error,
     });
   }
 

@@ -4,7 +4,9 @@ import { AdminShell } from "@/components/AdminShell";
 import { requireAdmin } from "@/lib/admin";
 import { getDictionary } from "@/i18n/dictionaries";
 import { getLocale } from "@/i18n/get-locale";
+import { isMailConfigured } from "@/lib/mail";
 import { prisma } from "@/lib/prisma";
+import { getOpsSettings, isPlaceholderZoomUrl } from "@/lib/site-content";
 
 export async function generateMetadata(): Promise<Metadata> {
   return { title: "لوحة التحكم" };
@@ -12,22 +14,12 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const dynamic = "force-dynamic";
 
-function isPlaceholderZoom(url: string) {
-  const u = url.toLowerCase();
-  return (
-    !u ||
-    u.includes("00000000000") ||
-    u.includes("your-meeting") ||
-    u.includes("example")
-  );
-}
-
 export default async function AdminDashboardPage() {
   const session = await requireAdmin();
   const locale = await getLocale();
   const dict = getDictionary(locale);
 
-  const [pendingApps, members, videos, lessons, upcomingMeetings, announcements, nextMeeting] =
+  const [pendingApps, members, videos, lessons, upcomingMeetings, announcements, nextMeeting, ops] =
     await Promise.all([
       prisma.application.count({ where: { status: "PENDING" } }),
       prisma.user.count({ where: { role: "MEMBER" } }),
@@ -40,11 +32,15 @@ export default async function AdminDashboardPage() {
         orderBy: { startsAt: "asc" },
         select: { id: true, title: true, zoomUrl: true, startsAt: true },
       }),
+      getOpsSettings(),
     ]);
 
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || "";
+  const gaId = (process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || ops.gaMeasurementId || "").trim();
   const gaReady = Boolean(gaId && /^G-[A-Z0-9]+$/i.test(gaId));
-  const zoomReady = Boolean(nextMeeting && !isPlaceholderZoom(nextMeeting.zoomUrl));
+  const zoomFromMeeting = nextMeeting && !isPlaceholderZoomUrl(nextMeeting.zoomUrl);
+  const zoomFromOps = Boolean(ops.defaultZoomUrl && !isPlaceholderZoomUrl(ops.defaultZoomUrl));
+  const zoomReady = Boolean(zoomFromMeeting || zoomFromOps);
+  const mailReady = isMailConfigured();
 
   const cards = [
     { href: "/admin/site", label: "محتوى الموقع", value: "CMS" },
@@ -84,25 +80,41 @@ export default async function AdminDashboardPage() {
               <>مفعّل ({gaId})</>
             ) : (
               <>
-                غير مفعّل — أنشئ Measurement ID من{" "}
-                <a href="https://analytics.google.com" target="_blank" rel="noreferrer">
-                  analytics.google.com
-                </a>{" "}
-                ثم ضع <code>NEXT_PUBLIC_GA_MEASUREMENT_ID</code> في Vercel.
+                غير مفعّل — ضع المعرّف من{" "}
+                <Link href="/admin/site">الموقع → تشغيل</Link> (مثل G-XXXX).
               </>
             )}
           </li>
           <li className={zoomReady ? "is-ready" : "is-pending"}>
             <strong>Zoom:</strong>{" "}
-            {zoomReady && nextMeeting ? (
+            {zoomReady ? (
               <>
-                جاهز — {nextMeeting.title} (
-                <Link href="/admin/meetings">تعديل</Link>)
+                جاهز{" "}
+                {nextMeeting ? (
+                  <>
+                    — {nextMeeting.title} (<Link href="/admin/meetings">تعديل</Link>)
+                  </>
+                ) : (
+                  <>
+                    — رابط افتراضي محفوظ (<Link href="/admin/site">تشغيل</Link>)
+                  </>
+                )}
               </>
             ) : (
               <>
-                يحتاج رابط حقيقي — افتح{" "}
-                <Link href="/admin/meetings">اللقاءات</Link> واستبدل الرابط التجريبي.
+                يحتاج رابط حقيقي —{" "}
+                <Link href="/admin/site">الموقع → تشغيل</Link> أو{" "}
+                <Link href="/admin/meetings">اللقاءات</Link>.
+              </>
+            )}
+          </li>
+          <li className={mailReady ? "is-ready" : "is-pending"}>
+            <strong>بريد الترحيب:</strong>{" "}
+            {mailReady ? (
+              "مفعّل — عند قبول عضو يُرسل إيميل بكلمة المرور."
+            ) : (
+              <>
+                غير مفعّل — ضع <code>GMAIL_APP_PASSWORD</code> في Vercel (مع GMAIL_USER).
               </>
             )}
           </li>

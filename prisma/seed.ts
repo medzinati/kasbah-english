@@ -277,11 +277,37 @@ async function main() {
     });
   }
 
+  const weeklyLessonTitle = "عبارة الأسبوع: I’m looking forward to…";
+  const existingWeekly = await prisma.freeLesson.findFirst({
+    where: { title: weeklyLessonTitle },
+  });
+  if (!existingWeekly) {
+    await prisma.freeLesson.create({
+      data: {
+        title: weeklyLessonTitle,
+        summary:
+          "درس قصير لدقيقتين: عبارة طبيعية للخطط والاجتماعات، مع مثال وتمرين سريع.",
+        level: "متوسط",
+        duration: "٢ دقيقة",
+        lessons: [
+          "I’m looking forward to the meeting.",
+          "I’m looking forward to speaking with you.",
+          "تمرين: اكتب جملتين عن شيء تنتظره هذا الأسبوع.",
+        ].join("\n"),
+        imageUrl: "/images/news/free-lessons.png",
+        published: true,
+        sortOrder: 0,
+        createdById: admin.id,
+      },
+    });
+  }
+
   console.log(`Admin ready: ${email}`);
   console.log(`Teacher ready: ${teacherEmail} / ${teacherPassword}`);
   console.log("Discussion groups + starter posts ready");
   console.log("Announcements + upcoming Zoom meeting ready");
   console.log("News posts ready");
+  console.log("Weekly free lesson ready");
   console.log("Login at /members/login");
 }
 

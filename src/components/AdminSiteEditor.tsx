@@ -45,8 +45,12 @@ type PlanRow = {
   sortOrder: number;
   active: boolean;
 };
+type OpsSettings = {
+  gaMeasurementId: string;
+  defaultZoomUrl: string;
+};
 
-type Tab = "contact" | "hero" | "faq" | "reviews" | "about" | "pricing";
+type Tab = "contact" | "hero" | "faq" | "reviews" | "about" | "pricing" | "ops";
 
 const tabs: { id: Tab; label: string }[] = [
   { id: "contact", label: "التواصل" },
@@ -55,6 +59,7 @@ const tabs: { id: Tab; label: string }[] = [
   { id: "reviews", label: "التقييمات" },
   { id: "about", label: "نبذة عنا" },
   { id: "pricing", label: "الأسعار" },
+  { id: "ops", label: "تشغيل" },
 ];
 
 export function AdminSiteEditor() {
@@ -68,6 +73,7 @@ export function AdminSiteEditor() {
   const [reviews, setReviews] = useState<ReviewItem[]>([]);
   const [about, setAbout] = useState<AboutSettings | null>(null);
   const [plans, setPlans] = useState<PlanRow[]>([]);
+  const [ops, setOps] = useState<OpsSettings>({ gaMeasurementId: "", defaultZoomUrl: "" });
 
   useEffect(() => {
     let alive = true;
@@ -85,6 +91,7 @@ export function AdminSiteEditor() {
         setReviews(json.reviews);
         setAbout(json.about);
         setPlans(json.plans);
+        if (json.ops) setOps(json.ops);
       } catch {
         if (alive) setNotice("مشكلة في الشبكة.");
       } finally {
@@ -103,7 +110,7 @@ export function AdminSiteEditor() {
       const res = await fetch("/api/admin/site", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contact, homeHero, faq, reviews, about, plans }),
+        body: JSON.stringify({ contact, homeHero, faq, reviews, about, plans, ops }),
       });
       const json = await res.json();
       if (!res.ok || !json.ok) {
@@ -421,6 +428,32 @@ export function AdminSiteEditor() {
               </label>
             </div>
           ))}
+        </div>
+      ) : null}
+
+      {tab === "ops" ? (
+        <div className="site-form admin-site-panel">
+          <p className="members-lede">
+            فعّل Analytics ورابط Zoom الافتراضي من هنا بدون انتظار إعدادات Vercel. حفظ Zoom يحدّث اللقاءات القادمة التي ما زال رابطها تجريبيًا.
+          </p>
+          <label>
+            Google Analytics Measurement ID
+            <input
+              value={ops.gaMeasurementId}
+              onChange={(e) => setOps({ ...ops, gaMeasurementId: e.target.value.trim() })}
+              dir="ltr"
+              placeholder="G-XXXXXXXXXX"
+            />
+          </label>
+          <label>
+            رابط Zoom الافتراضي للقاءات
+            <input
+              value={ops.defaultZoomUrl}
+              onChange={(e) => setOps({ ...ops, defaultZoomUrl: e.target.value.trim() })}
+              dir="ltr"
+              placeholder="https://zoom.us/j/…"
+            />
+          </label>
         </div>
       ) : null}
 
